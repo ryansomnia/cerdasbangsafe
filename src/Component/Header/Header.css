@@ -1,0 +1,19 @@
+.header{
+    background-color: blue;
+    /* height: 100px; */
+}
+.logo{
+    background-color: aqua;
+    text-align: center;
+    font-size: 50px;
+}
+.navigator{
+    background-color: green;
+    text-align: center;
+    font-size: 50px;
+}
+.account{
+    background-color: gold;
+    text-align: center;
+    font-size: 30px;
+}
