@@ -1,29 +1,64 @@
 
 .logo{
-    background-color: aqua;
-    text-align: center;
-    font-size: 50px;
+    float: none;
+    background-color: #B5EAEA;
+   
+}
+.logosd{
+  text-align: center;
+  color: #F9F9F9;
+  font-size: 12px;
 }
 .navigator{
-    background-color: green;
+  float: none;
+    background-color: #4C4C6D;
+    padding: 15px;
+    color: white;
+    overflow: hidden;
     text-align: center;
-    font-size: 50px;
 }
+
+
+.navigator a {
+  float: left;
+  text-align: center;
+  padding: 10px 12px;
+  color: white;
+  font-size: 17px; 
+  text-decoration: none;
+  text-decoration-line: none;
+  }
+  
+
+  .navigator a:hover {
+    background-color: #FFC947;
+    color: black;
+    text-decoration: none;
+  }
+  @media screen and (max-width: 500px) {
+    .navigator a {
+      float: none;
+      display: block;
+    }
+  }
+
+
+
 .account{
-    background-color: gold;
-    text-align: center;
     font-size: 30px;
+    background-color: #B5EAEA;
+    /* overflow: hidden; */
 }
 
 Button.login-btn{
-    background-color: #4CAF50; /* Green */
-  border: 1px chartreuse;
-  color: white;
-  padding: 15px 32px;
+
+  border: none;
+  color: black;
+  padding: 6px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
- 
-  
+  margin-left: 30px;
+  margin-top: 20px;
+  font-size: 17px;
 }

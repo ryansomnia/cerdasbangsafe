@@ -1,6 +1,18 @@
 .slide {
-    background-color: grey;
     text-align: center;
-    font-size: 50px;
-    height: 800px;
+    padding: 10px;
+    font-size: 30px;
+    height: 100%;
+    
 }
+.grup{
+    background-color: white;
+    width: auto;
+    height: 500px;
+}
+
+.gambar{
+    width: 800px;
+    height: 400px;
+}
+

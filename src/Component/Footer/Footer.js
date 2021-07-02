@@ -3,9 +3,9 @@ import "./Footer.css"
 class Footer extends Component {
     render() {
         return (
-            <div>
-           <h1 id="footer">ini bagian Footer</h1>     
-            </div>
+        
+           <h1 id="footer">© 2021 Copyright SDS CERDAS BANGSA, Web Development By Andreas Pasaribu,</h1>     
+           
         )
     }
 }
