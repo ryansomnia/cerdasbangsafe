@@ -1,7 +1,22 @@
-.lokal{
-  background-color: darkblue;
+.bentuk{
+    padding: 30px 30px;
 }
 
-#h1{
-  text-align: justify;
+#tanda{
+    font-size: 100px;
+    font-family: 'Lucida Sans';
+    text-align: center;
 }
+
+#judul{
+    font-size: 40px;
+    font-family: 'Lucida Sans';
+    text-align: center;
+}
+#subjudul{
+    font-size: 25px;
+    font-family: 'Lucida Sans';
+    text-align: center;
+}
+
+

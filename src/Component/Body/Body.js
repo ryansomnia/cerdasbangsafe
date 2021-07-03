@@ -10,7 +10,7 @@ import "./Body.css"
 export default class Body extends Component {
     render() {
         return (
-            <div>
+            <div className="body">
                 <CarouselBody />
                 <BannerRegist />
                 <BannerGretting/>

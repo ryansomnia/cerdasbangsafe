@@ -1,16 +1,22 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button,Card } from 'react-bootstrap';
+import { Container,Button } from 'react-bootstrap';
 import "./BannerRegist.css";
 
 
 export class Banner extends Component {
     render() {
       return (
-        <Container md-4  >
-       <h1>Apa yang Kamu Cari</h1>
-       <Button>Klik Lah</Button>
-        <Row >
-        <Col className="lokal" sm="4" >
+        <div className="bentuk">
+        <Container md-4 >
+      <h1 id="tanda">"</h1> 
+       <h1 id="judul">SDS Cerdas Bangsa … Siap Mendidik anak Anda!</h1>
+        <h1 id="subjudul">Tahun ajaran 2030/2031, Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
+           Alamat Sekolah, Tlpn: 000 000 000, Email: kitapenuliscilik@gmail.com,
+            Web: Penuliscilik.com.</h1>
+       <Button>Daftar</Button>
+
+        {/* <Row >
+        <Col  sm="4" >
         <Card style={{ width: '18rem' }}>
          <Card.Img variant="top" src="holder.js/100px180" />
          <Card.Body>
@@ -51,9 +57,10 @@ export class Banner extends Component {
   </Card.Body>
 </Card>
 </Col>
-</Row>
+</Row> */}
 
       </Container>
+      </div>
       );
     }
   }
