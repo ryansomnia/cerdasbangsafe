@@ -5,6 +5,7 @@ import BannerGretting from '../../Molekul/Banner/BannerGretting'
 import TabelRegistrasi from '../../Molekul/Table/TabelRegistrasi'
 
 import "./Body.css"
+import TambahComp from '../../Molekul/Table/TambahComp'
 
 
 export default class Body extends Component {
@@ -15,6 +16,7 @@ export default class Body extends Component {
                 <BannerRegist />
                 <BannerGretting/>
                 <TabelRegistrasi/>
+                <TambahComp/>
             </div>
 
 
