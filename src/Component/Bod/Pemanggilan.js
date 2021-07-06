@@ -11,6 +11,7 @@ export default function() {
     <Router>
       <div>
         <nav>
+            {/* anjing */}
           <ul>
             <li>
               <Link to="/">Home</Link>
