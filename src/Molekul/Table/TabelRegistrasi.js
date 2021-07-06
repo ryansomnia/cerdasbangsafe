@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Table, Container, Button, NavLink} from 'react-bootstrap';
+
 import "./TabelRegistrasi.css";
 
 const api ='http://192.168.1.34:5001'
@@ -28,7 +29,7 @@ export default class TabelRegistrasi extends Component {
         return (
             <Container>
                 <h2>Info Registrasi</h2>
-                <NavLink href="/TambahComp"><Button color="success">Tambah Data</Button></NavLink>
+                <NavLink href="../../Molekul/Table/TambahComp"><Button color="success">Tambah Data</Button></NavLink>
                 <hr></hr>
             <Table striped bordered hover>
   <thead>
