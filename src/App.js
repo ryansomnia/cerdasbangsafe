@@ -1,18 +1,26 @@
 import {Component } from "react";
- import Header from "../src/Component/Header/Header"
- import Body from "../src/Component/Body/Body"
- import Footer from "../src/Component/Footer/Footer"
- import 'bootstrap/dist/css/bootstrap.min.css';
+ 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import home from "./Component/page/Home/home";
+import login from "./Component/page/Login/login";
  
 // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
     render(){
           return (
-            <div>
-          <Header/>
-          <Body/>
-          <Footer/>
-          </div>
+            <Router>
+
+            <Switch>
+              <Route path="/home" component={home}/>
+              <Route path="/login" component={login}/>
+              <Redirect from="/" to="/home"/>
+            </Switch>
+            </Router>
           );
     }
 }

@@ -19,11 +19,11 @@ export default class TabelRegistrasi extends Component {
         }
     }
     componentDidMount(){
-        axios.get(api+'/getDataRegis').then(res=>{
-            this.setState({
-                regist: res.data.values
-            })
-        })
+        // axios.get(api+'/getDataRegis').then(res=>{
+        //     this.setState({
+        //         regist: res.data.values
+        //     })
+        // })
     }
     render() {
         return (
