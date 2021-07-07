@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios'
+// import qs from 'querystring'
 import {Table, Container, Button, NavLink} from 'react-bootstrap';
+// import { Link } from "react-router-dom";
 
 import "./TabelRegistrasi.css";
 
@@ -29,7 +31,7 @@ export default class TabelRegistrasi extends Component {
         return (
             <Container>
                 <h2>Info Registrasi</h2>
-                <NavLink href="../../Molekul/Table/TambahComp"><Button color="success">Tambah Data</Button></NavLink>
+                <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
                 <hr></hr>
             <Table striped bordered hover>
   <thead>
@@ -51,7 +53,25 @@ export default class TabelRegistrasi extends Component {
          <td>{regist.status_pendaftaran}</td>
          <td>{regist.hasil}</td>
         
-      <td><Button>Edit</Button>   <Button className='btn-danger'>Hapus</Button></td>
+      <td>
+          {/* <Link to={
+              {
+                  partname: '/editdata',
+                  state: {
+                    nama_siswa : nama_siswa,
+                    jenis_kelamin : jenis_kelamin,
+                    agama: agama,
+                    tgl_lahir: tgl_lahir,
+                    tempat_lahir: tempat_lahir,
+                    alamat : alamat,
+                    no_hp :no_hp
+
+                  }
+              }
+          }> */}
+          <Button>Edit</Button>
+          {/* </Link> */}
+          </td>
     </tr>
       )}
   </tbody>

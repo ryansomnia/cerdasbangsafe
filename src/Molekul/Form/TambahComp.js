@@ -81,7 +81,7 @@ AddDataRegist = () => {
                     
                     <Form.Label>Jenis Kelamin</Form.Label>
                     <FormGroup>
-                        <Row>
+                        <Row >
                             <Col>
                                 <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Masukkan Jenis Kelamin"/>
                             </Col>
