@@ -6,10 +6,8 @@ import "./BannerGretting.css";
 export class BannerGretting extends Component {
     render() {
         return (
-            <div className="banner">
 
-
-                <Container>
+                <Container >
 
                     <Row className="baris">
                         <Col Col sm={2}>
@@ -37,7 +35,7 @@ export class BannerGretting extends Component {
 
                     </Row>
                 </Container>
-            </div>
+            
         );
     }
 }

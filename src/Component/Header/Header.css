@@ -6,14 +6,14 @@
 }
 .logosd{
   text-align: center;
-  color: #F9F9F9;
+  color: #0A1931;
   font-size: 12px;
 }
 .navigator{
   float: none;
-    background-color: #4C4C6D;
+    background-color: #B5EAEA;
     padding: 15px;
-    color: white;
+    color: #0A1931;
     overflow: hidden;
     text-align: center;
 }
@@ -23,7 +23,7 @@
   float: left;
   text-align: center;
   padding: 10px 12px;
-  color: white;
+  color: #0A1931;
   font-size: 17px; 
   text-decoration: none;
   text-decoration-line: none;

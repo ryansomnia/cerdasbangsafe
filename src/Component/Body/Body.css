@@ -1,27 +1,5 @@
 .body{
-    background-color: white;
+    background-color: #EDF6E5;
     color: black;
 }
 
-.banner{
-    background-color: #FFC947;
-
-}
-
-.baris{
-    background-color: #FFC947;
-    overflow: hidden;
-}
-
-.baris h1{
-    margin-top: 50px;
-    font-size: 16px;
-    font-family: Verdana;
-}
-
-.kepsek { 
- height: 200px ;
- width: 150px;
- margin-top: 50px;
- 
-}
