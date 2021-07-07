@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import home from "./Component/page/Home/home";
 import login from "./Component/page/Login/login";
- 
+ import menuUtama from "./Component/page/MenuUtama/menuUtama"
 // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
     render(){
@@ -18,6 +18,7 @@ import login from "./Component/page/Login/login";
             <Switch>
               <Route path="/home" component={home}/>
               <Route path="/login" component={login}/>
+              <Route path="/menuUtama" component={menuUtama}/>
               <Redirect from="/" to="/home"/>
             </Switch>
             </Router>

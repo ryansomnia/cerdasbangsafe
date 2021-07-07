@@ -3,7 +3,7 @@ import CarouselBody from '../../Molekul/Carousel/CarouselBody'
 import BannerRegist from '../../Molekul/Banner/BannerRegist'
 import BannerGretting from '../../Molekul/Banner/BannerGretting'
 import TabelRegistrasi from '../../Molekul/Table/TabelRegistrasi'
-import TambahComp from '../../Molekul/Table/TambahComp'
+import TambahComp from '../../Molekul/Form/TambahComp'
 
 
 import "./Body.css"

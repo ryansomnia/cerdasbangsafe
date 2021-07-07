@@ -101,7 +101,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange}   placeholder="Masukkan Tanggal Lahir DD-MM-YY"/>
+                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange}   placeholder="Masukkan Tanggal Lahir DD-MM-YY"/>
                             </Col>
                         </Row>
                     </FormGroup>

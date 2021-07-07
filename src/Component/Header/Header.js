@@ -23,7 +23,7 @@ class Header extends Component {
             {/* <div className="navbar"> */}
             <Col sm={{ span: 1, offset: 4 }} ><a href="/#"> Home</a></Col>
             <Col sm={1} > <a  href="/login"> Profil</a></Col>
-            <Col sm={3} > <a href="/#" className="ml-2 "> Menu Utama</a> </Col>
+            <Col sm={3} > <a href="/menuUtama" className="ml-2 "> Menu Utama</a> </Col>
             <Col sm={3} > <a href="/#"  className="ml-1"> Contact Us</a> </Col>
             {/* </div> */}
             </Row>
