@@ -3,8 +3,8 @@ import axios from 'axios'
 import {Table, Container, Button} from 'react-bootstrap';
 import "./TabelRegistrasi.css";
 
-const api ='http://192.168.1.34:5001'
-
+// const api ='http://192.168.1.34:5001'
+const api = 'http://localhost:5001'
    
 
 export default class TabelRegistrasi extends Component {
@@ -18,7 +18,7 @@ export default class TabelRegistrasi extends Component {
         }
     }
     componentDidMount(){
-        axios.get(api+'/getDataRegis').then(res=>{
+        axios.get(api+'/getDataRegist').then(res=>{
             this.setState({
                 regist: res.data.values
             })
