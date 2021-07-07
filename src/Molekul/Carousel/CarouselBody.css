@@ -1,18 +1,15 @@
 .slide {
     text-align: center;
-    padding: 10px;
+    padding-top: 10px;
     font-size: 30px;
     height: 100%;
     
 }
 .grup{
-    background-color:red;
-    width: auto;
-    height: 500px;
+    background-color:#E8F6EF;
 }
 
 .gambar{
-    width: 800px;
-    height: 400px;
+    height: 550px;
 }
 

@@ -6,10 +6,10 @@ import "./BannerGretting.css";
 export class BannerGretting extends Component {
     render() {
         return (
-
+                <div className="baris">
                 <Container >
 
-                    <Row className="baris">
+                    <Row >
                         <Col Col sm={2}>
                             <img className="kepsek" src="Image/IMG_0201.JPG"
                                 alt="Gambar Kepsek" />Tiarma Rosauli S,kom
@@ -35,7 +35,7 @@ export class BannerGretting extends Component {
 
                     </Row>
                 </Container>
-            
+                </div>
         );
     }
 }

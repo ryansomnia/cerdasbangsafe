@@ -11,11 +11,14 @@ class Header extends Component {
   }
   render() {
     return (
+      <div className="Nav">
         <Container fluid >
           <Row>
             <Col className="logo" sm={3}>
-            {/* <img className="logosd" src= "Image/logo.png" */}
-                {/* alt="logo SDS Cerdas Bangsa"/>SD CERDAS BANGSA */}
+            <img className="logosd" src= "Image/logo.png" 
+                 alt="logo SDS Cerdas Bangsa"/>SD CERDAS BANGSA
+
+
             </Col>
             
             <Col className="navigator " sm={7} >
@@ -33,6 +36,7 @@ class Header extends Component {
             </Col>
           </Row>
         </Container>
+        </div>
     );
   }
 }

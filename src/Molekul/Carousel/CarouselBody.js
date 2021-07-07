@@ -5,23 +5,23 @@ import "./CarouselBody.css"
 export default class CarouselBody extends Component {
     render() {
         return (
-  
+  // <Row>
   <Carousel className="grup">
         <Carousel.Item>
           <img
-            className="gambar w-80 "
+            className="gambar d-block  w-100"
             src="Image/IMG-20170317-WA0018.jpg"
             alt="First slide"/>
 
           <Carousel.Caption>
-            <h3>First slide label</h3>
+            <h3>SDS CERDAS BANGSA</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
 
 </Carousel.Item>
 <Carousel.Item>
     <img
-      className="gambar"
+      className="gambar d-block  w-100"
       src="Image/IMG_0201.JPG"
       alt="Second slide"/>
 
@@ -32,7 +32,7 @@ export default class CarouselBody extends Component {
 </Carousel.Item>
 <Carousel.Item>
     <img
-      className="gambar"
+      className="gambar d-block  w-100"
       src="Image/IMG_8561.JPG"
       alt="Third slide"/>
 
@@ -43,6 +43,7 @@ export default class CarouselBody extends Component {
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
+// </Row>
         )
         }
       }

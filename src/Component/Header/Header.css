@@ -1,21 +1,32 @@
-
+.Nav{
+  display: flex;
+justify-content: space-between;
+}
 .logo{
     float: none;
-    background-color: #B5EAEA;
+    background-color: #FFA900;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    
+   
    
 }
 .logosd{
   text-align: center;
-  color: #0A1931;
-  font-size: 12px;
+  color: black;
+  width: 90px;
+  height: 80px;
 }
 .navigator{
-  float: none;
-    background-color: #B5EAEA;
-    padding: 15px;
+    float: none;
+    text-decoration: none;
+    background-color: #FFA900;
+    align-items: center;
+    padding: 1rem;
     color: #0A1931;
     overflow: hidden;
-    text-align: center;
+    cursor: pointer;
 }
 
 
@@ -23,7 +34,7 @@
   float: left;
   text-align: center;
   padding: 10px 12px;
-  color: #0A1931;
+  color: black;
   font-size: 17px; 
   text-decoration: none;
   text-decoration-line: none;
@@ -31,7 +42,7 @@
   
 
   .navigator a:hover {
-    background-color: #FFC947;
+    background-color: #15cdfc;;
     color: black;
     text-decoration: none;
   }
@@ -46,7 +57,7 @@
 
 .account{
     font-size: 30px;
-    background-color: #B5EAEA;
+    background-color: #FFA900;
     /* overflow: hidden; */
 }
 

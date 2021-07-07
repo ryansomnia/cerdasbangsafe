@@ -1,8 +1,9 @@
 
 
 .baris{
-    background-color: blue;
+    background-color: #F7DBF0;
     overflow: hidden;
+    padding-bottom: 30px;
 }
 
 .baris h1{
