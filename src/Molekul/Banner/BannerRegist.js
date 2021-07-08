@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Container,Button } from 'react-bootstrap';
+import { Container,Button, Col } from 'react-bootstrap';
 import "./BannerRegist.css";
 
 
 export class Banner extends Component {
-    render() {
+    render() { 
       return (
         <div className="bentuk">
         <Container md-4 >
@@ -13,7 +13,9 @@ export class Banner extends Component {
         <h1 id="subjudul">Tahun ajaran 2030/2031, Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
            Alamat Sekolah, Tlpn: 000 000 000, Email: kitapenuliscilik@gmail.com,
             Web: Penuliscilik.com.</h1>
-       <Button>Daftar</Button>
+            <Col md={{ span: 6, offset: 5 }}>
+            <Button >Daftar</Button>
+            </Col>
 
         {/* <Row >
         <Col  sm="4" >
