@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container,Button, Col } from 'react-bootstrap';
+import { Container,Button} from 'react-bootstrap';
 import "./BannerRegist.css";
 
 

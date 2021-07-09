@@ -27,7 +27,7 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.jenis_kelamin == '') {
+    if (this.state.jenis_kelamin === '') {
         alert('Mana Kelamin Mu')
     } else {
        this.AddDataRegist()
