@@ -1,36 +1,37 @@
-.Nav{
-  display: flex;
-justify-content: space-between;
+.Navbar{
+  background-color:  #FFA900;
 }
-.logo{
+
+.Judul{
     float: none;
-    background-color: #FFA900;
-    font-size: 20px;
     font-style: italic;
     font-weight: bold;
-    
-   
-   
 }
+
 .logosd{
   text-align: center;
   color: black;
   width: 90px;
   height: 80px;
 }
-.navigator{
+
+.menu{
+  font-size: 18px;
+  font-weight: 400;
+
+}
+/* 
+.me-auto{
     float: none;
     text-decoration: none;
-    background-color: #FFA900;
-    align-items: center;
-    padding: 1rem;
+    margin-left: 40px;
     color: #0A1931;
     overflow: hidden;
     cursor: pointer;
 }
 
 
-.navigator a {
+.me-auto a {
   float: left;
   text-align: center;
   padding: 10px 12px;
@@ -38,38 +39,16 @@ justify-content: space-between;
   font-size: 17px; 
   text-decoration: none;
   text-decoration-line: none;
-  }
+  } */
   
 
-  .navigator a:hover {
-    background-color: #15cdfc;;
-    color: black;
-    text-decoration: none;
-  }
-  @media screen and (max-width: 500px) {
-    .navigator a {
-      float: none;
-      display: block;
-    }
-  }
-
-
-
-.account{
-    font-size: 30px;
-    background-color: #FFA900;
-    /* overflow: hidden; */
-}
+  
 
 Button.login-btn{
 
   border: none;
   color: black;
-  padding: 6px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin-left: 30px;
-  margin-top: 20px;
-  font-size: 17px;
+  padding: 3px 10px;
+  /* margin-left: 50px; */
+
 }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Container,Button } from 'react-bootstrap';
+import { Container,Button, Col } from 'react-bootstrap';
 import "./BannerRegist.css";
 
 
 export class Banner extends Component {
-    render() {
+    render() { 
       return (
         <div className="bentuk">
         <Container md-4 className="bg-primary" >
