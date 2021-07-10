@@ -17,7 +17,6 @@ class Header extends Component {
            <img className="logosd" src= "Image/logo.png" 
                alt="logo SDS Cerdas Bangsa"/>SD CERDAS BANGSA
     </Navbar.Brand>
-    
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav" className="menu">
       <Nav className="ml-auto">
