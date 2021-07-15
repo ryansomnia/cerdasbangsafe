@@ -9,7 +9,7 @@ import {
 import contactUs from "./Component/page/ContactUs/contactus";
 import home from "./Component/page/Home/home";
 import login from "./Component/page/Login/login";
- import menuUtama from "./Component/page/MenuUtama/menuUtama"
+import menuUtama from "./Component/page/MenuUtama/menuUtama"
 import profil from "./Component/page/Profil/profil";
 import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
@@ -28,6 +28,8 @@ import TambahComp from "./Molekul/Form/TambahComp";
               <Route path="/contactUs" component={contactUs} />
               <Route path="/tambahcomp" component={TambahComp}/>
               <Route path="/editcomp" component={EditComp}/>
+           
+             
               
               <Redirect from="/" to="/home"/>
             </Switch>

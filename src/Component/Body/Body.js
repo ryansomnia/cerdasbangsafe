@@ -6,7 +6,9 @@ import TabelRegistrasi from '../../Molekul/Table/TabelRegistrasi'
 
 
 
+
 import "./Body.css"
+
 
 
 export default class Body extends Component {
