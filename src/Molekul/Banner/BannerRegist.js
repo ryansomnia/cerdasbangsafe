@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import { Container,Button, Card, Accordion, Form} from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import "./BannerRegist.css";
+import PopUp from '../PopUp/PopUp';
 
 
-export class Banner extends Component {
-    render() { 
+
+export default class Banner extends Component {
+  render() {
       return (
-        <div className="bentuk">
-        <Container md-4 className="bg-info" >
+          <div >
+             <Container md-4 className="bg-info" >
     
+<<<<<<< HEAD
        <h1 id="judul">Pendaftaran Siswa Baru</h1>
         <h1 id="subjudul">Penerimaan Siswa Baru Tahun Pelajaran 2021/2022
               , Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
@@ -62,22 +65,20 @@ export class Banner extends Component {
     <Form.Label>Nomor Handphone</Form.Label>
     <Form.Control type="password" placeholder="Password" />
   </Form.Group>
+=======
+    <h1 id="judul">Pendaftaran Siswa Baru</h1>
+     <h1 id="subjudul">Tahun ajaran 2030/2031, Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
+        Alamat Sekolah, Tlpn: 000 000 000, Email: kitapenuliscilik@gmail.com,
+         Web: Penuliscilik.com.</h1>
+         <PopUp />
+       </Container>
+       
+>>>>>>> bfcef4131e4d00f455590bc3f29e6b555d809149
   
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-      </Card.Body>
-    </Accordion.Collapse>
-  </Card>
-    </Accordion>
+          </div>
 
-      {/* <Button  variant='btn btn-outline-dark'>Daftar</Button> */}
-      </Container>
-      </div>
+
       );
-    }
   }
-  
-  export default Banner;
-  
+}
+ 
