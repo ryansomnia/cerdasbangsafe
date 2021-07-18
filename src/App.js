@@ -29,12 +29,7 @@ import Admin from "./Component/page/Admin/Admin";
               <Route path="/contactUs" component={contactUs} />
               <Route path="/tambahcomp" component={TambahComp}/>
               <Route path="/editcomp" component={EditComp}/>
-<<<<<<< HEAD
               <Route path="/admin" component={Admin}/>
-=======
-           
-             
->>>>>>> bfcef4131e4d00f455590bc3f29e6b555d809149
               
               <Redirect from="/" to="/home"/>
             </Switch>
