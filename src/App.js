@@ -13,7 +13,8 @@ import login from "./Component/page/Login/login";
 import profil from "./Component/page/Profil/profil";
 import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
-// import bgimage from "./img/bgwebesparing.jpg"
+import Admin from "./Component/page/Admin/Admin";
+ // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
     render(){
           return (
@@ -28,6 +29,7 @@ import TambahComp from "./Molekul/Form/TambahComp";
               <Route path="/contactUs" component={contactUs} />
               <Route path="/tambahcomp" component={TambahComp}/>
               <Route path="/editcomp" component={EditComp}/>
+              <Route path="/admin" component={Admin}/>
               
               <Redirect from="/" to="/home"/>
             </Switch>

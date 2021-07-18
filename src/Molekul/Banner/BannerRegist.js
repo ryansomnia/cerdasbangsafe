@@ -10,7 +10,8 @@ export class Banner extends Component {
         <Container md-4 className="bg-info" >
     
        <h1 id="judul">Pendaftaran Siswa Baru</h1>
-        <h1 id="subjudul">Tahun ajaran 2030/2031, Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
+        <h1 id="subjudul">Penerimaan Siswa Baru Tahun Pelajaran 2021/2022
+              , Fasilits lengkap, Pengajar yang terakreditasi.<br></br>
            Alamat Sekolah, Tlpn: 000 000 000, Email: kitapenuliscilik@gmail.com,
             Web: Penuliscilik.com.</h1>
         

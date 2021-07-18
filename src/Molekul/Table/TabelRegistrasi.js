@@ -5,12 +5,12 @@ import {Table, Container, Button, NavLink} from 'react-bootstrap';
 // import { Link } from "react-router-dom";
 
 import "./TabelRegistrasi.css";
-
+import { withRouter } from "react-router";
 // const api ='http://192.168.1.34:5001'
 const api = 'http://localhost:5001'
    
 
-export default class TabelRegistrasi extends Component {
+ class TabelRegistrasi extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -76,9 +76,12 @@ export default class TabelRegistrasi extends Component {
       )}
   </tbody>
 </Table>
+<Button href="/admin">Link</Button>
 </Container>
+
+
 
         );
     }
 }
-// export default TabelRegistrasi;
+export default withRouter (TabelRegistrasi)
