@@ -14,6 +14,8 @@ import profil from "./Component/page/Profil/profil";
 import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
 import Admin from "./Component/page/Admin/Admin";
+import galery from "./Component/page/MenuUtama/galery";
+
  // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
     render(){
@@ -30,7 +32,7 @@ import Admin from "./Component/page/Admin/Admin";
               <Route path="/tambahcomp" component={TambahComp}/>
               <Route path="/editcomp" component={EditComp}/>
               <Route path="/admin" component={Admin}/>
-              
+              <Route path="/galery" component={galery}/>
               <Redirect from="/" to="/home"/>
             </Switch>
             </Router>
