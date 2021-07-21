@@ -8,7 +8,7 @@ export default class galery extends Component {
     render() {
         return (
             <div>
-           <Header/>
+           <Header/> 
             <Container>
             <Row>
                 <Col xs={6} md={4}>
