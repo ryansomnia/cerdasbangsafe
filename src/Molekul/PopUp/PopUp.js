@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import {  Button, Modal, FormGroup, Row, Col, Form } from 'react-bootstrap';
 import "./PopUp.css";
+import Alert from '../PopUp/alert';
+
 
 function MyVerticallyCenteredModal(props) {
 
@@ -9,27 +11,91 @@ function MyVerticallyCenteredModal(props) {
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
-     
-    >
+      centered>
+        
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Promo Diskon Tahun Baru
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Daftarkan Putra/Putri Anda</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+      {/* <Container> */}
+        <h5 >Daftarkan Putra/Putri Anda</h5>
+        <Form ClassName="form">
+                    <Col>
+                    <Form.Label>Nama Siswa</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="nama_siswa"    placeholder="Masukkan Nama Siswa" />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                   
+                    
+                    <Form.Label>Jenis Kelamin</Form.Label>
+                    <FormGroup>
+                        <Row >
+                            <Col>
+                                <Form.Control type="text" name="jenis_kelamin"    placeholder="Masukkan Jenis Kelamin"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                  
+                    <Form.Label>Agama</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="agama"     placeholder="Masukkan Agama"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
+                    <Form.Label>Tanggal Lahir</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="date" name="tgl_lahir"   placeholder="Masukkan Tanggal Lahir DD-MM-YY"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
+                    <Form.Label>Tempat Lahir</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="tempat_lahir"     placeholder="Masukkan Tempat Lahir"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
+                    <Form.Label>Alamat</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="alamat"  placeholder="Masukkan Alamat Lengkap"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
+                    <Form.Label>Nomor Handphone</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="number" name="no_hp"   placeholder="Masukkan Nomor Handphone"/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
+                   
+                    </Col>
+
+                </Form>
+                {/* </Container> */}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
-        <Button variant="primary" onClick={props.onHide}>
-            Simpan
-          </Button>
+        <Button><Alert /></Button>
       </Modal.Footer>
     </Modal>
   );
