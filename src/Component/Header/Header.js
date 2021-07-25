@@ -25,8 +25,8 @@ class Header extends Component {
         <NavDropdown title="Menu Utama" id="basic-nav-dropdown">
           <NavDropdown.Item href="/galery">Galeri</NavDropdown.Item>
           <NavDropdown.Item href="/menuUtama">Kalender Akademik</NavDropdown.Item>
-          <NavDropdown.Item href="/menuUtama">Pembayaran SPP</NavDropdown.Item>
-          <NavDropdown.Item href="/menuUtama">Pembayaran Cicilan</NavDropdown.Item>
+          <NavDropdown.Item href="/login">Pembayaran SPP</NavDropdown.Item>
+          <NavDropdown.Item href="/login">Pembayaran Cicilan</NavDropdown.Item>
           <NavDropdown.Divider />
         </NavDropdown>
         <Nav.Link href="/contactUs">Contact Us</Nav.Link>

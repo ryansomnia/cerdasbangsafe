@@ -15,6 +15,7 @@ import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
 import Admin from "./Component/page/Admin/Admin";
 import galery from "./Component/page/MenuUtama/galery";
+import Registrasi from "./Molekul/Form/pendaftaran";
 
  // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
@@ -33,6 +34,8 @@ import galery from "./Component/page/MenuUtama/galery";
               <Route path="/editcomp" component={EditComp}/>
               <Route path="/admin" component={Admin}/>
               <Route path="/galery" component={galery}/>
+              <Route path="/pendaftaran" component={Registrasi}/>
+
               <Redirect from="/" to="/home"/>
             </Switch>
             </Router>

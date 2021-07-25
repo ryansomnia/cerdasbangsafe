@@ -1,40 +1,39 @@
 import {Component } from "react";
-import { Form, Button,  Card, Row} from 'react-bootstrap';
+import { Form, Button,  Col, Row, Container, NavLink} from 'react-bootstrap';
+import loginIcon from '../../images/user.svg'
+import uiImg from '../../images/login.svg'
 import  "./login.css";
 
 export default class login extends Component {
-    render() {
-        return (
-           
-            <div  className="body">
-                <div className="container">
-                <Row className="justify-content-md-center">
-                    <Card style={{ width: '20rem' }} bg="success">
-                    <Card.Body>
-                    <Form >
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Masukan NIM</Form.Label>
-                    <Form.Control type="email" placeholder="Enter Nim" />
-                    <Form.Text>Jangan Masukkan Nomor Togel Yah..!</Form.Text>
-                </Form.Group>
+render() {
+    return (
+        <Container className="mt-5">
+            <Row> 
+            <Col lg={4} md={6} sm={12} className="text-center mt-5 p-3">
+                        <img className="icon-img"  src={loginIcon} alt="icon"/>
+                        <Form>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Control type="email" placeholder="Enter email" />
+                            </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Masukkan Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
 
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+                            <Button variant="primary btn-block" type="submit">Login</Button>
 
-  <Button variant="primary" type="submit">Masuk</Button>
+                            <div className="text-left mt-3">
+                                <NavLink href="#"><small className="reset">Lupa Passwaord</small></NavLink>
+                            </div>
+                        </Form>
+                    </Col>
 
-            </Form>
-        </Card.Body>
-        </Card>
-    </Row>
-    </div>
-    </div>
+                    <Col lg={8} md={6} sm={12}>
+                        <img className="w-100" src={uiImg} alt=""/>
+                    </Col>
+            </Row>
+        </Container>
+
         );
     }
 }

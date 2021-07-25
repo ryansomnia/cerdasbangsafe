@@ -8,7 +8,7 @@ import PopUp from '../PopUp/PopUp';
 export default class Banner extends Component {
   render() {
       return (
-      <div >
+      <div className="bentuk">
     <Container md-4 className="bg-info" >
     
     <h1 id="judul">Pendaftaran Siswa Baru</h1>
@@ -16,9 +16,10 @@ export default class Banner extends Component {
         Alamat Sekolah, Tlpn: 000 000 000, Email: kitapenuliscilik@gmail.com,
          Web: Penuliscilik.com.</h1>
          
-         <Col md={{ span: 3, offset: 5 }}>
+         <Col>
          <PopUp />
          </Col>
+         <br></br>
         
        </Container>
        
