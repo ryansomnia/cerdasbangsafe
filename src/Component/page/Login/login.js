@@ -7,7 +7,7 @@ import  "./login.css";
 export default class login extends Component {
 render() {
     return (
-        <Container className="mt-5">
+        <Container>
             <Row> 
             <Col lg={4} md={6} sm={12} className="text-center mt-5 p-3">
                         <img className="icon-img"  src={loginIcon} alt="icon"/>
