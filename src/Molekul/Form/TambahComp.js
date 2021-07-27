@@ -27,8 +27,8 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.jenis_kelamin === '') {
-        alert('Mana Kelamin Mu')
+    if (this.state.jenis_kelamin === ''){
+        alert('Masih ada data yang belum di isi !')
     } else {
        this.AddDataRegist()
         
@@ -65,8 +65,7 @@ AddDataRegist = () => {
         return(
             <Container>
                 <h4>Form Tambah Data</h4>
-                {/* <Alert color="success" style={{display: this.state.display}}>{this.state.response}
-                </Alert> */}
+                
                 <Form ClassName="form">
                     <Col>
                     <Form.Label>Nama Siswa</Form.Label>

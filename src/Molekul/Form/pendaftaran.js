@@ -64,14 +64,15 @@ AddDataRegist = () => {
     render(){
         return(
             <div>
-                <h4>Form Pendaftaran Murid Baru</h4>
                 <Form ClassName="form">
                     <Col>
-                    <Form.Label>Nama Siswa</Form.Label>
+                    <Form.Label>
+                        Nama lengkap calon peserta didik *
+                    </Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Masukkan Nama Siswa" />
+                                <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -81,7 +82,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row >
                             <Col>
-                                <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Masukkan Jenis Kelamin"/>
+                                <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -90,16 +91,16 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Masukkan Agama"/>
+                                <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/>
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Tanggal Lahir</Form.Label>
+                    <Form.Label>Tanggal Lahir *</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange}   placeholder="Masukkan Tanggal Lahir DD-MM-YY"/>
+                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange}   placeholder="Tulis Tanggal Lahir DD-MM-YY"/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -108,7 +109,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange}    placeholder="Masukkan Tempat Lahir"/>
+                                <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange}    placeholder="Tulis tempat lahir calon siswa"/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -117,7 +118,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="alamat" value={this.state.alamat}  onChange={this.handleChange}   placeholder="Masukkan Alamat Lengkap"/>
+                                <Form.Control type="text" name="alamat" value={this.state.alamat}  onChange={this.handleChange}   placeholder="Tulis alamat lengkap"/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -126,7 +127,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="number" name="no_hp"  value={this.state.no_hp} onChange={this.handleChange}   placeholder="Masukkan Nomor Handphone"/>
+                                <Form.Control type="number" name="no_hp"  value={this.state.no_hp} onChange={this.handleChange}   placeholder="Tulis nomor handphone aktif "/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -134,7 +135,7 @@ AddDataRegist = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Button type="button" onClick={this.handleError} >Submit</Button>
+                                <Button type="button" onClick={this.handleError} >Kirim Pendaftaran</Button>
                             </Col>
                         </Row>
                     </FormGroup>

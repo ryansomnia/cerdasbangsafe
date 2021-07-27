@@ -16,29 +16,30 @@ export default class promosi extends Component {
     <Container md-4 className="promosi">
     <Col className="text-center">
     <h4 >Kenapa Harus SDS Cerdas Bangsa ?</h4>
-     <h6 >Alasan kenapa orang tua semua membawa putra/putrinya harus bergabung dengan SDS Cerdas Bangsa</h6>
+     <h5 >Alasan kenapa Orang tua semua membawa putra/putrinya harus bergabung dengan SDS Cerdas Bangsa</h5>
      </Col>
      <br></br>
      <div className="unggul">
         <Row>
             <Col xs lg="3" className="text-center mt-8">
             <img className="icon-img"  src={loginIcon1} alt="icon"/><br/>
-            Fasilitas Lengkap<br></br>
-            Penunjang Belajar dengan kualitas premium.
+              <span className="corak">Fasilitas Lengkap</span>
+              <br/>
+                 Penunjang Belajar dengan kualitas premium.
             </Col>
         <Col xs lg="3" className="text-center mt-8">
-        <img className="icon-img"  src={loginIcon2} alt="icon"/><br/>
-        Lingkungan Nyaman<br/>
+            <img className="icon-img"  src={loginIcon2} alt="icon"/><br/>
+            <span className="corak"> Lingkungan Nyaman </span><br/>
             Berada di lingkunganyang asri, aman dan kondusif.
         </Col>
         <Col xs lg="3" className="text-center mt-8">
         <img className="icon-img"  src={loginIcon3} alt="icon"/><br/>
-         Pengajar Kompeten<br/>
+        <span className="corak">Pengajar Kompeten</span> <br/>
          Guru yang Up-To-Date dengan perkembangan teknologi.
         </Col>
         <Col xs lg="3" className="text-center mt-8">
         <img className="icon-img"  src={loginIcon4} alt="icon"/><br/>
-         Religious<br/>
+        <span className="corak">Religious</span> <br/>
          Menumbuhkan semangat religious peserta didik.
         </Col> 
         </Row>

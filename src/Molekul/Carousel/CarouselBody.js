@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import {Carousel} from 'react-bootstrap';
+import { Container } from 'reactstrap';
 import "./CarouselBody.css"
 
 export default class CarouselBody extends Component {
     render() {
         return (
+<Container fluid="md">
   <Carousel className="grup">
         <Carousel.Item>
           <img
@@ -42,6 +44,7 @@ export default class CarouselBody extends Component {
     </Carousel.Caption> */}
   </Carousel.Item>
 </Carousel>
+</Container>
         )
         }
       }

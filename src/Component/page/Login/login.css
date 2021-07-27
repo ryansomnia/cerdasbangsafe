@@ -1,13 +1,26 @@
-.btn-primary {
-    color: #fff;
-    background-color: #813AFE ;
-    border-color: #813AFE;
+.masuk{
+    font-family: "Open Sans", Arial, sans-serif;
 }
+.box{
+    padding: 100px 0px 0px 0px;
+   
+  
+
+}
+
 .icon-img{
     width: 70px;
     height: 70px;
     margin-bottom: 2rem;
 }
-.reset{
+.reset{ 
     color: black;
+}
+
+.peringatan{
+    text-align: left;
+    color: red;
+    cursor: pointer;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px;
 }

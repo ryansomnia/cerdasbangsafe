@@ -5,6 +5,7 @@
   font-family: "Poppins", sans-serif;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 8px 28px 2px rgb(61 61 61 / 12%);
 }
 
 .list{
@@ -38,8 +39,11 @@ a {
 
   
 
-Button.login-btn{
-  border: none;
-  padding: 3px 10px;
+Button.btn-orange{
+    padding: 3px 10px;
+    background-color: #e54545;
+    color: #fff;
+    border: 2px solid #e54545;
+    border-radius: none;
 }
-
+ 

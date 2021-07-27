@@ -54,21 +54,7 @@ const api = 'http://localhost:5001'
          <td>{regist.hasil}</td>
         
       <td>
-          {/* <Link to={
-              {
-                  partname: '/editdata',
-                  state: {
-                    nama_siswa : nama_siswa,
-                    jenis_kelamin : jenis_kelamin,
-                    agama: agama,
-                    tgl_lahir: tgl_lahir,
-                    tempat_lahir: tempat_lahir,
-                    alamat : alamat,
-                    no_hp :no_hp
-
-                  }
-              }
-          }> */}
+          
           <Button>Edit</Button>
           {/* </Link> */}
           </td>

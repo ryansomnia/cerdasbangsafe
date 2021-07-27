@@ -30,7 +30,7 @@ class Header extends Component {
           <NavDropdown.Divider />
         </NavDropdown>
         <Nav.Link href="/contactUs">Contact Us</Nav.Link>
-        <Nav.Link><Button className= "login-btn" onClick={() => this.pageLogin('/login')} >Login</Button></Nav.Link>
+        <Nav.Link><Button className= "btn-orange" variant="warning" onClick={() => this.pageLogin('/login')} >Login</Button></Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>

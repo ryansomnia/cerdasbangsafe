@@ -16,6 +16,7 @@ export default class Body extends Component {
     render() {
         return (
             <div className="body">
+                <br></br>
                 <CarouselBody />
                 <BannerRegist />
                 <Promosi/>
