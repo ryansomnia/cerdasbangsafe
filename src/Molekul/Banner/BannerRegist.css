@@ -5,19 +5,15 @@
     padding: 30px 30px;
 } 
 
-#tanda{
-    font-size: 100px;
-    text-align: center;
-}
 
 #judul{
-    font-size: 40px;
+    font-size: 27px;
     font-family: 'Noto Sans', sans-serif;
     font-weight:700;
     text-align: center;
 }
 #subjudul{
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Lucida Sans';
     text-align: center;
 }

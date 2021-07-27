@@ -39,8 +39,8 @@ function PopUp() {
 
   return (
     <>
-    <div div className="d-flex justify-content-center">
-      <Button variant="outline-dark" onClick={() => setModalShow(true)}>
+    <div className="d-flex justify-content-center">
+      <Button variant="outline-primary" onClick={() => setModalShow(true)}>
         Daftar
       </Button>
       </div>

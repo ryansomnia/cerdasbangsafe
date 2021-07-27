@@ -11,15 +11,15 @@ class Header extends Component {
   }
   render() {
     return (
-      <Navbar className="Navbar" expand="lg">
-  <Container fluid>
-    <Navbar.Brand className="Judul" href="/home" >
+    <Navbar className="Navbar" expand="lg">
+      <Container fluid className="list">
+        <Navbar.Brand className="Judul" href="/home" >
            <img className="logosd" src= "Image/logo.png" 
                alt="logo SDS Cerdas Bangsa"/>SD CERDAS BANGSA
-    </Navbar.Brand>
+        </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav" className="menu">
-      <Nav className="ml-auto">
+      <Navbar.Collapse id="basic-navbar-nav" className="menu">
+        <Nav className="ml-auto">
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/profil">Profil</Nav.Link>
         <NavDropdown title="Menu Utama" id="basic-nav-dropdown">

@@ -10,12 +10,12 @@ export class BannerGretting extends Component {
                 <Container >
 
                     <Row >
-                        <Col Col sm={2}>
+                        <Col Col sm={4}>
                             <img className="kepsek" src="Image/IMG_0201.JPG"
-                                alt="Gambar Kepsek" />Tiarma Rosauli S,kom
+                                alt="Gambar Kepsek" /><br></br>Tiarma Rosauli S,kom
                         </Col>
 
-                        <Col sm={10}>
+                        <Col sm={8}>
                             <h1 > Sambutan Kepala Sekolah Cerdas Bangsa<br></br>
                                 Salam sejahtera dan tetap semangat.<br></br>
                                 Selamat datang di website SDS CERDAS BANGSA
