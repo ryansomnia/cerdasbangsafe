@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import {Table, Container, Button, NavLink} from 'react-bootstrap';
+import {Table,} from 'react-bootstrap';
 import "./Admin.css";
 
 export default class Admin extends Component {
@@ -28,19 +28,19 @@ export default class Admin extends Component {
               <li>
                 <a href="/spp">
                   <span className="las la-spp"></span>
-                  <span>Dashboard</span>
+                  <span>Pembayaran SPP</span>
                 </a>
               </li>
               <li>
                 <a href="/inventaris">
                   <span className="las la-inventaris"></span>
-                  <span>Dashboard</span>
+                  <span>Pembayaran Cicilan</span>
                 </a>
               </li>
               <li>
                 <a href="/bulanan">
                   <span className="las la-bulanan"></span>
-                  <span>Dashboard</span>
+                  <span>Laporan </span>
                 </a>
               </li>
             </ul>
@@ -107,8 +107,10 @@ export default class Admin extends Component {
                   <span className="las la-user"></span>
                 </div>
               </div>
+
               <h1>Tabel Master</h1>
-              <table>
+      
+              <Table>
                 <thead>
                   <tr>
                     <th>Column 1</th>
@@ -131,7 +133,7 @@ export default class Admin extends Component {
                     <td><button>edit</button><button>delete</button></td>
                   </tr>
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
 

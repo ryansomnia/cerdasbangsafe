@@ -22,7 +22,7 @@ render() {
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
 
-                            <Button className= "btn-orange" variant="danger btn-block">Login</Button>
+                            <Button href="/user" className= "btn-orange" variant="danger btn-block">Login</Button>
 
                             <div className="text-left mt-3">
                                 <NavLink href="#"><small className="reset">Lupa Passwaord</small></NavLink>

@@ -16,7 +16,9 @@ import TambahComp from "./Molekul/Form/TambahComp";
 import Admin from "./Component/page/Admin/Admin";
 import galery from "./Component/page/MenuUtama/galery";
 import Registrasi from "./Molekul/Form/pendaftaran";
-import Pembayaranspp from "./Component/page/MenuUtama/pembayaranspp";
+import Pembayaranspp from "./Component/page/Pembayaran/pembayaranspp";
+import User from "./Component/page/User/User";
+
 
  // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
@@ -37,6 +39,8 @@ import Pembayaranspp from "./Component/page/MenuUtama/pembayaranspp";
               <Route path="/galery" component={galery}/>
               <Route path="/pendaftaran" component={Registrasi}/>
               <Route  path="/pembayaranspp" component={Pembayaranspp}/>
+              <Route path="/user" component={User}/>
+          
 
               <Redirect from="/" to="/home"/>
             </Switch>

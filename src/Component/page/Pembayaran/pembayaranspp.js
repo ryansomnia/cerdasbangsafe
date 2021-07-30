@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import {Col, Container, Row, FormGroup, Form, Button, Nav} from 'react-bootstrap';
 import "./pembayaranspp.css";
 
 
@@ -7,6 +7,7 @@ export default class Pembayaranspp extends Component {
 
 render(){
     return(
+        <div className="main-admin">
         <Container  className="mt-5">
             <h4>Form Pembayaran</h4>
             <Form>
@@ -38,11 +39,16 @@ render(){
   </Form.Group>
   
 
-    <div className="d-flex justify-content-end">
-    <Button variant="primary " type="submit">Bayar</Button>
+    <div className="d-flex justify-content-end sticky " 
+    activeKey="/home"
+    onSelect={selectedKey => alert(`selected ${selectedKey}`)}
+    >
+
+    <Nav.Link href="/home"><Button variant="primary" >Bayar</Button></Nav.Link>
    </div>
 </Form>
            </Container>
+           </div>
         );
     }
 }
