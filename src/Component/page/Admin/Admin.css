@@ -155,41 +155,44 @@ td {
    grid-template-columns: repeat(4, 1fr);
    grid-gap:2rem;
    margin-top: 1rem;
+   
+ }
+ .card{
+  margin-top: 2%;
  }
 .card-single {
+ 
   display: flex;
   justify-content: space-between;
   background: #ffffff;
   padding: 2rem;
   border-radius: 10px;
 } 
- .card-single div:last-child span{
- font-size: 3rem;
-  color: red;
+
+.card-single div:last-child span{
+  font-size: 3rem;
+  color: #0F044C;
+}
+.card-single div:first-child span {
+  color: gray;
+}
+ .card-single:last-child {
+ color: #0F044C;
  
 } 
-.card-single div:first-child span{
-  color: gray;
- } 
- .card-single:last-child{
-   color: red;
- }
- .card-single:last-child div:last-child span{
-  font-size: 3rem;
-  color: rgb(55, 32, 139);
-
-}
+.card-single:last-child h1
+ .card-single:last-child div:last-child span
 .card-single:last-child div:first-child span{
 
-  color: rgb(7, 7, 8);
-
+  color: red
 } 
 table{
   border-collapse:collapse;
  
 }
 thead tr{
-  border: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
 }
 thead td{
   font-weight: 700;
@@ -198,4 +201,22 @@ td {
   padding: .5rem 1rem;
   font-size: .9rem;
   color:  rgb(7, 7, 8);
+  align-items: center;
 }
+tr td:last-child{
+ display: flex;
+ align-items: center;
+}
+
+.table-responsive{
+  width: 100%;
+  overflow-x: auto;
+}
+/* td .status{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.status.purple {
+  background-color: purple;
+} */

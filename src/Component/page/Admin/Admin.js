@@ -1,8 +1,56 @@
-import React, { Component } from "react";
-import {Table,} from 'react-bootstrap';
+import React from "react";
+// import {Table,} from 'react-bootstrap';
+import axios from "axios";
 import "./Admin.css";
+import { PureComponent } from "react";
 
-export default class Admin extends Component {
+
+const api = "http://localhost:5001";
+ class Admin extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      kelas: [],
+      response: '',
+      display: 'none',
+    };
+    
+    
+    
+  }
+  // constructor(props) {
+  //   super(props)
+
+  //   this.state = {
+  //     guru: [],
+  //     response: '',
+  //     display: 'none',
+  //   };
+    
+    
+    
+  // }
+
+  componentDidMount() {
+    axios.get(api + "/getkelas").then(res => {
+      this.setState({
+        kelas: res.data.values
+      });
+    });
+
+
+    axios.get(api + "/getguru").then(res => {
+      this.setState({
+        guru: res.data.values
+      });
+    });
+    
+  }
+
+
+ 
+
   render() {
     return (
       <div>
@@ -107,98 +155,105 @@ export default class Admin extends Component {
                   <span className="las la-user"></span>
                 </div>
               </div>
+            </div>
 
-              <h1>Tabel Master</h1>
-      
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                    <th>Column 3</th>
-                    <th>Column Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td><button>edit</button><button>delete</button></td>
-                  </tr>
-                  <tr>
-                    <td>data</td>
-                    <td>data</td>
-                    <td>data</td>
-                    <td><button>edit</button><button>delete</button></td>
-                  </tr>
-                </tbody>
-              </Table>
+            <div className="recent-grid">
+
+              <div className="project">
+                <div className="card">
+                  <div className="card-header">
+                    <h3>Table Kelas</h3>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive">
+                      <table width="100%">
+                        <thead>
+                          <tr>
+                            <td>Nama Kelas</td>
+                            <td>Kode Kelas</td>
+                            <td>Nama Guru</td>
+                            <td>Action</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                          {this.state.kelas.map(kelas => 
+                         
+                            <tr key={kelas.nama_kelas}>
+                              <td>{kelas.nama_guru}</td>
+                              <td>{kelas.kode_kelas}</td>
+                              <td>{kelas.nama_guru}</td>
+                              <td>
+                                  Edit | Hapus
+                              </td>
+                            </tr>
+                          )}
+
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+{/* 
+              <div className="project">
+                <div className="card">
+                  <div className="card-header">
+                    <h3>Table Kelas</h3>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive">
+                      <table width="100%">
+                        <thead>
+                          <tr>
+                            <td>Nama Guru</td>
+                            <td>Jenis Kelamin</td>
+                            <td>NO NUPTK</td>
+                            <td>Tempat Lahir</td>
+                            <td>Tgl Lahir</td>
+                            <td>Pendidikan</td>
+                            <td>Lulusan</td>
+                            <td>Jabatan</td>
+                            <td>Status Karyawan</td>
+                            <td>Agama</td>
+                            <td>Action</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.kelas.map(guru => 
+                            <tr key={guru.nama_guru}>
+                              <td>{guru.nama_guru}</td>
+                            <td>{guru.jenis_kelamin}</td>
+                            <td>{guru.no_nuptk}</td>
+                            <td>{guru.tempat_lahir}</td>
+                            <td>{guru.tgl_lahir}</td>
+                            <td>{guru.pendidikan}</td>
+                            <td>{guru.lulusan}</td>
+                            <td>{guru.jabatan}</td>
+                            <td>{guru.status_karyawan}</td>
+                            <td>{guru.agama}</td>
+                              <td>
+                                  Edit | Hapus
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               */}
+
+             
             </div>
           </div>
-
-          <div></div>
         </div>
       </div>
-
-      //             <Container>
-      //                 <h2>Info Registrasi</h2>
-      //                 <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
-      //                 <hr></hr>
-      //             <Table striped bordered hover>
-      //   <thead>
-      //     <tr>
-      //       <th>NIS</th>
-      //       <th>Nama Siswa</th>
-      //       <th>Status Pendaftaran</th>
-      //       <th>Hasil</th>
-      //       <th>Aksi</th>
-      //     </tr>
-      //   </thead>
-
-      //   <tbody>
-      //   <tr>
-      //       <th>NIS</th>
-      //       <th>Nama Siswa</th>
-      //       <th>Status Pendaftaran</th>
-      //       <th>Hasil</th>
-      //       <th>Aksi</th>
-      //     </tr>
-      //       {this.state.regist.map(regist =>
-
-      //     <tr key={regist.id_regist}>
-      //         <td>{regist.nis}</td>
-      //         <td>{regist.nama_siswa}</td>
-      //          <td>{regist.status_pendaftaran}</td>
-      //          <td>{regist.hasil}</td>
-
-      //       <td>
-      //  {/* <Link to={
-      //   {
-      //       partname: '/editdata',
-      //       state: {
-      //         nama_siswa : nama_siswa,
-      //         jenis_kelamin : jenis_kelamin,
-      //         agama: agama,
-      //         tgl_lahir: tgl_lahir,
-      //         tempat_lahir: tempat_lahir,
-      //         alamat : alamat,
-      //         no_hp :no_hp
-
-      //       }
-      //   }
-      //     }> */}
-      //   <button className = "btn-edit">Edit</button>
-
-      //   <button className = "btn-delete" >Delete</button>
-
-      //           </td>
-      //     </tr>
-      //       )}
-      //   </tbody>
-      // </Table>
-
-      // </Container>
     );
   }
 }
+export default Admin
