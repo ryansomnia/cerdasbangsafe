@@ -1,9 +1,9 @@
 import React from "react";
-// import {Table,} from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
-
+import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
 
 const api = "http://localhost:5001";
  class Admin extends PureComponent {
@@ -15,24 +15,25 @@ const api = "http://localhost:5001";
       guru:[],
       response: '',
       display: 'none',
+      show:''
     };
-    
-  
-    
-    
+   
   }
-  // constructor(props) {
-  //   super(props)
 
-  //   this.state = {
-  //     guru: [],
-  //     response: '',
-  //     display: 'none',
-  //   };
-    
-    
-    
-  // }
+
+    editGuru =(item)=>{
+      const data = this.state.guru.filter(i => i.id_guru !==item.id_guru)
+      this.setState({
+        guru:data,
+        show:'show'
+        
+      })
+      
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
+   
+    }
 
   componentDidMount() {
     axios.get(api + "/getkelas").then(res => {
@@ -211,6 +212,7 @@ const api = "http://localhost:5001";
                       <table width="100%">
                         <thead>
                           <tr>
+                          <td>ID Guru</td>
                             <td>Nama Guru</td>
                             <td>Jenis Kelamin</td>
                             <td>NO NUPTK</td>
@@ -226,7 +228,8 @@ const api = "http://localhost:5001";
                         </thead>
                         <tbody>
                           {this.state.guru.map(guru => 
-                            <tr key={guru.nama_guru}>
+                            <tr key={guru.id_guru}>
+                                <td>{guru.id_guru}</td>
                               <td>{guru.nama_guru}</td>
                             <td>{guru.jenis_kelamin}</td>
                             <td>{guru.no_nuptk}</td>
@@ -238,7 +241,16 @@ const api = "http://localhost:5001";
                             <td>{guru.status_karyawan}</td>
                             <td>{guru.agama}</td>
                               <td>
-                                  Edit | Hapus
+                                  {/* <button onClick={this.editGuru.bind(this,guru)} >edit</button> | <button>hapus</button> */}
+                               <div className="d-flex justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editGuru.bind(this,guru)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
+                                 
                               </td>
                             </tr>
                           )}
@@ -248,9 +260,8 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEdit isShow={this.state.show} guru={this.state.guru}/>
               
-
-             
             </div>
           </div>
         </div>
