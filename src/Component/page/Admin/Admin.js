@@ -12,10 +12,12 @@ const api = "http://localhost:5001";
 
     this.state = {
       kelas: [],
+      guru:[],
       response: '',
       display: 'none',
     };
     
+  
     
     
   }
@@ -198,11 +200,11 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-{/* 
+
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Kelas</h3>
+                    <h3>Table Guru</h3>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -223,7 +225,7 @@ const api = "http://localhost:5001";
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.kelas.map(guru => 
+                          {this.state.guru.map(guru => 
                             <tr key={guru.nama_guru}>
                               <td>{guru.nama_guru}</td>
                             <td>{guru.jenis_kelamin}</td>
@@ -246,7 +248,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-               */}
+              
 
              
             </div>
