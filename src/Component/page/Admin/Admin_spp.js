@@ -189,6 +189,7 @@ const api = "http://localhost:5001";
                           {this.state.laporanspp.map(laporanspp => 
                          
                             <tr key={laporanspp.kode_spp}>
+                              <td>{laporanspp.kode_spp}</td>
                                <td>{laporanspp.nama_siswa}</td>
                               <td>{laporanspp.kelas}</td>
                               <td>{laporanspp.tgl_bayar}</td>
