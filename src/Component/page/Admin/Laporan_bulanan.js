@@ -1,7 +1,7 @@
 import React from "react";
-// import {Table,} from 'react-bootstrap';
+import { Button, NavLink} from 'react-bootstrap';
 import axios from "axios";
-import "./Laporan_bulanan.css";
+import "./Admin_spp.css";
 import { PureComponent } from "react";
 
 
@@ -11,45 +11,38 @@ const api = "http://localhost:5001";
     super(props)
 
     this.state = {
-      kelas: [],
+      laporanbulanan: [],
       response: '',
       display: 'none',
+      show:''
     };
-    
-    
-    
+   
   }
-  // constructor(props) {
-  //   super(props)
 
-  //   this.state = {
-  //     guru: [],
-  //     response: '',
-  //     display: 'none',
-  //   };
-    
-    
-    
-  // }
+
+    editbulanan =(item)=>{
+      const data = this.state.laporanbulanan.filter(i => i.kode_laporan !==item.kode_laporan)
+      this.setState({
+        laporanbulanan:data,
+        show:'show'
+        
+      })
+      
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
+   
+    }
 
   componentDidMount() {
-    axios.get(api + "/getkelas").then(res => {
+    axios.get(api + "/getlaporanbulanan").then(res => {
       this.setState({
-        kelas: res.data.values
-      });
-    });
-
-
-    axios.get(api + "/getguru").then(res => {
-      this.setState({
-        guru: res.data.values
+        laporanbulanan: res.data.values
       });
     });
     
   }
 
-
- 
 
   render() {
     return (
@@ -62,39 +55,39 @@ const api = "http://localhost:5001";
           <div className="sidebar-menu">
             <ul>
               <li>
-                <a href="/admin" >
+                <a href="/master" >
                   <span className="las la-master"></span>
                   <span>Master</span>
                 </a>
               </li>
               <li>
-                <a href="/admin_registrasi" >
+                <a href="/registrasi" >
                   <span className="las la-registrasi"></span>
                   <span>Registrasi</span>
                 </a>
               </li>
               <li>
-                <a href="/admin_spp">
+                <a href="/spp">
                   <span className="las la-spp"></span>
                   <span>Pembayaran SPP</span>
                 </a>
               </li>
               <li>
-              <a href="/admin_cicilan" >
+              <a href="/cicilan" >
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
               </li>
               <li>
-                <a href="/admin_inventaris" >
+                <a href="/inventaris" >
                   <span className="las la-inventaris"></span>
                   <span>Inventaris Sekolah</span>
                 </a>
               </li>
               <li>
-                <a href="/laporan_bulanan" className="active">
+                <a href="/bulanan" className="active">
                   <span className="las la-bulanan"></span>
-                  <span>Laporan </span>
+                  <span>Laporan Bulanan </span>
                 </a>
               </li>
             </ul>
@@ -155,7 +148,7 @@ const api = "http://localhost:5001";
               <div className="card-single">
                 <div>
                   <h1>574</h1>
-                  <span>Inventari</span>
+                  <span>Inventaris</span>
                 </div>
                 <div>
                   <span className="las la-user"></span>
@@ -169,29 +162,46 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Laporan Bulanan</h3>
+                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Nama Siswa</td>
-                            <td>Kode Kelas</td>
-                            <td>Nama Guru</td>
+                            <td>Kode Laporan</td>
+                            <td>Tanggal</td>
+                            <td>Keterangan</td>
+                            <td>debit</td>
+                            <td>Kredit</td>
+                            <td>Saldo</td>
+                            <td>Jumlah</td>
+                            <td>Status</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
 
 
-                          {this.state.kelas.map(kelas => 
+                          {this.state.laporanbulanan.map(laporanbulanan => 
                          
-                            <tr key={kelas.nama_kelas}>
-                              <td>{kelas.nama_guru}</td>
-                              <td>{kelas.kode_kelas}</td>
-                              <td>{kelas.nama_guru}</td>
+                            <tr key={laporanbulanan.kode_laporan}>
+                              <td>{laporanbulanan.tgl}</td>
+                              <td>{laporanbulanan.keterangan}</td>
+                              <td>{laporanbulanan.debit}</td>
+                              <td>{laporanbulanan.kredit}</td>
+                              <td>{laporanbulanan.saldo}</td>
+                              <td>{laporanbulanan.jumlah}</td>
+                              <td>{laporanbulanan.status}</td>
                               <td>
-                                  Edit | Hapus
+                              <div className="d-flex justify-content-center">
+                              <Button variant="outline-success" onClick={this.editibulanan.bind(this,laporanbulanan)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
                               </td>
                             </tr>
                           )}
@@ -204,57 +214,6 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-{/* 
-              <div className="project">
-                <div className="card">
-                  <div className="card-header">
-                    <h3>Table Kelas</h3>
-                  </div>
-                  <div className="card-body">
-                    <div className="table-responsive">
-                      <table width="100%">
-                        <thead>
-                          <tr>
-                            <td>Nama Guru</td>
-                            <td>Jenis Kelamin</td>
-                            <td>NO NUPTK</td>
-                            <td>Tempat Lahir</td>
-                            <td>Tgl Lahir</td>
-                            <td>Pendidikan</td>
-                            <td>Lulusan</td>
-                            <td>Jabatan</td>
-                            <td>Status Karyawan</td>
-                            <td>Agama</td>
-                            <td>Action</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.state.kelas.map(guru => 
-                            <tr key={guru.nama_guru}>
-                              <td>{guru.nama_guru}</td>
-                            <td>{guru.jenis_kelamin}</td>
-                            <td>{guru.no_nuptk}</td>
-                            <td>{guru.tempat_lahir}</td>
-                            <td>{guru.tgl_lahir}</td>
-                            <td>{guru.pendidikan}</td>
-                            <td>{guru.lulusan}</td>
-                            <td>{guru.jabatan}</td>
-                            <td>{guru.status_karyawan}</td>
-                            <td>{guru.agama}</td>
-                              <td>
-                                  Edit | Hapus
-                              </td>
-                            </tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               */}
-
-             
             </div>
           </div>
         </div>

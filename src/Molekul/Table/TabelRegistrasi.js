@@ -62,7 +62,7 @@ const api = 'http://localhost:5001'
       )}
   </tbody>
 </Table>
-<Button href="/admin">Link</Button>
+<Button href="/master">Link</Button>
 <br></br>
 
 </Container>

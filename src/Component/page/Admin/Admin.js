@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal, Button} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
@@ -71,7 +71,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-                <a href="/Registrasi">
+                <a href="/registrasi">
                   <span className="las la-registrasi"></span>
                   <span>Registrasi</span>
                 </a>
@@ -83,15 +83,21 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-                <a href="/inventaris">
+                <a href="/cicilan">
                   <span className="las la-inventaris"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
               </li>
               <li>
+                <a href="/inventaris">
+                  <span className="las la-inventaris"></span>
+                  <span>Inventari Sekolah</span>
+                </a>
+              </li>
+              <li>
                 <a href="/bulanan">
                   <span className="las la-bulanan"></span>
-                  <span>Laporan </span>
+                  <span>Laporan Bulanan </span>
                 </a>
               </li>
             </ul>
@@ -152,7 +158,7 @@ const api = "http://localhost:5001";
               <div className="card-single">
                 <div>
                   <h1>574</h1>
-                  <span>Inventari</span>
+                  <span>Inventaris</span>
                 </div>
                 <div>
                   <span className="las la-user"></span>

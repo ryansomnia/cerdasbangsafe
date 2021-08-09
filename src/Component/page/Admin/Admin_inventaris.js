@@ -1,7 +1,7 @@
 import React from "react";
-// import {Table,} from 'react-bootstrap';
+import { Button, NavLink} from 'react-bootstrap';
 import axios from "axios";
-import "./Admin_inventaris.css";
+import "./Admin_spp.css";
 import { PureComponent } from "react";
 
 
@@ -11,38 +11,33 @@ const api = "http://localhost:5001";
     super(props)
 
     this.state = {
-      kelas: [],
+      laporaninventaris: [],
       response: '',
       display: 'none',
+      show:''
     };
-    
-    
-    
+   
   }
-  // constructor(props) {
-  //   super(props)
 
-  //   this.state = {
-  //     guru: [],
-  //     response: '',
-  //     display: 'none',
-  //   };
-    
-    
-    
-  // }
+
+    editinventaris =(item)=>{
+      const data = this.state.laporaninventaris.filter(i => i.kode_inventaris !==item.kode_inventaris)
+      this.setState({
+        laporaninventaris:data,
+        show:'show'
+        
+      })
+      
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
+   
+    }
 
   componentDidMount() {
-    axios.get(api + "/getkelas").then(res => {
+    axios.get(api + "/getlaporaninventasris").then(res => {
       this.setState({
-        kelas: res.data.values
-      });
-    });
-
-
-    axios.get(api + "/getguru").then(res => {
-      this.setState({
-        guru: res.data.values
+        laporaninventaris: res.data.values
       });
     });
     
@@ -50,6 +45,7 @@ const api = "http://localhost:5001";
 
 
  
+
 
   render() {
     return (
@@ -94,7 +90,7 @@ const api = "http://localhost:5001";
               <li>
                 <a href="/bulanan">
                   <span className="las la-bulanan"></span>
-                  <span>Laporan </span>
+                  <span>Laporan Bulanan</span>
                 </a>
               </li>
             </ul>
@@ -155,7 +151,7 @@ const api = "http://localhost:5001";
               <div className="card-single">
                 <div>
                   <h1>574</h1>
-                  <span>Inventari</span>
+                  <span>inventaris</span>
                 </div>
                 <div>
                   <span className="las la-user"></span>
@@ -169,29 +165,46 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Inventaris Sekolah</h3>
+                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Nama Inventari</td>
+                            <td>Kode Inventaris</td>
+                            <td>Tanggal Pembelian</td>
+                            <td>Keterangan</td>
                             <td>Jumlah</td>
-                            <td>Tanggal Datang</td>
+                            <td>Catatan</td>
+                            <td>Tahun Ajaran</td>
+                            <td>Wali Kelas</td>
+                            <td>Bukti pembelian</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
 
 
-                          {this.state.kelas.map(kelas => 
+                          {this.state.laporaninventaris.map(laporaninventaris => 
                          
-                            <tr key={kelas.nama_kelas}>
-                              <td>{kelas.nama_guru}</td>
-                              <td>{kelas.kode_kelas}</td>
-                              <td>{kelas.nama_guru}</td>
+                            <tr key={laporaninventaris.kode_inventaris}>
+                              <td>{laporaninventaris.tgl_pembelian}</td>
+                              <td>{laporaninventaris.keterangan}</td>
+                              <td>{laporaninventaris.jumlah}</td>
+                              <td>{laporaninventaris.catatan}</td>
+                              <td>{laporaninventaris.tahun_ajaran}</td>
+                              <td>{laporaninventaris.wali_kelas}</td>
+                              <td>{laporaninventaris.image}</td>
                               <td>
-                                  Edit | Hapus
+                            <div className="d-flex justify-content-center">
+                              <Button variant="outline-success" onClick={this.editinventaris.bind(this,laporaninventaris)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
                               </td>
                             </tr>
                           )}
@@ -204,57 +217,6 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-{/* 
-              <div className="project">
-                <div className="card">
-                  <div className="card-header">
-                    <h3>Table Kelas</h3>
-                  </div>
-                  <div className="card-body">
-                    <div className="table-responsive">
-                      <table width="100%">
-                        <thead>
-                          <tr>
-                            <td>Nama Guru</td>
-                            <td>Jenis Kelamin</td>
-                            <td>NO NUPTK</td>
-                            <td>Tempat Lahir</td>
-                            <td>Tgl Lahir</td>
-                            <td>Pendidikan</td>
-                            <td>Lulusan</td>
-                            <td>Jabatan</td>
-                            <td>Status Karyawan</td>
-                            <td>Agama</td>
-                            <td>Action</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.state.kelas.map(guru => 
-                            <tr key={guru.nama_guru}>
-                              <td>{guru.nama_guru}</td>
-                            <td>{guru.jenis_kelamin}</td>
-                            <td>{guru.no_nuptk}</td>
-                            <td>{guru.tempat_lahir}</td>
-                            <td>{guru.tgl_lahir}</td>
-                            <td>{guru.pendidikan}</td>
-                            <td>{guru.lulusan}</td>
-                            <td>{guru.jabatan}</td>
-                            <td>{guru.status_karyawan}</td>
-                            <td>{guru.agama}</td>
-                              <td>
-                                  Edit | Hapus
-                              </td>
-                            </tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               */}
-
-             
             </div>
           </div>
         </div>

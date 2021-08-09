@@ -54,7 +54,7 @@ import bayarspp from "./Component/page/User/Bayarspp";
               
 
        {/* ----Menu Admin--- */}
-<Route path="/admin" component={Admin}/>
+<Route path="/master" component={Admin}/>
 <Route path="/registrasi" component={Admin_registrasi}/>
 <Route path="/spp" component={Admin_spp}/>
 <Route path="/cicilan" component={Admin_cicilan}/>

@@ -1,5 +1,5 @@
 import React from "react";
-// import {Table,} from 'react-bootstrap';
+import { Button, NavLink} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_cicilan.css";
 import { PureComponent } from "react";
@@ -11,38 +11,33 @@ const api = "http://localhost:5001";
     super(props)
 
     this.state = {
-      kelas: [],
+      laporancicilan: [],
       response: '',
       display: 'none',
+      show:''
     };
-    
-    
-    
+   
   }
-  // constructor(props) {
-  //   super(props)
 
-  //   this.state = {
-  //     guru: [],
-  //     response: '',
-  //     display: 'none',
-  //   };
-    
-    
-    
-  // }
+
+    editcicilan =(item)=>{
+      const data = this.state.laporancicilan.filter(i => i.kode_cicilan !==item.kode_cicilan)
+      this.setState({
+        laporancicilan:data,
+        show:'show'
+        
+      })
+      
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
+   
+    }
 
   componentDidMount() {
-    axios.get(api + "/getkelas").then(res => {
+    axios.get(api + "/getlaporancicilan").then(res => {
       this.setState({
-        kelas: res.data.values
-      });
-    });
-
-
-    axios.get(api + "/getguru").then(res => {
-      this.setState({
-        guru: res.data.values
+        laporancicilan: res.data.values
       });
     });
     
@@ -50,6 +45,7 @@ const api = "http://localhost:5001";
 
 
  
+
 
   render() {
     return (
@@ -94,7 +90,7 @@ const api = "http://localhost:5001";
               <li>
                 <a href="/bulanan">
                   <span className="las la-bulanan"></span>
-                  <span>Laporan </span>
+                  <span>Laporan Bulanan </span>
                 </a>
               </li>
             </ul>
@@ -155,7 +151,7 @@ const api = "http://localhost:5001";
               <div className="card-single">
                 <div>
                   <h1>574</h1>
-                  <span>Inventari</span>
+                  <span>Inventaris</span>
                 </div>
                 <div>
                   <span className="las la-user"></span>
@@ -163,35 +159,56 @@ const api = "http://localhost:5001";
               </div>
             </div>
 
+            {/* Tabel Cicilan Buku */}
             <div className="recent-grid">
-
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Pembayaran Cicilan</h3>
+                    <h3>Table Pembayaran Cicilan Buku</h3>
+                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
+                            <td>Kode Cicilan</td>
+                            <td>Student Account</td>
+                            <td>No Induk</td>
+                            <td>No NISN</td>
                             <td>Nama Siswa</td>
-                            <td>Kelas</td>
-                            <td>Nama Guru</td>
+                            <td>Tanggal Bayar</td>
+                            <td>Buku</td>
+                            <td>Debit</td>
+                            <td>Kredit</td>
+                            <td>Bukti Bayar</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
 
 
-                          {this.state.kelas.map(kelas => 
+                          {this.state.laporancicilan.map(laporancicilan => 
                          
-                            <tr key={kelas.nama_kelas}>
-                              <td>{kelas.nama_guru}</td>
-                              <td>{kelas.kode_kelas}</td>
-                              <td>{kelas.nama_guru}</td>
+                            <tr key={laporancicilan.kode_cicilan}>
+                              <td>{laporancicilan.student_account}</td>
+                              <td>{laporancicilan.nis}</td>
+                              <td>{laporancicilan.nisn}</td>
+                              <td>{laporancicilan.nama}</td>
+                              <td>{laporancicilan.tgl_bayar}</td>
+                              <td>{laporancicilan.buku}</td>
+                              <td>{laporancicilan.debit}</td>
+                              <td>{laporancicilan.kredit}</td>
+                              <td>{laporancicilan.image}</td>
                               <td>
-                                  Edit | Hapus
+                              <div className="d-flex justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
                               </td>
                             </tr>
                           )}
@@ -204,57 +221,134 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-{/* 
+            </div>
+
+            {/* Tabel Cicilan Seragam */}
+            <div className="recent-grid">
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Kelas</h3>
+                    <h3>Table Pembayaran Cicilan Seragam</h3>
+                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Nama Guru</td>
-                            <td>Jenis Kelamin</td>
-                            <td>NO NUPTK</td>
-                            <td>Tempat Lahir</td>
-                            <td>Tgl Lahir</td>
-                            <td>Pendidikan</td>
-                            <td>Lulusan</td>
-                            <td>Jabatan</td>
-                            <td>Status Karyawan</td>
-                            <td>Agama</td>
+                            <td>Kode Cicilan</td>
+                            <td>Student Account</td>
+                            <td>No Induk</td>
+                            <td>No NISN</td>
+                            <td>Nama Siswa</td>
+                            <td>Tanggal Bayar</td>
+                            <td>Seragam</td>
+                            <td>Debit</td>
+                            <td>Kredit</td>
+                            <td>Bukti Bayar</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.kelas.map(guru => 
-                            <tr key={guru.nama_guru}>
-                              <td>{guru.nama_guru}</td>
-                            <td>{guru.jenis_kelamin}</td>
-                            <td>{guru.no_nuptk}</td>
-                            <td>{guru.tempat_lahir}</td>
-                            <td>{guru.tgl_lahir}</td>
-                            <td>{guru.pendidikan}</td>
-                            <td>{guru.lulusan}</td>
-                            <td>{guru.jabatan}</td>
-                            <td>{guru.status_karyawan}</td>
-                            <td>{guru.agama}</td>
+
+
+                          {this.state.laporancicilan.map(laporancicilan => 
+                         
+                            <tr key={laporancicilan.kode_cicilan}>
+                              <td>{laporancicilan.student_account}</td>
+                              <td>{laporancicilan.nis}</td>
+                              <td>{laporancicilan.nisn}</td>
+                              <td>{laporancicilan.nama}</td>
+                              <td>{laporancicilan.tgl_bayar}</td>
+                              <td>{laporancicilan.seragam}</td>
+                              <td>{laporancicilan.debit}</td>
+                              <td>{laporancicilan.kredit}</td>
+                              <td>{laporancicilan.image}</td>
                               <td>
-                                  Edit | Hapus
+                              <div className="d-flex justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
                               </td>
                             </tr>
                           )}
+
+
+
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-               */}
+            </div>
 
-             
+                            {/* Tabel Cicilan Uang Pangkal */}
+            <div className="recent-grid">
+              <div className="project">
+                <div className="card">
+                  <div className="card-header">
+                    <h3>Table Pembayaran Cicilan Uang Pangkal</h3>
+                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
+                  </div>
+                  <div className="card-body">
+                    <div className="table-responsive">
+                      <table width="100%">
+                        <thead>
+                          <tr>
+                            <td>Kode Cicilan</td>
+                            <td>Student Account</td>
+                            <td>No Induk</td>
+                            <td>No NISN</td>
+                            <td>Nama Siswa</td>
+                            <td>Tanggal Bayar</td>
+                            <td>Uang Pangkal</td>
+                            <td>Debit</td>
+                            <td>Kredit</td>
+                            <td>Bukti Bayar</td>
+                            <td>Action</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                          {this.state.laporancicilan.map(laporancicilan => 
+                         
+                            <tr key={laporancicilan.kode_cicilan}>
+                              <td>{laporancicilan.student_account}</td>
+                              <td>{laporancicilan.nis}</td>
+                              <td>{laporancicilan.nisn}</td>
+                              <td>{laporancicilan.nama}</td>
+                              <td>{laporancicilan.tgl_bayar}</td>
+                              <td>{laporancicilan.uang_pangkal}</td>
+                              <td>{laporancicilan.debit}</td>
+                              <td>{laporancicilan.kredit}</td>
+                              <td>{laporancicilan.image}</td>
+                              <td>
+                              <div className="d-flex justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
+                              </td>
+                            </tr>
+                          )}
+
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
