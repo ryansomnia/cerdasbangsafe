@@ -21,13 +21,14 @@ class Header extends Component {
       <Navbar.Collapse id="basic-navbar-nav" className="menu">
         <Nav className="ml-auto">
         <Nav.Link href="/home">Home</Nav.Link>
-        <Nav.Link href="/profil">Profil</Nav.Link>
         <NavDropdown title="Menu Utama" id="basic-nav-dropdown">
+        <NavDropdown.Item href="/profil">Profil Sekolah</NavDropdown.Item>
+          <NavDropdown.Item href="/visi">Visi & Misi</NavDropdown.Item>
+          <NavDropdown.Item href="/strukturorganisasi">Sturktur Organisasi</NavDropdown.Item>
           <NavDropdown.Item href="/galery">Galeri</NavDropdown.Item>
           <NavDropdown.Item href="/menuUtama">Kalender Akademik</NavDropdown.Item>
-          <NavDropdown.Item href="#">Fasilitas</NavDropdown.Item>
-          <NavDropdown.Item href="#">Berita Sekolah</NavDropdown.Item>
-          <NavDropdown.Divider />
+          <NavDropdown.Item href="/">Fasilitas</NavDropdown.Item>
+          <NavDropdown.Item href="/">Berita Sekolah</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="/contactUs">Contact Us</Nav.Link>
         <Nav.Link><Button className= "btn-orange" variant="warning" onClick={() => this.pageLogin('/login')} >Login</Button></Nav.Link>

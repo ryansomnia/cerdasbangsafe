@@ -16,11 +16,3 @@
 .reset{ 
     color: black;
 }
-
-.peringatan{
-    text-align: left;
-    color: red;
-    cursor: pointer;
-    font-family: "Open Sans", Arial, sans-serif;
-    font-size: 14px;
-}

@@ -3,23 +3,23 @@ import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 import Pembayaranspp from '../Pembayaran/pembayaranspp';
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt } from "react-icons/fa";
 
-import "./User.css";
+import "./Bayarspp.css";
 
 
 
-export default class Sidebar extends Component {
+export default class bayarspp extends Component {
   render() {
     return (
-        <div class="d-flex" id="wrapper">
+        <div className="d-flex" id="wrapper">
         {/* <!-- Sidebar--> */}
         <div className="border-end" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light">Menu</div>
             <div className="list-group list-group-flush">
-                <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaDesktop /> Dashboard</a>
-                <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaIdCard/> Pembayaran SPP</a>
-                <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaMoneyCheckAlt/> Pembayaran Cicilan</a>
+                <a className="list-group-item-action list-group-item-light p-3" href="/user"><FaDesktop /> Dashboard</a>
+                <a className="list-group-item-action list-group-item-light p-3" href="/bayarspp"><FaIdCard/> Pembayaran SPP</a>
+                <a className="list-group-item-action list-group-item-light p-3" href="/"><FaMoneyCheckAlt/> Pembayaran Cicilan</a>
                 <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaUserCircle/> Profile</a>
-                <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaSignOutAlt/> Log Out</a>
+                <a className="list-group-item-action list-group-item-light p-3" href="/login"><FaSignOutAlt/> Log Out</a>
             </div>
         </div>
         {/* <!-- Page content wrapper--> */}

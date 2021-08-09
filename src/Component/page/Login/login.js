@@ -28,10 +28,6 @@ render() {
                                 <NavLink href="#"><small className="reset">Lupa Passwaord</small></NavLink>
                             </div>
                             <br/>
-
-                            <div className="peringatan">  
-                            jika belum mendaftar silahkan melakukan pendaftaran terlebih dahulu melalui link di bawah ini.</div><br/>
-                           <Button href="/tambahcomp" variant="success btn-block">Daftar</Button>
                         </Form>
                     </Col>
 

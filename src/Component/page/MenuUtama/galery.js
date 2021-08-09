@@ -9,8 +9,28 @@ render() {
     return (
         <div>
            <Header/> 
+       
 <Container>
-     <Row>
+<Row  className="section-title  portflio-section-title bg-blog-section padd-title">
+
+        <Col lg="12" className="col-12">
+            <div className="text-center">
+                <h2 className="title-h2">Galery</h2>
+
+                <ol class="breadcrumb justify-content-center">
+                    <li className="breadcrumb-item">
+                    <a href="/home">
+                        Beranda</a></li>
+                    <li className="breadcrumb-item">
+                    <a href="/galery">
+                        Galery 
+                    </a></li>
+
+                </ol>
+            </div>
+        </Col>
+    </Row>
+    <Row>
         <Col>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="image/IMG_0201.JPG" />
