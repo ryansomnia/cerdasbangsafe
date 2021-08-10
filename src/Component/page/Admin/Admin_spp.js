@@ -3,7 +3,7 @@ import { Button, NavLink} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
-
+import ModalEdit from '../../../Molekul/Modal/ModalEditSpp'
 
 const api = "http://localhost:5001";
  class Admin_spp extends PureComponent {
@@ -20,7 +20,7 @@ const api = "http://localhost:5001";
   }
 
 
-    editspp =(item)=>{
+    editSpp =(item)=>{
       const data = this.state.laporanspp.filter(i => i.kode_spp !==item.kode_spp)
       this.setState({
         laporanspp:data,
@@ -178,9 +178,9 @@ const api = "http://localhost:5001";
                             <td>Tanggal Bayar</td>
                             <td>Bulan </td>
                             <td>Ekstrakulikuler</td>
-                            <td>Jumlah</td>
                             <td>Status</td>
                             <td>Image</td>
+                            <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
@@ -199,10 +199,10 @@ const api = "http://localhost:5001";
                               <td>{laporanspp.status}</td>
                               <td>{laporanspp.image}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
-                                          <Button variant="outline-success" onClick={this.editspp.bind(this,laporanspp)}>
+                              <div className="justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
                                             Edit
-                                          </Button>
+                                          </Button>{' '}
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -216,6 +216,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEdit isShow={this.state.show} bulanan={this.state.bulanan}/>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const api = "http://localhost:5001";
     }
 
   componentDidMount() {
-    axios.get(api + "/getlaporaninventasris").then(res => {
+    axios.get(api + "/getlaporaninventaris").then(res => {
       this.setState({
         laporaninventaris: res.data.values
       });
@@ -189,6 +189,7 @@ const api = "http://localhost:5001";
                           {this.state.laporaninventaris.map(laporaninventaris => 
                          
                             <tr key={laporaninventaris.kode_inventaris}>
+                               <td>{laporaninventaris.kode_inventaris}</td>
                               <td>{laporaninventaris.tgl_pembelian}</td>
                               <td>{laporaninventaris.keterangan}</td>
                               <td>{laporaninventaris.jumlah}</td>

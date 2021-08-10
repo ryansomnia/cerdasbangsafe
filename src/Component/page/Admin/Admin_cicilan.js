@@ -191,6 +191,7 @@ const api = "http://localhost:5001";
                           {this.state.laporancicilan.map(laporancicilan => 
                          
                             <tr key={laporancicilan.kode_cicilan}>
+                              <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
@@ -204,7 +205,7 @@ const api = "http://localhost:5001";
                               <div className="d-flex justify-content-center">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>
+                                          </Button>{' '}
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -255,6 +256,7 @@ const api = "http://localhost:5001";
                           {this.state.laporancicilan.map(laporancicilan => 
                          
                             <tr key={laporancicilan.kode_cicilan}>
+                               <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
@@ -268,7 +270,7 @@ const api = "http://localhost:5001";
                               <div className="d-flex justify-content-center">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>
+                                          </Button>{' '}
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -319,6 +321,7 @@ const api = "http://localhost:5001";
                           {this.state.laporancicilan.map(laporancicilan => 
                          
                             <tr key={laporancicilan.kode_cicilan}>
+                               <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
@@ -332,7 +335,7 @@ const api = "http://localhost:5001";
                               <div className="d-flex justify-content-center">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>
+                                          </Button>{' '}
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>

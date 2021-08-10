@@ -35,6 +35,20 @@ const api = "http://localhost:5001";
    
     }
 
+    editKelas =(item)=>{
+      const data = this.state.kelas.filter(i => i.kode_kelas !==item.kode_kelas)
+      this.setState({
+        kelas:data,
+        show:'show'
+        
+      })
+      
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
+   
+    }
+
   componentDidMount() {
     axios.get(api + "/getkelas").then(res => {
       this.setState({
@@ -194,7 +208,14 @@ const api = "http://localhost:5001";
                               <td>{kelas.kode_kelas}</td>
                               <td>{kelas.nama_guru}</td>
                               <td>
-                                  Edit | Hapus
+                              <div className="d-flex justify-content-center">
+                                          <Button variant="outline-success" onClick={this.editKelas.bind(this,kelas)}>
+                                            Edit
+                                          </Button>
+                                          <Button variant="outline-danger">
+                                            Delete
+                                          </Button>
+                                          </div>
                               </td>
                             </tr>
                           )}

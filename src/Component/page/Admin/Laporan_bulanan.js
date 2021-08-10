@@ -186,6 +186,7 @@ const api = "http://localhost:5001";
                           {this.state.laporanbulanan.map(laporanbulanan => 
                          
                             <tr key={laporanbulanan.kode_laporan}>
+                               <td>{laporanbulanan.kode_laporan}</td>
                               <td>{laporanbulanan.tgl}</td>
                               <td>{laporanbulanan.keterangan}</td>
                               <td>{laporanbulanan.debit}</td>
@@ -195,7 +196,7 @@ const api = "http://localhost:5001";
                               <td>{laporanbulanan.status}</td>
                               <td>
                               <div className="d-flex justify-content-center">
-                              <Button variant="outline-success" onClick={this.editibulanan.bind(this,laporanbulanan)}>
+                              <Button variant="outline-success" onClick={this.editbulanan.bind(this,laporanbulanan)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger">
