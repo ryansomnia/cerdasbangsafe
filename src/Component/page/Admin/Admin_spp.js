@@ -165,7 +165,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Pembayaran SPP</h3>
-                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
+                    <NavLink href="/tambahspp"><Button color="success">Tambah Data</Button></NavLink>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">

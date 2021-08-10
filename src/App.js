@@ -25,32 +25,33 @@ import profil from "./Component/page/MenuUtama/Profil";
 import visi from "./Component/page/MenuUtama/Visi";
 import strukturorganisasi from "./Component/page/MenuUtama/Struktur";
 import bayarspp from "./Component/page/User/Bayarspp";
+import TambahSPP from "./Molekul/Form/TambahSPP";
+import TambahCicilan from "./Molekul/Form/TambahCicilan";
 
 
 
  // import bgimage from "./img/bgwebesparing.jpg"
  class App extends Component {
-    render(){
-          return (
-            <Router>
+ render(){
+   return (
+    <Router>
+      <Switch>
 
-            <Switch>
-                   {/* -----Menu Header---- */}
-              <Route path="/home" component={home}/>
-              <Route path="/login" component={login}/>
-              <Route path="/contactUs" component={contactUs} />
-              <Route path="/tambahcomp" component={TambahComp}/>
-              <Route path="/editcomp" component={EditComp}/>
+{/* -----Menu Header---- */}
+<Route path="/home" component={home}/>
+<Route path="/login" component={login}/>
+<Route path="/contactUs" component={contactUs} />
+<Route path="/tambahcomp" component={TambahComp}/>
+<Route path="/editcomp" component={EditComp}/>
               
 
     {/* ---Menu Utama--- */}
 <Route path="/galery" component={galery}/>
 <Route path="/profil" component={profil}/>
 <Route path="/visi" component={visi}/>
-<Route path="/strukturorganisasi" component={strukturorganisasi}/>
-              
-              <Route path="/pendaftaran" component={Registrasi}/>
-              <Route  path="/pembayaranspp" component={Pembayaranspp}/>
+<Route path="/strukturorganisasi" component={strukturorganisasi}/>             
+<Route path="/pendaftaran" component={Registrasi}/>
+<Route  path="/pembayaranspp" component={Pembayaranspp}/>
               
 
        {/* ----Menu Admin--- */}
@@ -60,6 +61,8 @@ import bayarspp from "./Component/page/User/Bayarspp";
 <Route path="/cicilan" component={Admin_cicilan}/>
 <Route path="/inventaris" component={Admin_inventaris}/>
 <Route path="/bulanan" component={Laporan_bulanan}/>
+<Route path="/tambahspp" component={TambahSPP}/>
+<Route path="/tambahcicilan" component={TambahCicilan}/>
           
           {/* ----Menu User--- */}
 <Route path="/user" component={User}/>

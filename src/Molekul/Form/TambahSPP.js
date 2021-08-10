@@ -1,57 +1,64 @@
-import axios from "axios";
 import React, { Component } from "react";
-// import axios from 'axios'
-import {Col, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import axios from 'axios'
+import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+// import "./TambahComp.css";
 
+const api ='http://192.168.1.142:5001'
 
-const api = "http://localhost:5001";
-export default class EditSPP extends Component {
-
-    constructor(props) {
+export default class TambahSPP extends Component {
+    constructor(props){
         super(props)
-    
+
         this.state = {
-        kode_spp:props.laporanspp[0].kode_spp,
-        tgl_bayar:props.laporanspp[0].tgl_bayar,
-        bulan:props.laporanspp[0].bulan,
-        jumlah:props.laporanspp[0].jumlah,
-        ekstrakulikuler:props.laporanspp[0].ekstrakulikuler,
-        status:props.laporanspp[0].status,
-        image:props.laporanspp[0].image
-        };
-       
-      }
-    
-      
-editSpp=()=>{
-        axios.post(api + "/editonelaporanspp", {
-            kode_spp:this.state.kode_spp,
-            tgl_bayar:this.state.tgl_bayar,
-            bulan:this.state.bulan,
-            jumlah:this.state.jumlah,
-            ekstrakulikuler:this.state.ekstrakulikuler,
-            status:this.state.status,
-            image:this.state.image,
-            id_user:this.state.id_user
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
+            kode_spp       : [],
+            tgl_bayar      : '',
+            bulan          : '',
+            jumlah         : '',
+            ekstrakulikuler: '',
+            status         : '',
+            image          : '',
+            response : ""
 
-     handleChange(event) {
-    // this.setState({value: event.target.value});
-  }
+        }
+    }
+handleChange = (e) => {
+    this.setState({[e.target.name] : e.target.value})
+}
 
-    render() {
+handleError = () =>{
+    console.log('YE');
+    if (this.state.image === ''){
+        alert('Masih ada data yang belum di isi !')
+    } else {
+       this.AddDataRegist()
+        
+    }
+}
+
+
+AddDataRegist = () => {
+    console.log("Masuk");
+    axios.post(api+ '//addOneLaporanSPP', {
+    kode_spp: this.state.kode_spp,
+    tgl_bayar: this.state.tgl_bayar,
+    bulan: this.state.bulan,
+    jumlah: this.state.jumlah,
+    ekstrakulikuler: this.state.ekstrakulikuler,
+    status: this.state.status,
+    image: this.state.image
+    })
+    .then(json => {
+        console.log(json,'data');
+    })
+}
+
+    render(){
         return(
-            <div>
+            <Container>
+                <h4>Form Tambah Data</h4>
+                
                 <Form ClassName="form">
                     <Col>
-                    
                     <Form.Label>
             
                         Kode SPP
@@ -109,7 +116,7 @@ editSpp=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="ekstrakulikuler" value={this.ekstrakulikuler} />
+                                <Form.Control type="text" name="ekstrakulikuler" value={this.state.ekstrakulikuler} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -135,13 +142,14 @@ editSpp=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Button type="button" onClick={this.editSpp}>Kirim Perubahan</Button>
+                            <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>
                     </FormGroup>
                     </Col>
 
                 </Form>
-            </div>
+            </Container>
         );
-    }}
+    }
+}
