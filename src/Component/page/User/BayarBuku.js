@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Navbar, Form, FormControl, Button, Dropdown} from "react-bootstrap";
+import { Navbar, Form, FormControl, Button, Dropdown } from "react-bootstrap";
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt } from "react-icons/fa";
+import Pembayaranbuku from "../Pembayaran/pembayaranbuku";
 
-import "./User.css";
+// import "./BayarBuku.css";
 
 
 
-export default class user extends Component {
+export default class bayarbuku extends Component {
   render() {
     return (
         <div className="d-flex" id="wrapper">
@@ -58,6 +59,7 @@ export default class user extends Component {
             </Navbar>
             {/* <!-- Page content--> */}
             <div className="container-fluid">
+            <Pembayaranbuku />
                 
             </div>
         </div>

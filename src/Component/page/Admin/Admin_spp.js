@@ -1,9 +1,12 @@
 import React from "react";
-import { Button, NavLink} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
-import ModalEdit from '../../../Molekul/Modal/ModalEditSpp'
+import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
+
+
+
 
 const api = "http://localhost:5001";
  class Admin_spp extends PureComponent {
@@ -16,24 +19,20 @@ const api = "http://localhost:5001";
       display: 'none',
       show:''
     };
-   
-  }
-
+   }
 
     editSpp =(item)=>{
       const data = this.state.laporanspp.filter(i => i.kode_spp !==item.kode_spp)
       this.setState({
         laporanspp:data,
         show:'show'
-        
-      })
+        })
       
       console.log('====================================');
       console.log(item);
       console.log('====================================');
-   
     }
-
+   
   componentDidMount() {
     axios.get(api + "/getlaporanspp").then(res => {
       this.setState({
@@ -160,12 +159,11 @@ const api = "http://localhost:5001";
             </div>
 
             <div className="recent-grid">
-
-              <div className="project">
-                <div className="card">
+              <div className="project ">
+                <div className="card ">
                   <div className="card-header">
                     <h3>Table Pembayaran SPP</h3>
-                    <NavLink href="/tambahspp"><Button color="success">Tambah Data</Button></NavLink>
+                  <ModalTambahSpp />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -178,6 +176,7 @@ const api = "http://localhost:5001";
                             <td>Tanggal Bayar</td>
                             <td>Bulan </td>
                             <td>Ekstrakulikuler</td>
+                            <td>Jumlah</td>
                             <td>Status</td>
                             <td>Image</td>
                             <td>Action</td>
@@ -199,10 +198,10 @@ const api = "http://localhost:5001";
                               <td>{laporanspp.status}</td>
                               <td>{laporanspp.image}</td>
                               <td>
-                              <div className="justify-content-center">
+                              <div className="d-flex">
                                           <Button variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
                                             Edit
-                                          </Button>{' '}
+                                          </Button>
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -216,7 +215,6 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEdit isShow={this.state.show} bulanan={this.state.bulanan}/>
             </div>
           </div>
         </div>

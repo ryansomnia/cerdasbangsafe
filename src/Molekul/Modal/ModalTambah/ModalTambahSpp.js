@@ -1,14 +1,12 @@
 import React from 'react';
 import {  Button, Modal, Form } from 'react-bootstrap';
-import EditSpp from '../Form/EditSPP';
+import TambahSPP from '../../Form/Tambah/TambahSPP';
 
 
 
 
 function MyVerticallyCenteredModal(props) {
-console.log('================propscxcxcx====================');
-console.log(props.lspp);
-console.log('====================================');
+
   return (
     <Modal
       {...props}
@@ -18,12 +16,12 @@ console.log('====================================');
         
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-       Edit Data
+        Form Tambah Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
-          <EditSpp lspp={props.lspp}/>
+        <Form>
+          <TambahSPP />
                 </Form>
           
       </Modal.Body>
@@ -36,21 +34,22 @@ console.log('====================================');
 
 
 
-function SPP(props) {
+function ModalTambahSpp() {
   const [modalShow, setModalShow] = React.useState(false);
-console.log('===============props.isShow=====================');
-console.log(props.isShow);
-console.log('====================================');
+
   return (
     <>
-   
+    <div className="d-flex justify-content-left">
+      <Button variant="primary" onClick={() => setModalShow(true)}>
+        Tambah Data
+      </Button>
+      </div>
       <MyVerticallyCenteredModal
-        show={props.isShow}
-        onHide={() => setModalShow(modalShow)}
-        lspp= {props.lspp}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
       />
     </>
   );
 }
 
-export default SPP;
+export default ModalTambahSpp;

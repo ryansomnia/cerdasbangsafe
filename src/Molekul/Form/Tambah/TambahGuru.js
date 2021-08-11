@@ -1,29 +1,27 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
-// import "./TambahComp.css";
+// import "./TambahGuru.css";
 
 const api ='http://192.168.1.142:5001'
 
-export default class TambahCicilan extends Component {
+export default class TambahGuru extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            kode_cicilan     : [],
-            student_account	 : '',
-            nis              : '',
-            nisn             : '',
-            nama             : '',
-            tgl_bayar        : '',
-            buku             : '',
-            voucher_no       : '',
-            debit            : '',
-            kredit           : '',
-            uang_pangkal     : '',
-            seragam          : '',
-            saldo            : '',
-            image            : '',
+            id_guru:[],
+            nama_guru:'',
+            jenis_kelamin:'',
+            no_nuptk:'',
+            tempat_lahir:'',
+            tgl_lahir:'',
+            pendidikan:'',
+            lulusan:'',
+            jabatan:'',
+            status_karyawan:'',
+            agama:'',
+            id_user:'',
             response : ""
 
         }
@@ -37,29 +35,27 @@ handleError = () =>{
     if (this.state.image === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
-       this.AddDataRegist()
+       this.AddDataGuru()
         
     }
 }
 
 
-AddDataRegist = () => {
-    console.log("Masuk");
-    axios.post(api+ '//addOneLaporanSPP', {
-    kode_cicilan     : this.state.kode_cicilan,
-    student_account	 :this.state.student_account,
-    nis              :this.state.nis,
-    nisn             : this.state.nisn,
-    nama             : this.state.nama,
-    tgl_bayar        : this.state.tgl_bayar,
-    buku             : this.state.buku,
-    voucher_no       : this.state.voucher_no,
-    debit            : this.state.debit,
-    kredit           : this.state.kredit,
-    uang_pangkal     : this.state.uang_pangkal,
-    seragam          : this.state.seragam,
-    saldo            : this.state.saldo,
-    image            : this.state.image
+AddDataGuru = () => {
+    console.log("Data Masuk");
+    axios.post(api+ '/addoneguru', {
+        id_guru:this.state.id_guru,
+        nama_guru:this.state.nama_guru,
+        jenis_kelamin:this.state.jenis_kelamin,
+        no_nuptk:this.state.no_nuptk,
+        tempat_lahir:this.state.tempat_lahir,
+        tgl_lahir:this.state.tgl_lahir,
+        pendidikan:this.state.pendidikan,
+        lulusan:this.state.lulusan,
+        jabatan:this.state.jabatan,
+        status_karyawan:this.state.status_karyawan,
+        agama:this.state.agama,
+        id_user:this.state.id_user
     })
     .then(json => {
         console.log(json,'data');
@@ -68,135 +64,122 @@ AddDataRegist = () => {
 
     render(){
         return(
-            <Container>
-                <h4>Form Tambah Data</h4>
-                
+            <Container>    
                 <Form ClassName="form">
                     <Col>
-                    <Form.Label>
-            
-                        Kode Cicilan
-                    </Form.Label>
+                    <Form.Label>Id_ Guru</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
                                 {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                <Form.Control id="kode_cicilan" type="text" name="kode_cicilan"  value={this.state.kode_cicilan} onChange={this.handleChange}/>
+                                <Form.Control id="id_guru" type="text" name="id_guru"  value={this.state.id_guru} onChange={this.handleChange} placeholder="Masukkan Id Guru"/>
                             </Col>
                         </Row>
                     </FormGroup>
                    
                     
-                    <Form.Label>Student Account</Form.Label>
+                    <Form.Label>Nama Guru</Form.Label>
                     <FormGroup>
                         <Row >
                             <Col>
                                 {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="text" name="studen_account" value={this.state.studen_account}/>
+                                <Form.Control type="text" name="nama_guru" value={this.state.nama_guru} onChange={this.handleChange}  placeholder="Masukkan Nama Guru"/>
                             </Col>
                         </Row>
                     </FormGroup>
                   
-                    <Form.Label>Nomor Induk</Form.Label>
+                    <Form.Label>Jenis Kelamin</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
                                 {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                <Form.Control type="text" name="nis"    value={this.state.nis} />
+                                <Form.Control type="text" name="jenis_kelamin"    value={this.state.jenis_kelamin} onChange={this.handleChange}  placeholder="Masukkan Jenis Kelamin" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>NISN</Form.Label>
+                    <Form.Label>No NUPTK</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
                             
-                                <Form.Control type="text" name="nisn" value={this.state.nisn} />
+                                <Form.Control type="number" name="no_nuptk" value={this.state.no_nuptk}  onChange={this.handleChange}  placeholder="Masukkan Nomor NUPTK" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Tanggal Bayar</Form.Label>
+                    <Form.Label>Tempat Lahir</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} />
+                                <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange}  placeholder="Masukkan Tempat Lahir" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Buku</Form.Label>
+                    <Form.Label>Tanggal Lahir</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="buku" value={this.state.buku} />
+                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange}  placeholder="Masukkan Tanggal Lahir" />
                             </Col>
                         </Row>
                     </FormGroup>
                     
-                    <Form.Label>Voucher No</Form.Label>
+                    <Form.Label>Pendidikan</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="voucher_no" value={this.state.voucher_no} />
+                                <Form.Control type="text" name="pendidikan" value={this.state.pendidikan} onChange={this.handleChange}  placeholder="Masukkan Pendidikan " />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Debit</Form.Label>
+                    <Form.Label>Lulusan</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="debit" value={this.state.debit} />
+                                <Form.Control type="text" name="lulusan" value={this.state.lulusan} onChange={this.handleChange}  placeholder="Masukkan Lulusan Sekolah" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Kredit</Form.Label>
+                    <Form.Label>Jabatan</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="kredit" value={this.state.kredit} />
+                                <Form.Control type="text" name="jabatan" value={this.state.jabatan} onChange={this.handleChange}  placeholder="Masukkan Posisi Jabatan" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Uang Pangkal</Form.Label>
+                    <Form.Label>Status Karyawan</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="uang_pangkal" value={this.state.uang_pangkal} />
+                                <Form.Control type="text" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange}  placeholder="Masukkan Status Karyawan" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Seragam</Form.Label>
+                    <Form.Label>Agama</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="seragam" value={this.state.seragam} />
+                                <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}  placeholder="Masukkan Agama" />
                             </Col>
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Saldo</Form.Label>
+                    <Form.Label>Id User</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="kredit" value={this.state.saldo} />
+                                <Form.Control type="text" name="id_user" value={this.state.id_user} onChange={this.handleChange}  placeholder="Masukkan ID User" />
                             </Col>
                         </Row>
                     </FormGroup>
                     
-                    <Form.Label>Image</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
                     <FormGroup>
                         <Row>
                             <Col>

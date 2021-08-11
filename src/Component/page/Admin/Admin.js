@@ -4,6 +4,8 @@ import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
+import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
+import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 
 const api = "http://localhost:5001";
  class Admin extends PureComponent {
@@ -186,6 +188,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Kelas</h3>
+                    <ModalTambahKelas />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -233,6 +236,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Guru</h3>
+                    <ModalTambahGuru />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">

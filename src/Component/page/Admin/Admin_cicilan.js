@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, NavLink} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_cicilan.css";
 import { PureComponent } from "react";
+import ModalTambahCicilan from "../../../Molekul/Modal/ModalTambah/ModalTambahCicilan";
 
 
 const api = "http://localhost:5001";
@@ -165,7 +166,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Pembayaran Cicilan Buku</h3>
-                    <NavLink href="/tambahcicilan"><Button color="success">Tambah Data</Button></NavLink>
+                   <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -202,10 +203,10 @@ const api = "http://localhost:5001";
                               <td>{laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
+                              <div className="d-flex ">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>{' '}
+                                          </Button>
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -230,7 +231,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Pembayaran Cicilan Seragam</h3>
-                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
+                    <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -267,10 +268,10 @@ const api = "http://localhost:5001";
                               <td>{laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
+                              <div className="d-flex ">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>{' '}
+                                          </Button>
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>
@@ -295,7 +296,7 @@ const api = "http://localhost:5001";
                 <div className="card">
                   <div className="card-header">
                     <h3>Table Pembayaran Cicilan Uang Pangkal</h3>
-                    <NavLink href="/tambahcomp"><Button color="success">Tambah Data</Button></NavLink>
+                    <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -332,10 +333,10 @@ const api = "http://localhost:5001";
                               <td>{laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
+                              <div className="d-flex ">
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
-                                          </Button>{' '}
+                                          </Button>
                                           <Button variant="outline-danger">
                                             Delete
                                           </Button>

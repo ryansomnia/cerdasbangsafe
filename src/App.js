@@ -25,8 +25,9 @@ import profil from "./Component/page/MenuUtama/Profil";
 import visi from "./Component/page/MenuUtama/Visi";
 import strukturorganisasi from "./Component/page/MenuUtama/Struktur";
 import bayarspp from "./Component/page/User/Bayarspp";
-import TambahSPP from "./Molekul/Form/TambahSPP";
-import TambahCicilan from "./Molekul/Form/TambahCicilan";
+import bayarseragam from "./Component/page/User/BayarSeragam";
+import bayarpangkal from "./Component/page/User/BayarPangkal";
+
 
 
 
@@ -61,12 +62,16 @@ import TambahCicilan from "./Molekul/Form/TambahCicilan";
 <Route path="/cicilan" component={Admin_cicilan}/>
 <Route path="/inventaris" component={Admin_inventaris}/>
 <Route path="/bulanan" component={Laporan_bulanan}/>
-<Route path="/tambahspp" component={TambahSPP}/>
-<Route path="/tambahcicilan" component={TambahCicilan}/>
+
+
+
           
           {/* ----Menu User--- */}
 <Route path="/user" component={User}/>
 <Route path="/bayarspp" component={bayarspp}/>
+<Route path="/bayarbuku" component={bayarspp}/>
+<Route path="/bayarseragam" component={bayarseragam}/>
+<Route path="/uangpangkal" component={bayarpangkal}/>
 
               <Redirect from="/" to="/home"/>
             </Switch>
