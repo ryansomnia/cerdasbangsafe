@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
-// import "./TambahComp.css";
+// import "./TambahCicilan.css";
 
 const api ='http://192.168.1.142:5001'
 

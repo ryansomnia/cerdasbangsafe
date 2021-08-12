@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
 import ModalTambahInventaris from "../../../Molekul/Modal/ModalTambah/ModalTambahInventaris";
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditInventaris'
 
 
 const api = "http://localhost:5001";
@@ -219,6 +220,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEdit isShow={this.state.show} laporaninventaris={this.state.laporaninventaris}/>
             </div>
           </div>
         </div>

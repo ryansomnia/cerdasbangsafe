@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { Component } from "react";
 // import axios from 'axios'
-import {Col, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import {Col, Row, FormGroup, Form, Button, Container} from 'react-bootstrap';
 
 
 const api = "http://localhost:5001";
-export default class EditSPP extends Component {
+export default class EditSpp extends Component {
 
     constructor(props) {
         super(props)
@@ -23,8 +23,8 @@ export default class EditSPP extends Component {
       }
     
       
-editSpp=()=>{
-        axios.post(api + "/editonelaporanspp", {
+    editSpp=()=>{
+        axios.post(api + "/editonespp", {
             kode_spp:this.state.kode_spp,
             tgl_bayar:this.state.tgl_bayar,
             bulan:this.state.bulan,
@@ -41,26 +41,23 @@ editSpp=()=>{
             console.log(error);
           });
       }
-
+    
      handleChange(event) {
     // this.setState({value: event.target.value});
-  }
-
+    }
     render() {
         return(
-            <div>
+            <Container>
                 <Form ClassName="form">
                     <Col>
-                    
                     <Form.Label>
-            
                         Kode SPP
                     </Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
                                 {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                <Form.Control id="kode_spp" type="text" name="kode_spp"  value={this.state.kode_spp} onChange={this.handleChange}/>
+                                <Form.Control id="kode_spp" type="text" name="kode_spp"  value={this.state.kode_spp} onChange={this.handleChange}  />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -71,7 +68,7 @@ editSpp=()=>{
                         <Row >
                             <Col>
                                 {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa}/>
+                                <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -81,7 +78,7 @@ editSpp=()=>{
                         <Row>
                             <Col>
                                 {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                <Form.Control type="text" name="kelas"    value={this.state.kelas} />
+                                <Form.Control type="text" name="kelas"    value={this.state.kelas}  />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -90,8 +87,7 @@ editSpp=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                            
-                                <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} />
+                            <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -109,7 +105,7 @@ editSpp=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="ekstrakulikuler" value={this.ekstrakulikuler} />
+                                <Form.Control type="text" name="ekstrakulikuler" value={this.state.ekstrakulikuler}  />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -123,25 +119,26 @@ editSpp=()=>{
                         </Row>
                     </FormGroup>
 
-                    
-                    <Form.Label>Image</Form.Label>
+                    <Form.Label>Bukti Pembayaran</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} />
+                                <Form.Control type="file" name="image" value={this.state.image}  />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Button type="button" onClick={this.editSpp}>Kirim Perubahan</Button>
+                            <Button type="button" onClick={this.editSpp}>Kirim Perubahan</Button>
                             </Col>
                         </Row>
                     </FormGroup>
                     </Col>
 
                 </Form>
-            </div>
+            </Container>
+                               
+                        
         );
     }}

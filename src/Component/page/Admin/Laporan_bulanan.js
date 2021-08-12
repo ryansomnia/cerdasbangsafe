@@ -3,6 +3,7 @@ import { Button} from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditBulanan'
 import ModalTambahLaporan from "../../../Molekul/Modal/ModalTambah/ModalTambahLaporan";
 
 
@@ -215,7 +216,8 @@ const api = "http://localhost:5001";
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> 
+              <ModalEdit isShow={this.state.show} laporanbulanan={this.state.laporanbulanan}/>
             </div>
           </div>
         </div>

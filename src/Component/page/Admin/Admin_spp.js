@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
 import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
 
 
 
@@ -215,6 +216,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEdit isShow={this.state.show} laporanspp={this.state.laporanspp}/>
             </div>
           </div>
         </div>

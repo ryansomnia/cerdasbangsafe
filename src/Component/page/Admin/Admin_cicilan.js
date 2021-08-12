@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Admin_cicilan.css";
 import { PureComponent } from "react";
 import ModalTambahCicilan from "../../../Molekul/Modal/ModalTambah/ModalTambahCicilan";
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditCicilan'
 
 
 const api = "http://localhost:5001";
@@ -353,6 +354,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEdit isShow={this.state.show} laporancicilan={this.state.laporancicilan}/>
             </div>
           </div>
         </div>
