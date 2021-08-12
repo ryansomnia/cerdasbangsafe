@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
-// import "./Pembayaranbuku.css";
+// import "./Pembayaranseragam.css";
 
 const api ='http://192.168.1.142:5001'
 
-export default class Pembayaranbuku extends Component {
+export default class Pembayaranseragam extends Component {
     constructor(props){
         super(props)
 
@@ -81,7 +81,7 @@ AddDataCicilan= () => {
                             </Col>
                         </Row>
                     </FormGroup>
-                    
+
                     <Form.Label>Nomor Induk</Form.Label>
                     <FormGroup>
                         <Row>
@@ -111,15 +111,6 @@ AddDataCicilan= () => {
                         </Row>
                     </FormGroup>
 
-                    <Form.Label>Buku</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="buku" value={this.state.buku} onChange={this.handleChange}  placeholder="Masukkan Nama Buku" />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    
                     <Form.Label>Debit</Form.Label>
                     <FormGroup>
                         <Row>
@@ -128,7 +119,16 @@ AddDataCicilan= () => {
                             </Col>
                         </Row>
                     </FormGroup>
-                    
+
+                    <Form.Label>Seragam</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="seragam" value={this.state.seragam} onChange={this.handleChange}  placeholder="Masukkan Nama Seragam" />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+
                     <Form.Label>Bukti Pembayaran</Form.Label>
                     <FormGroup>
                         <Row>

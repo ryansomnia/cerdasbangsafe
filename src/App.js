@@ -27,6 +27,7 @@ import strukturorganisasi from "./Component/page/MenuUtama/Struktur";
 import bayarspp from "./Component/page/User/Bayarspp";
 import bayarseragam from "./Component/page/User/BayarSeragam";
 import bayarpangkal from "./Component/page/User/BayarPangkal";
+import bayarbuku from "./Component/page/User/BayarBuku";
 
 
 
@@ -69,7 +70,7 @@ import bayarpangkal from "./Component/page/User/BayarPangkal";
           {/* ----Menu User--- */}
 <Route path="/user" component={User}/>
 <Route path="/bayarspp" component={bayarspp}/>
-<Route path="/bayarbuku" component={bayarspp}/>
+<Route path="/bayarbuku" component={bayarbuku}/>
 <Route path="/bayarseragam" component={bayarseragam}/>
 <Route path="/uangpangkal" component={bayarpangkal}/>
 

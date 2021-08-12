@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Navbar, Form, FormControl, Button, Dropdown } from "react-bootstrap";
+import { Navbar, Form, FormControl, Button, Dropdown} from "react-bootstrap";
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt } from "react-icons/fa";
 import Pembayaranbuku from "../Pembayaran/pembayaranbuku";
 
-// import "./BayarBuku.css";
+import "./User.css";
 
 
 
@@ -59,8 +59,7 @@ export default class bayarbuku extends Component {
             </Navbar>
             {/* <!-- Page content--> */}
             <div className="container-fluid">
-            <Pembayaranbuku />
-                
+               <Pembayaranbuku />
             </div>
         </div>
     </div>

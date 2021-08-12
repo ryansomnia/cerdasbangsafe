@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Form, FormControl, Button, Dropdown } from "react-bootstrap";
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt } from "react-icons/fa";
+import Pembayaranpangkal from "../Pembayaran/pembayaranpangkal";
 // import "./Bayarpangkal.css";
 
 
@@ -57,7 +58,8 @@ export default class bayarpangkal extends Component {
             </Navbar>
             {/* <!-- Page content--> */}
             <div className="container-fluid">
-            
+         <Pembayaranpangkal />
+
                 
             </div>
         </div>
