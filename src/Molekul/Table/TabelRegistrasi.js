@@ -62,9 +62,10 @@ const api = 'http://localhost:5001'
       )}
   </tbody>
 </Table>
-<Button href="/master">Link</Button>
+<div className=" d-flex justify-content-center">
+<Button  variant="outline-primary" size="lg"  href="/master">Admin</Button>
+</div>
 <br></br>
-
 </Container>
 
 

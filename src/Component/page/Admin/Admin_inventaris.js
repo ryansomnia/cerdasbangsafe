@@ -218,7 +218,7 @@ const api = "http://localhost:5001";
                               <td>{laporaninventaris.image}</td>
                               <td>
                             <div className="d-flex justify-content-center">
-                              <Button variant="outline-success" onClick={this.editinventaris.bind(this,laporaninventaris)}>
+                                          <Button className="btn-space" variant="outline-success" onClick={this.editinventaris.bind(this,laporaninventaris)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger" onClick={this.deleteinventaris.bind(this,laporaninventaris)}>

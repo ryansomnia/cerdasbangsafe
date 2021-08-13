@@ -216,7 +216,7 @@ const api = "http://localhost:5001";
                               <td>{laporanbulanan.status}</td>
                               <td>
                               <div className="d-flex justify-content-center">
-                              <Button variant="outline-success" onClick={this.editbulanan.bind(this,laporanbulanan)}>
+                              <Button className="btn-space" variant="outline-success" onClick={this.editbulanan.bind(this,laporanbulanan)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger" onClick={this.deletelaporan.bind(this,laporanbulanan)}>

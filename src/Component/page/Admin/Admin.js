@@ -248,8 +248,8 @@ const api = "http://localhost:5001";
                               <td>{kelas.kode_kelas}</td>
                               <td>{kelas.nama_guru}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
-                                          <Button variant="outline-success" onClick={this.editKelas.bind(this,kelas)}>
+                              <div className="d-flex">
+                                          <Button className="btn-space" variant="outline-success" onClick={this.editKelas.bind(this,kelas)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger" onClick={this.deleteKelas.bind(this,kelas)}>
@@ -311,8 +311,8 @@ const api = "http://localhost:5001";
                             <td>{guru.agama}</td>
                               <td>
                                   {/* <button onClick={this.editGuru.bind(this,guru)} >edit</button> | <button>hapus</button> */}
-                               <div className="d-flex justify-content-center">
-                                          <Button variant="outline-success" onClick={this.editGuru.bind(this,guru)}>
+                               <div className="d-flex">
+                                          <Button className="btn-space" variant="outline-success" onClick={this.editGuru.bind(this,guru)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger"  onClick={this.deleteGuru.bind(this,guru)}>
