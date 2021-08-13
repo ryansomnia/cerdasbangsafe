@@ -219,7 +219,7 @@ const api = "http://localhost:5001";
                               <td>{laporanspp.image}</td>
                               <td>
                               <div className="d-flex">
-                                          <Button variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
+                                          <Button className="btn-space" variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger" onClick={this.deleteSpp.bind(this,laporanspp)}>

@@ -224,7 +224,7 @@ const api = "http://localhost:5001";
                               <td>{laporancicilan.image}</td>
                               <td>
                               <div className="d-flex ">
-                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
+                                          <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
                                           </Button>
                                           <Button variant="outline-danger" onClick={this.deletecicilan.bind(this,laporancicilan)}>
