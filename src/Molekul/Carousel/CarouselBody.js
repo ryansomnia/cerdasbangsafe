@@ -11,7 +11,7 @@ export default class CarouselBody extends Component {
         <Carousel.Item>
           <img
             className="gambar d-block  w-100 "
-            src="Image/IMG-20170317-WA0018.jpg"
+            src="Image/IMG_8561.jpg"
             alt="First slide"/>
 
           {/* <Carousel.Caption>
@@ -23,7 +23,7 @@ export default class CarouselBody extends Component {
 <Carousel.Item>
     <img
       className="gambar d-block  w-100"
-      src="Image/IMG_0201.JPG"
+      src="Image/IMG_2863.jpg"
       alt="Second slide"/>
 
 {/* <Carousel.Caption>
@@ -34,7 +34,7 @@ export default class CarouselBody extends Component {
 <Carousel.Item>
     <img
       className="gambar d-block  w-100"
-      src="Image/IMG_8561.JPG"
+      src="Image/IMG_2841.JPG"
       alt="Third slide"/>
 
 
@@ -43,6 +43,18 @@ export default class CarouselBody extends Component {
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     </Carousel.Caption> */}
   </Carousel.Item>
+  <Carousel.Item>
+          <img
+            className="gambar d-block  w-100 "
+            src="Image/IMG_2363.jpg"
+            alt="First slide"/>
+
+          {/* <Carousel.Caption>
+            <h3>SDS CERDAS BANGSA</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption> */}
+
+</Carousel.Item>
 </Carousel>
 </Container>
         )

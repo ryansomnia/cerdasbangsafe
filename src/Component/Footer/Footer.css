@@ -1,8 +1,9 @@
-#footer{
+.Footer{
     height: 60px;
     color: white;
     background-color: #233E8B;
     font-size: 14px;
     text-align: center;
     padding-top: 20px;
+    font-family:Montserrat,sans-serif;
 }

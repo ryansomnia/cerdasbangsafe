@@ -23,7 +23,6 @@ export default class Body extends Component {
                 <BannerGretting/>
                 <TabelRegistrasi/>
                
-                
             </div>
 
 

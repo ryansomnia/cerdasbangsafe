@@ -31,7 +31,7 @@ class Header extends Component {
           <NavDropdown.Item href="/">Berita Sekolah</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="/contactUs">Contact Us</Nav.Link>
-        <Nav.Link><Button className= "btn-orange" variant="warning" onClick={() => this.pageLogin('/login')} >Login</Button></Nav.Link>
+        <Nav.Link><Button className= "btn-orange"  onClick={() => this.pageLogin('/login')} >Login</Button></Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>

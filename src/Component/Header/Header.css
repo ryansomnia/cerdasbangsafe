@@ -1,15 +1,16 @@
 .Navbar{
-  color: #828893;
+  color: black;
   font-size: 16px;
   padding: 8px 16px;
-  font-family: "Poppins", sans-serif;
+  font-family:Montserrat,sans-serif;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-shadow: 0 8px 28px 2px rgb(61 61 61 / 12%);
+ 
 }
 
 .list{
-  color: #828893;
+  color: black;
   font-size: 16px;
   margin: 0px 0px;
 }
@@ -34,16 +35,17 @@ a {
 .menu{
   font-size: 18px;
   font-weight: 400;
-
+  justify-content: center;
 }
 
   
 
 Button.btn-orange{
     padding: 3px 10px;
-    background-color: #e54545;
+    background-color: #ffad00;
     color: #fff;
-    border: 2px solid #e54545;
+    border: 2px solid #ffad00;
+    text-align: center;
     border-radius: none;
 }
  

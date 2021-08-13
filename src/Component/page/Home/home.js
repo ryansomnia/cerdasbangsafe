@@ -12,7 +12,6 @@ export default class home extends Component {
           <Header/>
           <Body/>
           <Footer/>
-    
             </div>
 
 
