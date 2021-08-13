@@ -38,7 +38,7 @@ console.log('====================================');
 
 
 
-function PopUp(props) {
+function Cicilan(props) {
   const [modalShow, setModalShow] = React.useState(false);
 console.log('===============props.isShow=====================');
 console.log(props.isShow);
@@ -55,4 +55,4 @@ console.log('====================================');
   );
 }
 
-export default PopUp;
+export default Cicilan;

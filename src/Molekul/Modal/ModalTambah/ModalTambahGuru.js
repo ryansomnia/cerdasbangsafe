@@ -10,7 +10,7 @@ import TambahGuru from '../../Form/Tambah/TambahGuru';
 function MyVerticallyCenteredModal(props) {
 
   return (
-    <Modal
+    <Modal 
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"

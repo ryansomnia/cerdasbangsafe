@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
+import ModalEditKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 
@@ -231,6 +232,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
+              <ModalEditKelas isShow={this.state.show} kelas={this.state.kelas}/>
 
               <div className="project">
                 <div className="card">

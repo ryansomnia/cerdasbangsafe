@@ -39,7 +39,7 @@ console.log('====================================');
 
 
 
-function PopUp(props) {
+function SPP(props) {
   const [modalShow, setModalShow] = React.useState(false);
 console.log('===============props.isShow=====================');
 console.log(props.isShow);
@@ -56,4 +56,4 @@ console.log('====================================');
   );
 }
 
-export default PopUp;
+export default SPP;
