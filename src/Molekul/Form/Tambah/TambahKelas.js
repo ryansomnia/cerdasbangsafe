@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./TambahKelas.css";
 
-const api ='http://192.168.1.142:5001'
+const api ='http://localhost:5001'
 
 export default class TambahKelas extends Component {
     constructor(props){
@@ -74,7 +74,7 @@ addOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="kelas"  value={this.state.kelas} onChange={this.handleChange}  />
+                                <Form.Control type="text" name="nama_guru"  value={this.state.nama_guru} onChange={this.handleChange}  />
                             </Col>
                         </Row>
                     </FormGroup>

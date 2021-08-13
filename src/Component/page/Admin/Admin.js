@@ -208,7 +208,7 @@ const api = "http://localhost:5001";
                           {this.state.kelas.map(kelas => 
                          
                             <tr key={kelas.nama_kelas}>
-                              <td>{kelas.nama_guru}</td>
+                              <td>{kelas.nama_kelas}</td>
                               <td>{kelas.kode_kelas}</td>
                               <td>{kelas.nama_guru}</td>
                               <td>
