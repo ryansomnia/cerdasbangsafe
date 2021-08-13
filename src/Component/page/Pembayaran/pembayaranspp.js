@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 import "./pembayaranspp.css";
 
-const api ='http://192.168.1.142:5001'
+const api ='http://localhost:5001'
 export default class Pembayaranspp extends Component {
     constructor(props){
         super(props)
@@ -31,13 +31,13 @@ handleError = () =>{
     if (this.state.image === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
-       this.AddDataSPP()
+       this.AddOneData()
         
     }
 }
 
 
-AddDataSPP = () => {
+AddOneData = () => {
     console.log(" Data Masuk");
     axios.post(api+ '/addOneLaporanSPP', {
     kode_spp: this.state.kode_spp,
