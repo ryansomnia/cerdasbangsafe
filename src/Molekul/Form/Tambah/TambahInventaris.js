@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./TambahInventaris.css";
 
-const api ='http://192.168.1.142:5001'
+const api ='http://localhost:5001'
 
 export default class TambahInventaris extends Component {
     constructor(props){

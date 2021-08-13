@@ -20,36 +20,35 @@ const api = "http://localhost:5001";
       display: 'none',
       show:''
     };
-   
   }
 
 
-    editGuru =(item)=>{
-      const data = this.state.guru.filter(i => i.id_guru !==item.id_guru)
+      editGuru =(item)=>{
+      console.log('=============Baperr==========');
+      console.log(item);
+      console.log('====================================');
+   
+      const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
       this.setState({
         guru:data,
-        show:'show'
-        
+        show:'show' 
       })
       
       console.log('====================================');
       console.log(item);
       console.log('====================================');
-   
     }
 
     editKelas =(item)=>{
-      const data = this.state.kelas.filter(i => i.kode_kelas !==item.kode_kelas)
+      const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
       this.setState({
         kelas:data,
         show:'show'
         
       })
-      
       console.log('====================================');
       console.log(item);
       console.log('====================================');
-   
     }
 
   componentDidMount() {
@@ -65,10 +64,47 @@ const api = "http://localhost:5001";
         guru: res.data.values
       });
     });
-    
+  
+}
+
+  deleteGuru =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteoneguru", {
+      id_guru:item.id_guru
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
-
+  deleteKelas =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteOnekelas", {
+      nama_kelas:item.nama_kelas
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+ 
  
 
   render() {
@@ -216,7 +252,7 @@ const api = "http://localhost:5001";
                                           <Button variant="outline-success" onClick={this.editKelas.bind(this,kelas)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger" onClick={this.deleteKelas.bind(this,kelas)}>
                                             Delete
                                           </Button>
                                           </div>
@@ -279,7 +315,7 @@ const api = "http://localhost:5001";
                                           <Button variant="outline-success" onClick={this.editGuru.bind(this,guru)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger"  onClick={this.deleteGuru.bind(this,guru)}>
                                             Delete
                                           </Button>
                                           </div>

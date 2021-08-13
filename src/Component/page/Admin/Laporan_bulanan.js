@@ -44,6 +44,24 @@ const api = "http://localhost:5001";
     });
     
   }
+  deletelaporan =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteonebulanan", {
+      kode_laporan:item.kode_laporan
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
 
   render() {
@@ -201,7 +219,7 @@ const api = "http://localhost:5001";
                               <Button variant="outline-success" onClick={this.editbulanan.bind(this,laporanbulanan)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger" onClick={this.deletelaporan.bind(this,laporanbulanan)}>
                                             Delete
                                           </Button>
                                           </div>

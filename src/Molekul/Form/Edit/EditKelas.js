@@ -15,12 +15,12 @@ export default class EditKelas extends Component {
                 kode_kelas:props.kelas[0].kode_kelas,
                 nama_guru:props.kelas[0].nama_guru
         };
-       
+        this.handleChange = this.handleChange.bind(this);
       }
     
       
 editKelas=()=>{
-        axios.post(api + "/editOnedata", {
+        axios.post(api + "/addOneKelas", {
             nama_kelas : this.state.nama_kelas,
             kode_kelas : this.state.kode_kelas,
             nama_guru : this.state.nama_guru
@@ -31,11 +31,15 @@ editKelas=()=>{
           .catch(function (error) {
             console.log(error);
           });
-      }
+      } 
 
-     handleChange(event) {
-    // this.setState({value: event.target.value});
-  }
+      handleChange(event) {    
+        this.setState({
+            nama_kelas: event.target.nama_kelas,
+            kode_kelas: event.target.kode_kelas,
+            nama_guru:event.target.nama_guru
+      }); 
+       }
 
     render() {
         return(
@@ -56,7 +60,7 @@ editKelas=()=>{
                 <FormGroup>
                     <Row>
                         <Col>
-                            <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas}  />
+                            <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas} onChange={this.handleChange}  />
                         </Col>
                     </Row>
                 </FormGroup>
@@ -67,7 +71,7 @@ editKelas=()=>{
                 <FormGroup>
                     <Row>
                         <Col>
-                            <Form.Control type="text" name="kelas"  value={this.state.kelas} />
+                            <Form.Control type="text" name="kelas"  value={this.state.kelas} onChange={this.handleChange} />
                         </Col>
                     </Row>
                 </FormGroup>

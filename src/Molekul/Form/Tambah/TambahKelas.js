@@ -14,7 +14,7 @@ export default class TambahKelas extends Component {
             kode_kelas:'',
             nama_guru:'',
             response : ""
-
+ 
         }
     }
 handleChange = (e) => {

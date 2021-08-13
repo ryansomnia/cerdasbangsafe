@@ -45,6 +45,25 @@ const api = "http://localhost:5001";
     
   }
 
+  deletecicilan =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteonecicilan", {
+      kode_cicilan:item.kode_cicilan
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+ 
 
  
 
@@ -208,7 +227,7 @@ const api = "http://localhost:5001";
                                           <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger" onClick={this.deletecicilan.bind(this,laporancicilan)}>
                                             Delete
                                           </Button>
                                           </div>

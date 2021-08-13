@@ -23,27 +23,46 @@ const api = "http://localhost:5001";
    }
 
     editSpp =(item)=>{
-      const data = this.state.laporanspp.filter(i => i.kode_spp !==item.kode_spp)
+      console.log('=================Data Masuk===================');
+      console.log(item);
+      console.log('====================================');
+      const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
       this.setState({
         laporanspp:data,
         show:'show'
         })
       
-      console.log('====================================');
+      console.log('=================Data Keluar===================');
       console.log(item);
       console.log('====================================');
     }
    
   componentDidMount() {
-    axios.get(api + "/getlaporanspp").then(res => {
+    axios.get(api + "/getLaporanSPP").then(res => {
       this.setState({
         laporanspp: res.data.values
       });
     });
-    
   }
 
-
+  deleteSpp =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteonespp", {
+      kode_spp:item.kode_spp
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
  
 
 
@@ -203,7 +222,7 @@ const api = "http://localhost:5001";
                                           <Button variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger" onClick={this.deleteSpp.bind(this,laporanspp)}>
                                             Delete
                                           </Button>
                                           </div>

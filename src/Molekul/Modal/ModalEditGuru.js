@@ -37,7 +37,7 @@ console.log('====================================');
 
 
 function PopUp(props) {
-  const [modalShow, setModalShow] = React.useState(false);
+const [modalShow, setModalShow] = React.useState(false);
 console.log('===============props.isShow=====================');
 console.log(props.isShow);
 console.log('====================================');

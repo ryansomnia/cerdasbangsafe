@@ -42,9 +42,26 @@ const api = "http://localhost:5001";
         laporaninventaris: res.data.values
       });
     });
-    
   }
-
+  
+  deleteinventaris =(item)=>{
+    console.log('masuk')
+  
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+   
+    axios.post(api + "/deleteoneinventaris", {
+      kode_inventaris:item.kode_inventaris
+      
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
  
 
@@ -204,7 +221,7 @@ const api = "http://localhost:5001";
                               <Button variant="outline-success" onClick={this.editinventaris.bind(this,laporaninventaris)}>
                                             Edit
                                           </Button>
-                                          <Button variant="outline-danger">
+                                          <Button variant="outline-danger" onClick={this.deleteinventaris.bind(this,laporaninventaris)}>
                                             Delete
                                           </Button>
                                           </div>

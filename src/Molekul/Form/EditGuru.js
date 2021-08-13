@@ -24,9 +24,9 @@ export default class EditGuru extends Component {
         agama:props.guru[0].agama,
         id_user:props.guru[0].id_user
         };
-       
+        this.handleChange = this.handleChange.bind(this);
       }
-    
+     
       
 editGuru=()=>{
         axios.post(api + "/editoneguru", {
@@ -51,9 +51,22 @@ editGuru=()=>{
           });
       }
 
-     handleChange(event) {
-    // this.setState({value: event.target.value});
-  }
+      handleChange(event) {    
+          this.setState({
+              nama_guru: event.target.nama_guru,
+              jenis_kelamin: event.target.jenis_kelamin,
+              no_nuptk:event.target.no_nuptk,
+              tempat_lahir:event.target.tempat_lahir,
+              tgl_lahir:event.target.tgl_lahir,
+              pendidikan:event.target.pendidikan,
+              lulusan:event.target.lulusan,
+              jabatan:event.target.jabatan,
+              status_karyawan:event.target.status_karyawan,
+              agama:event.target.agama,
+              id_user:event.target.id_user
+        }); 
+         }
+
 
     render() {
         return(
@@ -80,7 +93,7 @@ editGuru=()=>{
                         <Row >
                             <Col>
                                 {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin}/>
+                                <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -90,7 +103,7 @@ editGuru=()=>{
                         <Row>
                             <Col>
                                 {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                <Form.Control type="text" name="no_nuptk"    value={this.state.no_nuptk} />
+                                <Form.Control type="text" name="no_nuptk"    value={this.state.no_nuptk} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -100,7 +113,7 @@ editGuru=()=>{
                         <Row>
                             <Col>
                             
-                                <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} />
+                                <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -109,7 +122,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} />
+                                <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -118,7 +131,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="pendidikan" value={this.state.pendidikan} />
+                                <Form.Control type="text" name="pendidikan" value={this.state.pendidikan} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -127,7 +140,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="lulusan" value={this.state.lulusan} />
+                                <Form.Control type="text" name="lulusan" value={this.state.lulusan} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -137,7 +150,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="jabatan" value={this.state.jabatan} />
+                                <Form.Control type="text" name="jabatan" value={this.state.jabatan} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -146,7 +159,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="status_karyawan" value={this.state.status_karyawan} />
+                                <Form.Control type="text" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -156,7 +169,7 @@ editGuru=()=>{
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="agama" value={this.state.agama} />
+                                <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange} />
                             </Col>
                         </Row>
                     </FormGroup>

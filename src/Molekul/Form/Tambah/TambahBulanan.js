@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./TambahBulanan.css";
 
-const api ='http://192.168.1.142:5001'
+const api ='http://localhost:5001'
 
 export default class TambahBulanan extends Component {
     constructor(props){
@@ -31,13 +31,13 @@ handleError = () =>{
     if (this.state.image === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
-       this.AddDataBulanan()
+       this.AddOneData()
         
     }
 }
 
 
-AddDataBulanan = () => {
+AddOneData = () => {
     console.log("Data Masuk");
     axios.post(api+ '/addOneLaporanBulanan', {
         kode_laporan:this.state.kode_laporan,  

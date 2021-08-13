@@ -3,21 +3,23 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./TambahSPP.css";
 
-const api ='http://192.168.1.142:5001'
+const api ='http://localhost:5001'
 
 export default class TambahSPP extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            kode_spp       : [],
-            tgl_bayar      : '',
-            bulan          : '',
-            jumlah         : '',
-            ekstrakulikuler: '',
-            status         : '',
-            image          : '',
-            response : ""
+        kode_spp:[],
+        tgl_bayar:'',
+        bulan:'',	
+        jumlah:'',
+        ekstrakurikuler:'',
+        status:'',
+        image:'',
+        nama_siswa:'',
+        kelas:'',
+        response : ""
 
         }
     }
@@ -30,13 +32,13 @@ handleError = () =>{
     if (this.state.image === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
-       this.AddDataSPP()
+       this.addOneData()
         
     }
 }
 
 
-AddDataSPP = () => {
+addOneData = () => {
     console.log("Data Masuk");
     axios.post(api+ '/addOneLaporanSPP', {
     kode_spp: this.state.kode_spp,
@@ -45,6 +47,8 @@ AddDataSPP = () => {
     jumlah: this.state.jumlah,
     ekstrakulikuler: this.state.ekstrakulikuler,
     status: this.state.status,
+    nama_siswa:this.state.nama_siswa,
+    kelas:this.state.kelas,
     image: this.state.image
     })
     .then(json => {
