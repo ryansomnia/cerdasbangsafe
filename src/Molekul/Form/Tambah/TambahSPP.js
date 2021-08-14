@@ -45,7 +45,7 @@ addOneData = () => {
     tgl_bayar: this.state.tgl_bayar,
     bulan: this.state.bulan,
     jumlah: this.state.jumlah,
-    ekstrakulikuler: this.state.ekstrakulikuler,
+    ekstrakurikuler : this.state.ekstrakurikuler,
     status: this.state.status,
     nama_siswa:this.state.nama_siswa,
     kelas:this.state.kelas,
@@ -117,7 +117,7 @@ addOneData = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="ekstrakulikuler" value={this.state.ekstrakulikuler} onChange={this.handleChange}  placeholder="Masukkan Ekstrakulikuler" />
+                                <Form.Control type="text" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange}  placeholder="Masukkan Ekstrakulikuler" />
                             </Col>
                         </Row>
                     </FormGroup>

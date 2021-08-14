@@ -87,7 +87,7 @@ AddOneData= () => {
                         <Row >
                             <Col>
                                 {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="text" name="studen_account" value={this.state.studen_account} onChange={this.handleChange}  placeholder="Masukkan Studen Account"/>
+                                <Form.Control type="text" name="student_account" value={this.state.student_account} onChange={this.handleChange}  placeholder="Masukkan Studen Account"/>
                             </Col>
                         </Row>
                     </FormGroup>
