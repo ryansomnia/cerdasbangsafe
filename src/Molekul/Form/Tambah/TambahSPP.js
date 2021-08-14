@@ -121,6 +121,15 @@ addOneData = () => {
                             </Col>
                         </Row>
                     </FormGroup>
+
+                    <Form.Label>Jumlah</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="text" name="jumlah" value={this.state.jumlah} onChange={this.handleChange}  placeholder="Masukkan Jumlah Dana" />
+                            </Col>
+                        </Row>
+                    </FormGroup>
                     
                     <Form.Label>Status</Form.Label>
                     <FormGroup>
