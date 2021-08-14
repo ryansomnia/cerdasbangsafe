@@ -34,7 +34,7 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.image === ''){
+    if (this.state.nama === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
        this.AddOneData()
@@ -197,13 +197,13 @@ AddOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
+                                <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>

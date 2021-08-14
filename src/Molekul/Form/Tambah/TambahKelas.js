@@ -17,20 +17,22 @@ export default class TambahKelas extends Component {
  
         }
     }
+
+
 handleChange = (e) => {
     this.setState({[e.target.name] : e.target.value})
 }
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.nama_kelas === ''){
+    if (this.state.nama_guru === ''
+    ){
         alert('Masih ada data yang belum di isi !')
     } else {
        this.addOneData()
         
     }
 }
-
 
 addOneData= () => {
     console.log("Data Masuk");
@@ -81,7 +83,7 @@ addOneData= () => {
 
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>

@@ -87,6 +87,7 @@ export default class EditGuru extends Component {
     //     console.log(this.state.nama_guru)
 
     // }
+    
 
 
     render() {

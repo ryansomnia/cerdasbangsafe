@@ -22,18 +22,13 @@ console.log('====================================');
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
           <EditGuru guru={props.guru}/>
-                </Form>
           
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }
-
+ 
 
 
 function PopUp(props) {

@@ -7,7 +7,7 @@ const api ='http://localhost:5001'
 
 export default class TambahSPP extends Component {
     constructor(props){
-        super(props)
+        super(props) 
 
         this.state = {
         kode_spp:[],
@@ -125,7 +125,7 @@ addOneData = () => {
                     <Form.Label>Jumlah</Form.Label>
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col> 
                                 <Form.Control type="text" name="jumlah" value={this.state.jumlah} onChange={this.handleChange}  placeholder="Masukkan Jumlah Dana" />
                             </Col>
                         </Row>
@@ -144,13 +144,13 @@ addOneData = () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
+                                <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
-                        <Row>
-                            <Col>
+                        <Row >
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>
