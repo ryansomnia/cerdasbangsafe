@@ -23,7 +23,7 @@ const api = "http://localhost:5001";
 
 
     editcicilan =(item)=>{
-      const data = this.state.laporancicilan.filter(i => i.kode_cicilan !==item.kode_cicilan)
+      const data = this.state.laporancicilan.filter(i => i.kode_cicilan == item.kode_cicilan)
       this.setState({
         laporancicilan:data,
         show:'show'

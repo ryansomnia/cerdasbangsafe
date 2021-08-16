@@ -6,7 +6,7 @@ import moment from 'moment';
 
 
 const api = "http://localhost:5001";
-export default class EditSPP extends Component {
+export default class EditSpp extends Component {
 
     constructor(props) {
         super(props)
@@ -18,6 +18,8 @@ export default class EditSPP extends Component {
         jumlah: props.laporanspp[0].jumlah,
         ekstrakurikuler: props.laporanspp[0].ekstrakurikuler,
         status: props.laporanspp[0].status,
+        nama_siswa: props.laporanspp[0].nama_siswa,
+        kelas: props.laporanspp[0].kelas,
         image: props.laporanspp[0].image
         };
         this.handleChange = this.handleChange.bind(this);
@@ -33,18 +35,19 @@ export default class EditSPP extends Component {
         return tanggalreturn;
     }
       
-    editSpp=()=>{
-        console.log(this.state.status);
-        console.log(this.state.jumlah);
+    editSpp = () => {
+        console.log(this.state.kelas);
+        console.log(this.state.nama_siswa);
         axios.post(api + "/editonespp", {
-            kode_spp:this.state.kode_spp,
-            tgl_bayar:this.getformatdate(this.state.tgl_bayar),
-            bulan:this.state.bulan,
-            jumlah:this.state.jumlah,
-            ekstrakurikuler:this.state.ekstrakurikuler,
-            status:this.state.status,
-            image:this.state.image,
-            id_user:this.state.id_user
+            kode_spp: this.state.kode_spp,
+            tgl_bayar: this.getformatdate(this.state.tgl_bayar),
+            bulan: this.state.bulan,
+            jumlah: this.state.jumlah,
+            ekstrakurikuler :this.state.ekstrakurikuler,
+            status: this.state.status,
+            nama_siswa: this.state.nama_siswa,
+            kelas: this.state.kelas,
+            image: this.state.image
           })
           .then(function (response) {
             console.log(response);
@@ -62,93 +65,98 @@ export default class EditSPP extends Component {
         return(
             <Container>
                 <Form ClassName="form">
-                    <Col>
-                    <Form.Label>
-                        Kode SPP
-                    </Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                <Form.Control id="kode_spp" type="text" name="kode_spp"  value={this.state.kode_spp} onChange={this.handleChange("kode_spp")}  />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                   
-                    
-                    <Form.Label>Nama Siswa</Form.Label>
-                    <FormGroup>
-                        <Row >
-                            <Col>
-                                {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa}  onChange={this.handleChange("nama_siswa")} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                  
-                    <Form.Label>Kelas</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                <Form.Control type="text" name="kelas"    value={this.state.kelas}  onChange={this.handleChange("kelas")}  />
-                            </Col>
-                        </Row>
-                    </FormGroup>
+                <Col>
+                <Form.Label>Nama Siswa</Form.Label>
+                <FormGroup>
+                    <Row>
+                        <Col>
+                        <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange("nama_siswa")} />
+                        </Col>
+                    </Row>
+                </FormGroup>
+                </Col>
 
-                    <Form.Label>Tanggal Bayar</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                            <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar}  onChange={this.handleChange("tgl_bayar")} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
+                <Col>
+                <Form.Label>Kelas</Form.Label>
+                <FormGroup>
+                    <Row>
+                        <Col><Form.Control  type="text" name="kelas"   value={this.state.kelas} onChange={this.handleChange("kelas")} />
+                        </Col>
+                    </Row>
+                </FormGroup>
+                </Col>
 
-                    <Form.Label>Bulan</Form.Label>
+                <Col>
+                <Form.Label>Bulan</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="bulan" value={this.state.bulan}  onChange={this.handleChange("bulan")}/>
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="bulan" value={this.state.bulan} onChange={this.handleChange("bulan")} >
+                    <option>Pilih Bulan</option>
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                </select>
                     </FormGroup>
+                </Col>
 
-                    <Form.Label>Ekstrakulikuler</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="ekstrakurikuler" value={this.state.ekstrakurikuler}  onChange={this.handleChange("ekstrakurikuler")}  />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    
-                    <Form.Label>Status</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="status" value={this.state.status}  onChange={this.handleChange("status")}/>
-                            </Col>
-                        </Row>
-                    </FormGroup>
+                <Col>
+                <Form.Label>Tanggal Pembayaran</Form.Label>
+                <FormGroup>
+                    <Row>
+                        <Col>
+                        <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange("tgl_bayar")} />
+                        </Col>
+                    </Row>
+                </FormGroup>
+                </Col>
 
-                    <Form.Label>Bukti Pembayaran</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="file" name="image" value={this.state.image}  onChange={this.handleChange("image")} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                            <Button type="button" onClick={this.editSpp}>Kirim Perubahan</Button>
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    </Col>
+                <Col>
+                <Form.Label>Jumlah</Form.Label>
+                <FormGroup>
+                    <Row>
+                        <Col>
+                        <Form.Control type="text" name="jumlah" value={this.state.jumlah} onChange={this.handleChange("jumlah")} />
+                        </Col>
+                    </Row>
+                </FormGroup>
+                </Col>
 
+                <Col>
+                <Form.Label>Ekstrakulikuler</Form.Label>
+                <FormGroup>
+                    <select className="custom-select" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange} >
+                    <option>Pilih Ekstrakurikuler</option>
+                    <option value="-">Tidak Ada</option>
+                    <option value="Komputer">Komputer</option>
+                    <option value="Pramuka">Pramuka</option>
+                    <option value="Bahasa Asing">Bahasa Asing</option>
+                </select>
+                </FormGroup>
+                </Col>
+
+                <Col>
+                <Form.Label>Status</Form.Label>
+                    <FormGroup>
+                    <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange("status")} >
+                    <option>Pilih Status</option>
+                    <option value="Berhasil">Berhasil</option>
+                    <option value="Tidak Berhasil">Tidak Berhasil</option>
+                     </select>
+                    </FormGroup>
+                </Col>
+
+                <Col md={{ span: 5, offset: 9 }} >
+                <FormGroup><Row><Col> <Button type="button" onClick={this.editSpp}>Kirim Perubahan</Button></Col></Row></FormGroup>
+                </Col>
+               
                 </Form>
             </Container>
                                

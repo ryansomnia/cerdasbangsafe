@@ -34,7 +34,7 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.image === ''){
+    if (this.state.nama === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
        this.AddOneData()
@@ -177,11 +177,12 @@ AddOneData= () => {
 
                     <Form.Label>Seragam</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="seragam" value={this.state.seragam} onChange={this.handleChange}  placeholder="Masukkan Nominal Bayar" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
+                    <option>Pilih Seragam </option>
+                    <option value="Seragam Olahraga">Seragam Olahraga</option>
+                    <option value="Seragam Batik">Seragam Batik</option>
+                    <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
+                </select>
                     </FormGroup>
 
                     <Form.Label>Saldo</Form.Label>
@@ -197,13 +198,13 @@ AddOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
+                                <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Modal } from 'react-bootstrap';
 import EditInventaris from '../../Form/Edit/EditInventaris';
 
 
@@ -25,14 +25,10 @@ console.log('====================================');
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
           <EditInventaris laporaninventaris={props.laporaninventaris}/>
-                </Form>
+                
           
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }

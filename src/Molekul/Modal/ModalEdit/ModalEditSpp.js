@@ -1,6 +1,7 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
-import Editspp from '../../Form/Edit/EditSPP';
+import {Modal} from 'react-bootstrap';
+import EditSpp from '../../Form/Edit/EditSpp';
+
 
 
 
@@ -17,26 +18,23 @@ console.log('====================================');
         
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-       Edit Data
+       Edit Data SPP
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
-          <Editspp laporanspp={props.laporanspp}/>
-                </Form>
-          
+     <EditSpp laporanspp={props.laporanspp} />
+              
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }
 
 
 
-function PopUp(props) {
+function SPP(props) {
 const [modalShow, setModalShow] = React.useState(false);
+
+
 console.log('===============props.isShow=====================');
 console.log(props.isShow);
 console.log('====================================');
@@ -52,4 +50,4 @@ console.log('====================================');
   );
 }
 
-export default PopUp;
+export default SPP;

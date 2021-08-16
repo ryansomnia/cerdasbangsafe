@@ -23,7 +23,7 @@ const api = "http://localhost:5001";
 
 
     editbulanan =(item)=>{
-      const data = this.state.laporanbulanan.filter(i => i.kode_laporan !==item.kode_laporan)
+      const data = this.state.laporanbulanan.filter(i => i.kode_laporan == item.kode_laporan)
       this.setState({
         laporanbulanan:data,
         show:'show'

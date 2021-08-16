@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 // import axios from 'axios'
 import {Col, Row, FormGroup, Form, Button, Container} from 'react-bootstrap';
-
+import moment from 'moment';
 
 const api = "http://localhost:5001";
 export default class EditBulanan extends Component {
@@ -12,26 +12,37 @@ export default class EditBulanan extends Component {
     
         this.state = {
         kode_laporan:props.laporanbulanan[0].kode_laporan,
-        tgl:props.laporanbulanan[0].tgl,
-        keterangan:props.laporanbulanan[0].keterangan,
-        debit:props.laporanbulanan[0].debit,
-        kredit:props.laporanbulanan[0].kredit,
-        saldo:props.laporanbulanan[0].saldo,
-        jumlah:props.laporanbulanan[0].jumlah,
-        status:props.laporanbulanan[0].status
+        tgl: props.laporanbulanan[0].tgl,
+        keterangan: props.laporanbulanan[0].keterangan,
+        debit: props.laporanbulanan[0].debit,
+        kredit: props.laporanbulanan[0].kredit,
+        saldo: props.laporanbulanan[0].saldo,
+        jumlah: props.laporanbulanan[0].jumlah,
+        status: props.laporanbulanan[0].status
         };
-       
+        this.handleChange = this.handleChange.bind(this);
       }
+      getformatdate(date) {
+        let tanggalreturn = '';
+        let d = new Date(date);
+        if (!isNaN(d.getDate())) {
+            tanggalreturn = moment(d).format("YYYY-MM-DD")
+        }
+
+        return tanggalreturn;
+    }
     
       
 EditBulanan=()=>{
-        axios.post(api + "/editonebulanan", {
-            kode_laporan:this.state.kode_laporan,  
-            tgl :this.state.tgl ,
-            keterangan:this.state.keterangan,
-            debit:this.state.debit,
-            kredit:this.state.kredit,
-            saldo:this.state.saldo  ,
+    console.log(this.state.jumlah);
+    console.log(this.state.keterangan);
+    axios.post(api + "/editonebulanan",{
+            kode_laporan: this.state.kode_laporan,  
+            tgl : this.getformatdate(this.state.tgl) ,
+            keterangan: this.state.keterangan,
+            debit: this.state.debit,
+            kredit: this.state.kredit,
+            saldo: this.state.saldo  ,
             jumlah :this.state.jumlah ,
             status:this.state.status
           })
@@ -43,100 +54,101 @@ EditBulanan=()=>{
           });
       }
 
-     handleChange(event) {
-    // this.setState({value: event.target.value});
-  }
-
+      handleChange = name => event => {
+        this.setState({ [name]: event.target.value });
+        console.log(event);
+    };
     render() {
         return(
             <Container>
                 <Form ClassName="form">
-                    <Col>
-                    <Form.Label>Kode Laporan</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                <Form.Control id="kode_laporan" type="text" name="kode_laporan"  value={this.state.kode_laporan} onChange={this.handleChange}  />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                   
-                    
-                    <Form.Label>Tanggal</Form.Label>
+                <Col>
+                <Form.Label>Tanggal</Form.Label>
                     <FormGroup>
                         <Row >
                             <Col>
                                 {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                <Form.Control type="date" name="tgl" value={this.state.tgl} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                  
-                    <Form.Label>Keterangan</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                <Form.Control type="text" name="keterangan"    value={this.state.keterangan} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-
-                    <Form.Label>Debit</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="number" name="debit" value={this.state.debit} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-
-                    <Form.Label>Kredit</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="number" name="kredit" value={this.state.kredit}/>
-                            </Col>
-                        </Row>
-                    </FormGroup>
-
-                    <Form.Label>Saldo</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="number" name="saldo" value={this.state.saldo}  />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    
-                    <Form.Label>Jumlah</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="number" name="jumlah" value={this.state.jumlah}/>
-                            </Col>
-                        </Row>
-                    </FormGroup>
-
-                    
-                    <Form.Label>status</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="status" value={this.state.status} />
-                            </Col>
-                        </Row>
-                    </FormGroup>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                            <Button type="button" onClick={this.EditBulanan}>Kirim Pendaftaran</Button>
+                                <Form.Control type="date" name="tgl" value={this.state.tgl} onChange={this.handleChange("tgl")} />
                             </Col>
                         </Row>
                     </FormGroup>
                     </Col>
 
+                    <Col>
+                    <Form.Label>Keterangan</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
+                                <Form.Control id="keterangan" type="text" name="keterangan"    value={this.state.keterangan} onChange={this.handleChange("keterangan")} />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                    </Col>
+
+                    <Col>
+                    <Form.Label>Debit</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange("debit")} />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                    </Col>
+
+                    <Col>
+                    <Form.Label>Kredit</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="number" name="kredit" value={this.state.kredit} onChange={this.handleChange("kredit")} />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                    </Col>
+
+                    <Col>
+                    <Form.Label>Saldo</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="number" name="saldo" value={this.state.saldo} onChange={this.handleChange("saldo")}/>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                    </Col>
+
+                    <Col>
+                    <Form.Label>Jumlah</Form.Label>
+                    <FormGroup>
+                        <Row>
+                            <Col>
+                                <Form.Control type="number" name="jumlah" value={this.state.jumlah} onChange={this.handleChange ("jumlah")} />
+                            </Col>
+                        </Row>
+                    </FormGroup>
+                    </Col>
+                    
+                    <Col>
+                    <Form.Label>Status</Form.Label>
+                    <FormGroup>
+                    <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange("status")} >
+                    <option>Pilih Status</option>
+                    <option value="Berhasil">Berhasil</option>
+                    <option value="Tidak Berhasil">Tidak Berhasil</option>
+                     </select>
+                    </FormGroup>
+                    </Col>
+
+                    <FormGroup>
+                        <Row>
+                            <Col md={{ span: 5, offset: 9 }}>
+                            <Button type="button" onClick={this.EditBulanan}>Kirim Perubahan</Button>
+                            </Col>
+                        </Row>
+                    </FormGroup>
+    
                 </Form>
             </Container>
                                

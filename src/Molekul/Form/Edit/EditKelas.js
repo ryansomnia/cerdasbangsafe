@@ -20,7 +20,9 @@ export default class EditKelas extends Component {
     
       
 editKelas=()=>{
-        axios.post(api + "/addOneKelas", {
+        console.log(this.state.kelas);
+        console.log(this.state.nama_siswa);
+        axios.post(api + "/editOnedata", {
             nama_kelas : this.state.nama_kelas,
             kode_kelas : this.state.kode_kelas,
             nama_guru : this.state.nama_guru
@@ -33,15 +35,12 @@ editKelas=()=>{
           });
       } 
 
-      handleChange(event) {    
-        this.setState({
-            nama_kelas: event.target.nama_kelas,
-            kode_kelas: event.target.kode_kelas,
-            nama_guru:event.target.nama_guru
-      }); 
-       }
+      handleChange = name => event => {
+        this.setState({ [name]: event.target.value });
+        console.log(event);
+    };
 
-    render() {
+    render() { 
         return(
             <Container>
             <Form ClassName="form">
@@ -51,7 +50,7 @@ editKelas=()=>{
                 <FormGroup>
                     <Row>
                         <Col>
-                            <Form.Control id="kode_kelas" type="text" name="kode_kelas"  value={this.state.kode_kelas} onChange={this.handleChange}/>
+                            <Form.Control id="kode_kelas" type="text" name="kode_kelas"  value={this.state.kode_kelas} onChange={this.handleChange("kode_kelas")}/>
                         </Col>
                     </Row>
                 </FormGroup>
@@ -60,7 +59,7 @@ editKelas=()=>{
                 <FormGroup>
                     <Row>
                         <Col>
-                            <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas} onChange={this.handleChange}  />
+                            <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas} onChange={this.handleChange("nama_kelas")}  />
                         </Col>
                     </Row>
                 </FormGroup>
@@ -71,16 +70,18 @@ editKelas=()=>{
                 <FormGroup>
                     <Row>
                         <Col>
-                            <Form.Control type="text" name="kelas"  value={this.state.kelas} onChange={this.handleChange} />
+                            <Form.Control type="text" name="nama_guru"  value={this.state.nama_guru} onChange={this.handleChange("nama_guru")} />
                         </Col>
                     </Row>
                 </FormGroup>
 
                 <FormGroup>
                     <Row>
-                        <Col>
-                        <Button type="button" onClick={this.editKelas}>Kirim Perubahan</Button>
-                        </Col>
+                      
+                <Col md={{ span: 5, offset: 9 }} >
+                <FormGroup><Row><Col> <Button type="button" onClick={this.editKelas}>Kirim Perubahan</Button></Col></Row></FormGroup>
+                </Col>
+               
                     </Row>
                 </FormGroup>
                 </Col>

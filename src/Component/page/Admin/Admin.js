@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
-import ModalEditKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
+import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 
@@ -18,7 +18,8 @@ const api = "http://localhost:5001";
       guru:[],
       response: '',
       display: 'none',
-      show:''
+      show:'',
+      tampil:''
     };
   }
 
@@ -39,7 +40,7 @@ const api = "http://localhost:5001";
       const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
       this.setState({
         kelas:data,
-        show:'show'
+        tampil:'show'
         
       })
      
@@ -262,7 +263,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEditKelas isShow={this.state.show} kelas={this.state.kelas}/>
+              <ModalKelas isShow={this.state.tampil} kelas={this.state.kelas}/>
 
               <div className="project">
                 <div className="card">

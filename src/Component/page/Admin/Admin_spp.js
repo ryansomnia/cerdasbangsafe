@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
 import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
-import ModalEditSPP from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
+import ModalEditSpp from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
  
 
 
@@ -22,10 +22,11 @@ const api = "http://localhost:5001";
     }; 
    }
 
-    editSpp =(item)=>{
+    editSpp =(item)=>{ 
       console.log('=================Data Masuk===================');
       console.log(item);
       console.log('====================================');
+
       const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
       this.setState({
         laporanspp:data,
@@ -235,7 +236,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEditSPP isShow={this.state.show} laporanspp={this.state.laporanspp}/>
+              <ModalEditSpp isShow={this.state.show} laporanspp={this.state.laporanspp}/>
             </div>
           </div>
         </div>

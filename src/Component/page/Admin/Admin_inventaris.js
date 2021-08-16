@@ -23,7 +23,7 @@ const api = "http://localhost:5001";
 
 
     editinventaris =(item)=>{
-      const data = this.state.laporaninventaris.filter(i => i.kode_inventaris !==item.kode_inventaris)
+      const data = this.state.laporaninventaris.filter(i => i.kode_inventaris == item.kode_inventaris)
       this.setState({
         laporaninventaris:data,
         show:'show'

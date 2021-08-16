@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import {Col, Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./Pembayaranseragam.css";
 
 const api ='http://localhost:5001'
@@ -68,8 +68,7 @@ AddOneData= () => {
 
     render(){
         return(
-        <div className="main-admin">
-        <Container  className="mt-5">
+            <div className="mt-4  main-admin ">
             <h4>Form Pembayaran</h4>
                 <Form ClassName="form">
                     <Col>
@@ -122,32 +121,32 @@ AddOneData= () => {
 
                     <Form.Label>Seragam</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="seragam" value={this.state.seragam} onChange={this.handleChange}  placeholder="Masukkan Nama Seragam" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
+                    <option>Pilih Seragam yang ingin di Bayar</option>
+                    <option value="Seragam Olahraga">Seragam Olahraga</option>
+                    <option value="Seragam Batik">Seragam Batik</option>
+                    <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
+                </select>
                     </FormGroup>
 
                     <Form.Label>Bukti Pembayaran</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
+                                <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
                         <Row>
-                            <Col>
-                            <Button type="button" onClick={this.handleError}>Submit</Button>
-                            </Col>
+                        <Col  className="d-flex justify-content-end">
+                        <Button variant="primary" onClick={this.handleError} >Bayar</Button>
+                    </Col>
                         </Row>
                     </FormGroup>
                     </Col>
 
                 </Form>
-            </Container>
             </div>
         );
     }

@@ -7,7 +7,7 @@ const api ='http://localhost:5001'
 
 export default class TambahSPP extends Component {
     constructor(props){
-        super(props)
+        super(props) 
 
         this.state = {
         kode_spp:[],
@@ -106,26 +106,38 @@ addOneData = () => {
 
                     <Form.Label>Bulan</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="bulan" value={this.state.bulan} onChange={this.handleChange}  placeholder="Masukkan Bulan" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="bulan" value={this.state.bulan} onChange={this.handleChange} >
+                    <option>Pilih Bulan</option>
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                </select>
                     </FormGroup>
 
-                    <Form.Label>Ekstrakulikuler</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange}  placeholder="Masukkan Ekstrakulikuler" />
-                            </Col>
-                        </Row>
+                <Form.Label>Ekstrakulikuler</Form.Label>
+                <FormGroup>
+                    <select className="custom-select" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange} >
+                    <option>Pilih Ekstrakurikuler</option>
+                    <option value="-">Tidak Ada</option>
+                    <option value="Komputer">Komputer</option>
+                    <option value="Pramuka">Pramuka</option>
+                    <option value="Bahasa Asing">Bahasa Asing</option>
+                </select>
                     </FormGroup>
 
                     <Form.Label>Jumlah</Form.Label>
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col> 
                                 <Form.Control type="text" name="jumlah" value={this.state.jumlah} onChange={this.handleChange}  placeholder="Masukkan Jumlah Dana" />
                             </Col>
                         </Row>
@@ -133,24 +145,24 @@ addOneData = () => {
                     
                     <Form.Label>Status</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="status" value={this.state.status} onChange={this.handleChange}  placeholder="Masukkan Status" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange} >
+                    <option>Pilih Status</option>
+                    <option value="Berhasil">Berhasil</option>
+                    <option value="Tidak Berhasil">Tidak Berhasil</option>
+                     </select>
                     </FormGroup>
 
                     <Form.Label>Bukti Pembayaran</Form.Label>
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
+                                <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange}  placeholder="Masukkan Bukti Pembayaran" />
                             </Col>
                         </Row>
                     </FormGroup>
                     <FormGroup>
-                        <Row>
-                            <Col>
+                        <Row >
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>

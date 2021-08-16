@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Form, FormControl, Button, Dropdown,Image, Card, Col, Row} from "react-bootstrap";
+import { Navbar, Form, FormControl, Button, Dropdown, Card, Col, Row} from "react-bootstrap";
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt, FaBook,FaLandmark, FaTshirt } from "react-icons/fa";
 import Iconseragam from '../../images/seragam.svg'
 import IconBuku from '../../images/buku.svg'
@@ -53,7 +53,7 @@ export default class user extends Component {
                             </li>
                            <li>
                             <Navbar.Text>
-                            Signed in as: <a href="#login">Naruto</a>
+                            Signed in as: <a href="#login">Siswa</a>
                         </Navbar.Text></li>
                         </ul>
                     </div>
@@ -62,7 +62,6 @@ export default class user extends Component {
             {/* <!-- Page content--> */}
             <div className="container-fluid">
             <Row className="justify-content-md-center">
-            <Image className="sekolah" src="Image/school.svg" fluid />
             <Col xs lg="3">
             <Card  style={{ width: '18rem' }}>
             <img className="icon-img"  variant="top" src={Iconseragam} alt="seragam" />

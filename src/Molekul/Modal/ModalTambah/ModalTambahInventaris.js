@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal} from 'react-bootstrap';
 import TambahInventaris from '../../Form/Tambah/TambahInventaris';
 
 
@@ -19,14 +19,9 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
          <TambahInventaris />
-        </Form>
-          
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+     
     </Modal>
   );
 }

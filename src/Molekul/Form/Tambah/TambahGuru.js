@@ -32,7 +32,7 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.image === ''){
+    if (this.state.nama_guru === ''){
         alert('Masih ada data yang belum di isi !')
     } else {
        this.AddDataGuru()
@@ -182,7 +182,7 @@ AddDataGuru = () => {
                     
                     <FormGroup>
                         <Row>
-                            <Col>
+                            <Col md={{ span: 5, offset: 10 }}>
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                             </Col>
                         </Row>
