@@ -53,7 +53,7 @@ export default class user extends Component {
                             </li>
                            <li>
                             <Navbar.Text>
-                            Signed in as: <a href="#login">Naruto</a>
+                            Signed in as: <a href="#login">Siswa</a>
                         </Navbar.Text></li>
                         </ul>
                     </div>
