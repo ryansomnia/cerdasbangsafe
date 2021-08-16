@@ -24,9 +24,7 @@ const api = "http://localhost:5001";
 
 
       editGuru =(item)=>{
-      console.log('=============Baperr==========');
-      console.log(item);
-      console.log('====================================');
+     
    
       const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
       this.setState({
@@ -34,9 +32,7 @@ const api = "http://localhost:5001";
         show:'show' 
       })
       
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
+     
     }
 
     editKelas =(item)=>{
@@ -46,9 +42,7 @@ const api = "http://localhost:5001";
         show:'show'
         
       })
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
+     
     }
 
   componentDidMount() {
@@ -283,15 +277,7 @@ const api = "http://localhost:5001";
                           <tr>
                           <td>ID Guru</td>
                             <td>Nama Guru</td>
-                            <td>Jenis Kelamin</td>
-                            <td>NO NUPTK</td>
-                            <td>Tempat Lahir</td>
-                            <td>Tgl Lahir</td>
-                            <td>Pendidikan</td>
-                            <td>Lulusan</td>
-                            <td>Jabatan</td>
-                            <td>Status Karyawan</td>
-                            <td>Agama</td>
+                          
                             <td>Action</td>
                           </tr>
                         </thead>
