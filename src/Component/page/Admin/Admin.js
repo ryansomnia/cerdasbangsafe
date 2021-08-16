@@ -7,7 +7,7 @@ import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
 import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
-
+import swal from 'sweetalert';
 const api = "http://localhost:5001";
  class Admin extends PureComponent {
   constructor(props) {
@@ -93,14 +93,28 @@ const api = "http://localhost:5001";
       
     })
     .then(function (response) {
-      console.log(response);
+      console.log('================response====================');
+     if (response.status == 200) {
+      swal({
+        title: "Delete data", 
+        text: "data mu berhasil dihapus", 
+        type: "success"
+      }).then(function () {
+        window.location.reload();
+      })
+     } 
+      console.log(response.status);
+      console.log('====================================');
+     
     })
     .catch(function (error) {
       console.log(error);
     });
   }
  
- 
+
+  
+  
 
   render() {
     return (

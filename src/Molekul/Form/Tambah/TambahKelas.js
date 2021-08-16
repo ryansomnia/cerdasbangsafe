@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import swal from 'sweetalert';
 // import "./TambahKelas.css";
 
 const api ='http://localhost:5001'
@@ -25,9 +26,12 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.nama_guru === ''
-    ){
-        alert('Masih ada data yang belum di isi !')
+    if (this.state.nama_guru === '' || this.state.kode_kelas === '' || this.state.nama_kelas === ''){
+        
+        swal({
+            icon: "warning",
+            text: "data mu ada yang belum ter isi"
+          });
     } else {
        this.addOneData()
         
@@ -43,6 +47,20 @@ addOneData= () => {
     })
     .then(json => {
         console.log(json,'data');
+        console.log('===============json=====================');
+        console.log(json.status);
+        console.log('====================================');
+        if (json.status == 200) {
+            swal({
+                icon: "success",
+                text: "data mu telah sukses bertambah"
+              });
+        } else {
+            swal({
+                icon: "danger",
+                text: "data mu tidak sukses ditambah"
+              });
+        }
     })
 }
 
