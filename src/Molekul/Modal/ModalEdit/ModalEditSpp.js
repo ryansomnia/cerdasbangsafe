@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal } from 'react-bootstrap';
 import Editspp from '../../Form/Edit/EditSPP';
 
 
@@ -21,9 +21,8 @@ console.log('====================================');
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
           <Editspp laporanspp={props.laporanspp}/>
-                </Form>
+              
           
       </Modal.Body>
       <Modal.Footer>

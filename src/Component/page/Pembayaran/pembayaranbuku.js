@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import {Col,  Row, FormGroup, Form, Button} from 'react-bootstrap';
 // import "./Pembayaranbuku.css";
 
 const api ='http://localhost:5001'
@@ -68,10 +68,9 @@ AddOneData= () => {
 
     render(){
         return(
-        <div className="main-admin">
-        <Container  className="mt-5">
+            <div className="mt-4  main-admin ">
             <h4>Form Pembayaran</h4>
-                <Form ClassName="form">
+            <Form ClassName="form ">
                     <Col>
                     <Form.Label>Nama Siswa</Form.Label>
                     <FormGroup>
@@ -139,15 +138,14 @@ AddOneData= () => {
                     </FormGroup>
                     <FormGroup>
                         <Row>
-                            <Col>
-                            <Button type="button" onClick={this.handleError}>Submit</Button>
-                            </Col>
+                        <Col  className="d-flex justify-content-end">
+                            <Button variant="primary" onClick={this.handleError} >Bayar</Button>
+                        </Col>
                         </Row>
                     </FormGroup>
                     </Col>
 
                 </Form>
-            </Container>
             </div>
         );
     }

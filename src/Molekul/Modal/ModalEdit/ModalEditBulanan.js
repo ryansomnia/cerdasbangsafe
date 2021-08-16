@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal} from 'react-bootstrap';
 import EditBulanan from '../../Form/Edit/EditBulanan';
 
 
@@ -19,13 +19,12 @@ console.log('====================================');
         
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-       Edit Data
+       Edit Dat
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
           <EditBulanan laporanbulanan={props.laporanbulanan}/>
-                </Form>
+               
           
       </Modal.Body>
       <Modal.Footer>

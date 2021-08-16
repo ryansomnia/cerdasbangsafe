@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import { Modal} from 'react-bootstrap';
 import EditGuru from '../Form/EditGuru';
 
 
@@ -23,7 +23,6 @@ console.log('====================================');
       </Modal.Header>
       <Modal.Body>
           <EditGuru guru={props.guru}/>
-          
       </Modal.Body>
     </Modal>
   );

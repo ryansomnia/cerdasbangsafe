@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Form, FormControl, Button, Dropdown} from "react-bootstrap";
+import { Navbar, Form, FormControl, Button, Dropdown , Container, Row, Col} from "react-bootstrap";
 import {FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,FaSignOutAlt } from "react-icons/fa";
 import Pembayaranbuku from "../Pembayaran/pembayaranbuku";
 
@@ -58,9 +58,13 @@ export default class bayarbuku extends Component {
                 </div>
             </Navbar>
             {/* <!-- Page content--> */}
-            <div className="container-fluid">
-               <Pembayaranbuku />
-            </div>
+            <Container fluid>
+             <Row>
+            <Col  md={{ span: 6, offset: 3 }}>
+            <Pembayaranbuku/>
+            </Col>
+            </Row>
+            </Container>
         </div>
     </div>
         );

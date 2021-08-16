@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal } from 'react-bootstrap';
 import TambahKelas from '../../Form/Tambah/TambahKelas';
 
 

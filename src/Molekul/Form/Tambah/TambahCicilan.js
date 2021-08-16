@@ -177,11 +177,12 @@ AddOneData= () => {
 
                     <Form.Label>Seragam</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="seragam" value={this.state.seragam} onChange={this.handleChange}  placeholder="Masukkan Nominal Bayar" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
+                    <option>Pilih Seragam </option>
+                    <option value="Seragam Olahraga">Seragam Olahraga</option>
+                    <option value="Seragam Batik">Seragam Batik</option>
+                    <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
+                </select>
                     </FormGroup>
 
                     <Form.Label>Saldo</Form.Label>

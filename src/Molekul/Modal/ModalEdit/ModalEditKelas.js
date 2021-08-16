@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal, Form } from 'react-bootstrap';
+import {  Button, Modal} from 'react-bootstrap';
 import EditKelas from '../../Form/Edit/EditKelas';
 
 
@@ -26,10 +26,7 @@ console.log('====================================');
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ClassName="form">
-          <EditKelas kelas={props.kelas}/>
-                </Form>
-          
+          <EditKelas kelas={props.kelas}/>      
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

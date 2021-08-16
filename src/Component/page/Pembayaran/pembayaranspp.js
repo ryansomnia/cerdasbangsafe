@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
+import {Col,Row, FormGroup, Form, Button} from 'react-bootstrap';
 import "./pembayaranspp.css";
 
 const api ='http://localhost:5001'
@@ -13,11 +13,11 @@ export default class Pembayaranspp extends Component {
             tgl_bayar      : '',
             bulan          : '',
             jumlah         : '',
-            ekstrakulikuler: '',
+            ekstrakurikuler: '',
             status         : '',
             image          : '',
             nama_siswa     : '',
-            kelas          :'',
+            kelas          : '',
             response : ""
 
         }
@@ -44,7 +44,7 @@ AddOneData = () => {
     tgl_bayar: this.state.tgl_bayar,
     bulan: this.state.bulan,
     jumlah: this.state.jumlah,
-    ekstrakulikuler: this.state.ekstrakulikuler,
+    ekstrakurikuler: this.state.ekstrakurikuler,
     status: this.state.status,
     image: this.state.image,
     nama_siswa:this.state.nama_siswa,
@@ -56,48 +56,90 @@ AddOneData = () => {
 }
 render(){
     return(
-        <div className="main-admin">
-        <Container  className="mt-5">
+        <div className="mt-4  main-admin ">
             <h4>Form Pembayaran</h4>
-            <Form>
-                <Row className="mb-3">
-                <FormGroup as={Col} controlId="formGridEmail">
-                    <Form.Label>Nama Siswa</Form.Label>
+            <Form ClassName="form ">
+                
+            <Col>
+                <Form.Label>Nama Siswa</Form.Label>
+                <FormGroup >
+                    <Row >
+                        <Col >
                     <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} placeholder="Masukkan Nama Siswa"/>
+                    </Col>
+                    </Row>
                 </FormGroup>
+            </Col>
 
-                <FormGroup as={Col} controlId="formGridPassword">
-                    <Form.Label>Kelas</Form.Label>
+             <Col>   
+             <Form.Label>Kelas</Form.Label>
+                <FormGroup>
+                    <Row>
+                    <Col >
                     <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange} placeholder="Masukkan Kelas Siswa"/>
+                    </Col>
+                    </Row>
                 </FormGroup>
-                </Row>
-
-                <FormGroup className="mb-3" controlId="formGridAddress1">
-                        <Form.Label>SPP Bulan</Form.Label>
-                        <Form.Control type="text" name="bulan" value={this.state.bulan} onChange={this.handleChange} placeholder="Masukkan SPP Bulan"/>
+            </Col>
+            
+                <Col>
+                <Form.Label>SPP Bulan</Form.Label>
+                <FormGroup>
+                <select className="custom-select" name="bulan" value={this.state.bulan} onChange={this.handleChange} >
+                    <option>Pilih Bulan yang ingin di Bayar</option>
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                </select>
                 </FormGroup>
+                </Col>
 
-                <FormGroup className="mb-3" controlId="formGridAddress2">
-                        <Form.Label>Jumlah</Form.Label>
+                <Col>
+                <Form.Label>Ekstrakurikuler</Form.Label>
+                <FormGroup >
+                <select className="custom-select" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange} >
+                    <option>Pilih Ekstrakurikule  yang ingin di Bayar</option>
+                    <option value="-">Tidak Ada</option>
+                    <option value="Komputer">Komputer</option>
+                    <option value="Pramuka">Pramuka</option>
+                    <option value="Bahasa Asing">Bahasa Asing</option>
+                </select>
+                </FormGroup>
+                </Col>
+
+                <Col>
+                <Form.Label>Jumlah</Form.Label>
+                <FormGroup >
+                     <Row>
+                    <Col >
                         <Form.Control type="Number" name="jumlah" value={this.state.jumlah} onChange={this.handleChange} placeholder="Masukkan Jumlah Bayar"/>
+                    </Col>
+                    </Row>   
                 </FormGroup>
+                </Col>
 
-     <Form.Group controlId="formFile" className="mb-3">
-    <Form.Label>Upload Bukti Pembayaran</Form.Label>
-    <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange}/>
-  </Form.Group>
-  
-
-    <div className="d-flex justify-content-end sticky " 
-    activeKey="/home"
-    onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-    >
-
+            <Col>
+            <Form.Label>Upload Bukti Pembayaran</Form.Label>
+            <Form.Group >
+                <Row><Col>
+                <Form.Control type="file" name="image" value={this.state.image} accept="image/*" onChange={this.handleChange}/>
+                </Col></Row>
+            </Form.Group>
+            </Col>
+    <Col  className="d-flex justify-content-end">
     <Button variant="primary" onClick={this.handleError} >Bayar</Button>
-   </div>
-</Form>
-           </Container>
-           </div>
+   </Col>
+    </Form>
+</div>
         );
     }
 }

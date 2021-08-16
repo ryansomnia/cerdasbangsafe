@@ -106,20 +106,32 @@ addOneData = () => {
 
                     <Form.Label>Bulan</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="bulan" value={this.state.bulan} onChange={this.handleChange}  placeholder="Masukkan Bulan" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="bulan" value={this.state.bulan} onChange={this.handleChange} >
+                    <option>Pilih Bulan</option>
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                </select>
                     </FormGroup>
 
-                    <Form.Label>Ekstrakulikuler</Form.Label>
-                    <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange}  placeholder="Masukkan Ekstrakulikuler" />
-                            </Col>
-                        </Row>
+                <Form.Label>Ekstrakulikuler</Form.Label>
+                <FormGroup>
+                    <select className="custom-select" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange} >
+                    <option>Pilih Ekstrakurikuler</option>
+                    <option value="-">Tidak Ada</option>
+                    <option value="Komputer">Komputer</option>
+                    <option value="Pramuka">Pramuka</option>
+                    <option value="Bahasa Asing">Bahasa Asing</option>
+                </select>
                     </FormGroup>
 
                     <Form.Label>Jumlah</Form.Label>
@@ -133,11 +145,11 @@ addOneData = () => {
                     
                     <Form.Label>Status</Form.Label>
                     <FormGroup>
-                        <Row>
-                            <Col>
-                                <Form.Control type="text" name="status" value={this.state.status} onChange={this.handleChange}  placeholder="Masukkan Status" />
-                            </Col>
-                        </Row>
+                    <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange} >
+                    <option>Pilih Status</option>
+                    <option value="Berhasil">Berhasil</option>
+                    <option value="Tidak Berhasil">Tidak Berhasil</option>
+                     </select>
                     </FormGroup>
 
                     <Form.Label>Bukti Pembayaran</Form.Label>
