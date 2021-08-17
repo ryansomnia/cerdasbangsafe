@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 // import axios from 'axios'
 import {Col, Row, FormGroup, Form, Button, Container} from 'react-bootstrap';
-
+import swal from 'sweetalert';
 
 const api = "http://localhost:5001";
 export default class EditKelas extends Component {
@@ -28,10 +28,27 @@ editKelas=()=>{
             nama_guru : this.state.nama_guru
           })
           .then(function (response) {
+            if (response.status == 200) {
+                swal({
+                    title: "Tambah data", 
+                    text: "data mu berhasil ditambah", 
+                    type: "success"
+                  }).then(function () {
+                    window.location.reload();
+                  });
+            } 
+
             console.log(response);
           })
           .catch(function (error) {
-            console.log(error);
+            swal({
+                title: "Tambah data", 
+                text: `data mu tidak berhasil ditambah Error : ${error}`, 
+                type: "danger"
+              }).then(function () {
+                window.location.reload();
+              });
+         
           });
       } 
 

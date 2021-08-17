@@ -52,13 +52,19 @@ addOneData= () => {
         console.log('====================================');
         if (json.status == 200) {
             swal({
-                icon: "success",
-                text: "data mu telah sukses bertambah"
+                title: "Tambah data", 
+                text: "data mu berhasil ditambah", 
+                type: "success"
+              }).then(function () {
+                window.location.reload();
               });
         } else {
             swal({
-                icon: "danger",
-                text: "data mu tidak sukses ditambah"
+                title: "Tambah data", 
+                text: "data mu tidak berhasil ditambah", 
+                type: "danger"
+              }).then(function () {
+                window.location.reload();
               });
         }
     })
