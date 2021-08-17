@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import axios from 'axios'
 import { Col, Row, FormGroup, Form, Button, Container } from 'react-bootstrap';
 import moment from 'moment';
+import swal from 'sweetalert';
 
 const api = "http://localhost:5001";
 export default class EditCicilan extends Component {
@@ -61,6 +62,15 @@ export default class EditCicilan extends Component {
         })
             .then(function (response) {
                 console.log(response);
+                if (response.status == 200) {
+                    swal({
+                        title: "Edit data", 
+                        text: "Data Anda berhasil di Ubah", 
+                        type: "success"
+                      }).then(function () {
+                        window.location.reload();
+                      });
+                }
             })
             .catch(function (error) {
                 console.log(error);

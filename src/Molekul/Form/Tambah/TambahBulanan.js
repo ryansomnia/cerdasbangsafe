@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import axios from 'axios'
 import { Col, Container, Row, FormGroup, Form, Button } from 'react-bootstrap';
 // import "./TambahBulanan.css";
+import swal from 'sweetalert';
+
 
 const api = 'http://localhost:5001'
-
 export default class TambahBulanan extends Component {
     constructor(props) {
         super(props)
@@ -51,6 +52,15 @@ export default class TambahBulanan extends Component {
         })
             .then(json => {
                 console.log(json, 'data');
+                if (json.status == 200) {
+                    swal({
+                        title: "Tambah data", 
+                        text: "Data Anda berhasil ditambah", 
+                        type: "success"
+                      }).then(function () {
+                        window.location.reload();
+                      });
+                }
             })
     }
 
