@@ -19,7 +19,7 @@ export default class EditKelas extends Component {
       }
     
       
-editKelas=()=>{
+editKelas=()=>{ 
         console.log(this.state.kelas);
         console.log(this.state.nama_siswa);
         axios.post(api + "/editOnedata", {
