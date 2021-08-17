@@ -1,5 +1,5 @@
 import React from "react";
-import { Button} from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
@@ -8,7 +8,7 @@ import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditInventaris'
 
 
 const api = "http://localhost:5001";
- class Admin_inventaris extends PureComponent {
+class Admin_inventaris extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -16,25 +16,25 @@ const api = "http://localhost:5001";
       laporaninventaris: [],
       response: '',
       display: 'none',
-      show:''
+      show: ''
     };
-   
+
   }
 
 
-    editinventaris =(item)=>{
-      const data = this.state.laporaninventaris.filter(i => i.kode_inventaris == item.kode_inventaris)
-      this.setState({
-        laporaninventaris:data,
-        show:'show'
-        
-      })
-      
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
-   
-    }
+  editinventaris = (item) => {
+    const data = this.state.laporaninventaris.filter(i => i.kode_inventaris == item.kode_inventaris)
+    this.setState({
+      laporaninventaris: data,
+      show: 'show'
+
+    })
+
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
+  }
 
   componentDidMount() {
     axios.get(api + "/getlaporaninventaris").then(res => {
@@ -43,27 +43,27 @@ const api = "http://localhost:5001";
       });
     });
   }
-  
-  deleteinventaris =(item)=>{
+
+  deleteinventaris = (item) => {
     console.log('masuk')
-  
+
     console.log('====================================');
     console.log(item);
     console.log('====================================');
-   
+
     axios.post(api + "/deleteoneinventaris", {
-      kode_inventaris:item.kode_inventaris
-      
+      kode_inventaris: item.kode_inventaris
+
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
- 
+
 
 
   render() {
@@ -95,7 +95,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-              <a href="/cicilan">
+                <a href="/cicilan">
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
@@ -124,11 +124,6 @@ const api = "http://localhost:5001";
               </label>
               Dashboard
             </h2>
-
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
@@ -183,15 +178,20 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Inventaris Sekolah</h3>
-                   <ModalTambahInventaris />
+                    <Form className="d-flex">
+                      <h3>Table Inventaris Sekolah</h3>
+                      <Col md={{ span: 3, offset: 6 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
+                    <ModalTambahInventaris />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Kode Inventaris</td>
                             <td>Tanggal Pembelian</td>
                             <td>Keterangan</td>
                             <td>Jumlah</td>
@@ -205,10 +205,9 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.laporaninventaris.map(laporaninventaris => 
-                         
+                          {this.state.laporaninventaris.map(laporaninventaris =>
+
                             <tr key={laporaninventaris.kode_inventaris}>
-                               <td>{laporaninventaris.kode_inventaris}</td>
                               <td>{laporaninventaris.tgl_pembelian}</td>
                               <td>{laporaninventaris.keterangan}</td>
                               <td>{laporaninventaris.jumlah}</td>
@@ -217,14 +216,14 @@ const api = "http://localhost:5001";
                               <td>{laporaninventaris.wali_kelas}</td>
                               <td>{laporaninventaris.image}</td>
                               <td>
-                            <div className="d-flex justify-content-center">
-                                          <Button className="btn-space" variant="outline-success" onClick={this.editinventaris.bind(this,laporaninventaris)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger" onClick={this.deleteinventaris.bind(this,laporaninventaris)}>
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex justify-content-center">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editinventaris.bind(this, laporaninventaris)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deleteinventaris.bind(this, laporaninventaris)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -237,7 +236,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEdit isShow={this.state.show} laporaninventaris={this.state.laporaninventaris}/>
+              <ModalEdit isShow={this.state.show} laporaninventaris={this.state.laporaninventaris} />
             </div>
           </div>
         </div>

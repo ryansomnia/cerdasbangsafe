@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Button, Modal} from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import TambahGuru from '../../Form/Tambah/TambahGuru';
 
 
@@ -10,19 +10,19 @@ import TambahGuru from '../../Form/Tambah/TambahGuru';
 function MyVerticallyCenteredModal(props) {
 
   return (
-    <Modal 
+    <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered>
-        
+
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        Form Tambah Data
+          Form Tambah Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-    <TambahGuru />
+        <TambahGuru />
       </Modal.Body>
     </Modal>
   );
@@ -35,10 +35,10 @@ function ModalTambahGuru() {
 
   return (
     <>
-    <div className="d-flex justify-content-left">
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Tambah Data
-      </Button>
+      <div className="d-flex justify-content-left">
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Tambah Data
+        </Button>
       </div>
       <MyVerticallyCenteredModal
         show={modalShow}

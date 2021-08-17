@@ -1,5 +1,5 @@
 import React from "react";
-import { Button} from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
 import { PureComponent } from "react";
@@ -8,7 +8,7 @@ import ModalTambahLaporan from "../../../Molekul/Modal/ModalTambah/ModalTambahLa
 
 
 const api = "http://localhost:5001";
- class laporan_bulanan extends PureComponent {
+class laporan_bulanan extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -16,25 +16,25 @@ const api = "http://localhost:5001";
       laporanbulanan: [],
       response: '',
       display: 'none',
-      show:''
+      show: ''
     };
-   
+
   }
 
 
-    editbulanan =(item)=>{
-      const data = this.state.laporanbulanan.filter(i => i.kode_laporan == item.kode_laporan)
-      this.setState({
-        laporanbulanan:data,
-        show:'show'
-        
-      })
-      
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
-   
-    }
+  editbulanan = (item) => {
+    const data = this.state.laporanbulanan.filter(i => i.kode_laporan == item.kode_laporan)
+    this.setState({
+      laporanbulanan: data,
+      show: 'show'
+
+    })
+
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
+  }
 
   componentDidMount() {
     axios.get(api + "/getlaporanbulanan").then(res => {
@@ -42,25 +42,25 @@ const api = "http://localhost:5001";
         laporanbulanan: res.data.values
       });
     });
-    
+
   }
-  deletelaporan =(item)=>{
+  deletelaporan = (item) => {
     console.log('masuk')
-  
+
     console.log('====================================');
     console.log(item);
     console.log('====================================');
-   
+
     axios.post(api + "/deleteonebulanan", {
-      kode_laporan:item.kode_laporan
-      
+      kode_laporan: item.kode_laporan
+
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
 
@@ -93,7 +93,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-              <a href="/cicilan" >
+                <a href="/cicilan" >
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
@@ -122,11 +122,6 @@ const api = "http://localhost:5001";
               </label>
               Dashboard
             </h2>
-
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
@@ -181,8 +176,14 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Laporan Bulanan</h3>
-                   <ModalTambahLaporan />
+                    <Form className="d-flex">
+                      <h3>Table Laporan Bulanan</h3>
+                      <Col md={{ span: 3, offset: 6 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
+                    <ModalTambahLaporan />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -192,7 +193,7 @@ const api = "http://localhost:5001";
                             <td>Kode Laporan</td>
                             <td>Tanggal</td>
                             <td>Keterangan</td>
-                            <td>debit</td>
+                            <td>Debit</td>
                             <td>Kredit</td>
                             <td>Saldo</td>
                             <td>Jumlah</td>
@@ -203,26 +204,26 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.laporanbulanan.map(laporanbulanan => 
-                         
+                          {this.state.laporanbulanan.map(laporanbulanan =>
+
                             <tr key={laporanbulanan.kode_laporan}>
-                               <td>{laporanbulanan.kode_laporan}</td>
+                              <td>{laporanbulanan.kode_laporan}</td>
                               <td>{laporanbulanan.tgl}</td>
                               <td>{laporanbulanan.keterangan}</td>
-                              <td>{laporanbulanan.debit}</td>
-                              <td>{laporanbulanan.kredit}</td>
-                              <td>{laporanbulanan.saldo}</td>
-                              <td>{laporanbulanan.jumlah}</td>
+                              <td>Rp. {laporanbulanan.debit}</td>
+                              <td>Rp. {laporanbulanan.kredit}</td>
+                              <td>Rp. {laporanbulanan.saldo}</td>
+                              <td>Rp. {laporanbulanan.jumlah}</td>
                               <td>{laporanbulanan.status}</td>
                               <td>
-                              <div className="d-flex justify-content-center">
-                              <Button className="btn-space" variant="outline-success" onClick={this.editbulanan.bind(this,laporanbulanan)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger" onClick={this.deletelaporan.bind(this,laporanbulanan)}>
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex justify-content-center">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editbulanan.bind(this, laporanbulanan)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deletelaporan.bind(this, laporanbulanan)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -234,8 +235,8 @@ const api = "http://localhost:5001";
                     </div>
                   </div>
                 </div>
-              </div> 
-              <ModalEdit isShow={this.state.show} laporanbulanan={this.state.laporanbulanan}/>
+              </div>
+              <ModalEdit isShow={this.state.show} laporanbulanan={this.state.laporanbulanan} />
             </div>
           </div>
         </div>

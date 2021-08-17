@@ -9,7 +9,6 @@ import {
 import contactUs from "./Component/page/ContactUs/contactus";
 import home from "./Component/page/Home/home";
 import login from "./Component/page/Login/login";
-import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
 import Admin from "./Component/page/Admin/Admin";
 import galery from "./Component/page/MenuUtama/galery";
@@ -44,7 +43,6 @@ import bayarbuku from "./Component/page/User/BayarBuku";
 <Route path="/login" component={login}/>
 <Route path="/contactUs" component={contactUs} />
 <Route path="/tambahcomp" component={TambahComp}/>
-<Route path="/editcomp" component={EditComp}/>
               
 
     {/* ---Menu Utama--- */}
