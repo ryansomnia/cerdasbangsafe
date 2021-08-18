@@ -51,18 +51,28 @@ export default class EditBulanan extends Component {
                 console.log(response);
                 if (response.status == 200) {
                     swal({
-                        title: "Edit data", 
-                        text: "Data Anda berhasil di Ubah", 
-                        type: "success"
-                      }).then(function () {
+                        title: "Edit data",
+                        text: "Data Anda berhasil di Ubah",
+                        type: "success",
+                        icon: "success"
+                    }).then(function () {
                         window.location.reload();
-                      });
+                    });
                 }
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error); if (error) {
+                    swal({
+                        title: "Edit data",
+                        text: "Data Anda Gagal di Ubah",
+                        type: "danger",
+                        icon: "Warning"
+                    }).then(function () {
+                        window.location.reload();
                     });
                 }
+            });
+    }
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.value });

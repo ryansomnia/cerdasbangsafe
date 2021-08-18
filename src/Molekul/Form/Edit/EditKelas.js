@@ -33,7 +33,8 @@ export default class EditKelas extends Component {
                     swal({
                         title: "Edit data", 
                         text: "Data Anda berhasil di Ubah", 
-                        type: "success"
+                        type: "success",    
+                        icon: "success"
                       }).then(function () {
                         window.location.reload();
                       });
@@ -41,6 +42,16 @@ export default class EditKelas extends Component {
             })
             .catch(function (error) {
                 console.log(error);
+                if (error) {
+                    swal({
+                        title: "Edit data", 
+                        text: "Data Anda Gagal di Ubah", 
+                        type: "danger",
+                        icon: "Warning"
+                      }).then(function () {
+                        window.location.reload();
+                      });
+                }
             });
     }
 

@@ -29,7 +29,14 @@ export default class TambahInventaris extends Component {
     handleError = () => {
         console.log('YE');
         if (this.state.image === '') {
-            alert('Masih ada data yang belum di isi !')
+            swal({
+                title: "Tambah data", 
+                text: "Data Anda Gagal di Tambah", 
+                type: "danger",
+                icon: "warning"
+              }).then(function () {
+                window.location.reload();
+              });
         } else {
             this.addOneData()
 
@@ -53,9 +60,10 @@ export default class TambahInventaris extends Component {
                 console.log(json, 'data');
                 if (json.status == 200) {
                     swal({
-                        title: "Tambah data", 
-                        text: "Data Anda berhasil ditambah", 
-                        type: "success"
+                        title: "Tambah data",
+                        text: "Data Anda berhasil ditambah",
+                        type: "success",
+                        icon: "success"
                       }).then(function () {
                         window.location.reload();
                       });

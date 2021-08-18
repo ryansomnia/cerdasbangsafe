@@ -3,10 +3,11 @@ import { Button, Form, Col, Row } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
-import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditGuru'
 import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
+import swal from 'sweetalert';
 
 const api = "http://localhost:5001";
 class Admin extends PureComponent {
@@ -25,7 +26,7 @@ class Admin extends PureComponent {
 
 
   editGuru = (item) => {
-    console.log('=============Baperr==========');
+    console.log('====================================');
     console.log(item);
     console.log('====================================');
 
@@ -77,10 +78,19 @@ class Admin extends PureComponent {
 
     axios.post(api + "/deleteoneguru", {
       id_guru: item.id_guru
-
     })
       .then(function (response) {
         console.log(response);
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -100,6 +110,16 @@ class Admin extends PureComponent {
     })
       .then(function (response) {
         console.log(response);
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
       })
       .catch(function (error) {
         console.log(error);

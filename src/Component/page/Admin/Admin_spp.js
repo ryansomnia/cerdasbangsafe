@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
+import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
 import ModalEditSpp from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
@@ -58,7 +59,17 @@ class Admin_spp extends PureComponent {
 
     })
       .then(function (response) {
-        console.log(response);
+        console.log(response); 
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
       })
       .catch(function (error) {
         console.log(error);

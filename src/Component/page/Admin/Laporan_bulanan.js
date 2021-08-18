@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
-import "./Admin_spp.css";
+import "./Laporan_bulanan.css";
+import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditBulanan'
 import ModalTambahLaporan from "../../../Molekul/Modal/ModalTambah/ModalTambahLaporan";
@@ -56,7 +57,16 @@ class laporan_bulanan extends PureComponent {
 
     })
       .then(function (response) {
-        console.log(response);
+        console.log(response); if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
       })
       .catch(function (error) {
         console.log(error);
