@@ -1,24 +1,20 @@
-import React from 'react';
-import { Button} from 'react-bootstrap';
-import "./alert.css";
+// import React, { useRef } from 'react';
+// import ReactToPrint from 'react-to-print';
 
+// import { ComponentToPrint } from '../../Component/page/Admin/Laporan_bulanan';
 
-function Alert() {
-    const [show, setShow] = React.useState(true);
-  
-    if (show) {
-      return (
-        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>
-            Change this and that and try again. Duis mollis, est non commodo
-            luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-            Cras mattis consectetur purus sit amet fermentum.
-          </p>
-        </Alert>
-      );
-    }
-    return <Button onClick={() => setShow(true)}>Tampilkan</Button>;
-  }
-  
-  export default Alert;
+// const Example = () => {
+//   const componentRef = useRef();
+
+//   return (
+//     <div>
+//       <ReactToPrint
+//         trigger={() => <button>Print this out!</button>}
+//         content={() => componentRef.current}
+//       />
+//       <ComponentToPrint ref={componentRef} />
+//     </div>
+//   );
+// };
+
+//   export default Example;

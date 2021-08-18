@@ -1,11 +1,13 @@
 import React from "react";
-import { Button, Form, Col } from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
 import axios from "axios";
 import "./Laporan_bulanan.css";
 import swal from 'sweetalert';
+import ReactToPrint from 'react-to-print';
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditBulanan'
 import ModalTambahLaporan from "../../../Molekul/Modal/ModalTambah/ModalTambahLaporan";
+
 
 
 const api = "http://localhost:5001";
@@ -152,7 +154,7 @@ class laporan_bulanan extends PureComponent {
                   <span className="las la-user"></span>
                 </div>
               </div>
-              <div className="card-single">
+              <div className=" card-single">
                 <div>
                   <h1>74</h1>
                   <span>Guru</span>
@@ -192,8 +194,15 @@ class laporan_bulanan extends PureComponent {
                         <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
                       </Col>
                     </Form>
+                    <div>
+                      <Row>
+                        <Col >
+                          <ModalTambahLaporan /></Col>
+                        <Col>
 
-                    <ModalTambahLaporan />
+                        </Col>
+                      </Row>
+                    </div>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
@@ -237,11 +246,19 @@ class laporan_bulanan extends PureComponent {
                               </td>
                             </tr>
                           )}
-
-
-
                         </tbody>
                       </table>
+                    </div>
+                  </div>
+                  <div className="d-flex card-footer  justify-content-end">
+                    <div>
+                      <ReactToPrint
+                        trigger={() => {
+                          return <Button variant="dark" href="#">Cetak</Button>;
+                        }}
+                        content={() => this.componentRef}
+                      />
+                      <laporan_bulanan ref={el => (this.componentRef = el)} />
                     </div>
                   </div>
                 </div>
@@ -254,4 +271,10 @@ class laporan_bulanan extends PureComponent {
     );
   }
 }
+
+
+
+
+
+
 export default laporan_bulanan
