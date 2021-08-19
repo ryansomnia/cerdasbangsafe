@@ -27,6 +27,8 @@ import bayarspp from "./Component/page/User/Bayarspp";
 import bayarseragam from "./Component/page/User/BayarSeragam";
 import bayarpangkal from "./Component/page/User/BayarPangkal";
 import bayarbuku from "./Component/page/User/BayarBuku";
+import forget from "./Component/page/Login/forget";
+import profilUser from "./Component/page/User/profil";
 
 
 
@@ -71,6 +73,8 @@ import bayarbuku from "./Component/page/User/BayarBuku";
 <Route path="/bayarbuku" component={bayarbuku}/>
 <Route path="/bayarseragam" component={bayarseragam}/>
 <Route path="/uangpangkal" component={bayarpangkal}/>
+<Route path="/lupapassword" component={forget}/>
+<Route path="/profiluser" component={profilUser}/>
 
               <Redirect from="/" to="/home"/>
             </Switch>

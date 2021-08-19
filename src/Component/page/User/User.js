@@ -10,6 +10,8 @@ import "./User.css";
 
 
 export default class user extends Component {
+
+
     render() {
         return (
             <div className="d-flex" id="wrapper">
@@ -29,7 +31,7 @@ export default class user extends Component {
                                 <Dropdown.Item className="list-group-item-action list-group-item-light" href="/uangpangkal"><FaLandmark /> Uang Pangkal</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaUserCircle /> Profile</a>
+                        <a className="list-group-item-action list-group-item-light p-3" href="/profiluser"><FaUserCircle /> Profile</a>
                         <a className="list-group-item-action list-group-item-light p-3" href="/login"><FaSignOutAlt /> Log Out</a>
                     </div>
                 </div>
