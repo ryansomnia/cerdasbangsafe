@@ -85,15 +85,15 @@ export default class profilUser extends Component {
                                 <Col xl={10} lg={10} md={10} sm={100} >
                                         <div className="form-group">
                                             <label for="fullName">NIS</label>
-                                            <input type="text" class="form-control" id="fullName" placeholder="12183106" name="nim" value="12183106" readonly="" />
+                                            <input type="text" class="form-control" id="fullName" placeholder="12345678" name="nim" value="12345678" readonly="" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="eMail">Nama</label>
-                                                <input type="email" className="form-control" id="eMail" placeholder="ANDREAS PASARIBU" readonly="" name="name" value="ANDREAS PASARIBU"/>
+                                                <input type="email" className="form-control" id="eMail" placeholder="Siswa" readonly="" name="name" value="Siswa"/>
                                                  </div>
                                                 <div className="form-group">
                                                     <label for="phone">Email</label>
-                                                    <input type="text" className="form-control" id="phone" placeholder="pasaribuandreas622@gmail.com" readonly="" name="email" value="pasaribuandreas622@gmail.com"/>
+                                                    <input type="text" className="form-control" id="phone" placeholder="siswa@gmail.com" readonly="" name="email" value="siswa@gmail.com"/>
                                                     </div>
 
                                                     <div className="form-group">
