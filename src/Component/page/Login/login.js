@@ -10,48 +10,54 @@ const api = "http://localhost:5001";
 export default class Login extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             username: [],
             password: '',
             response: ""
         }
     }
-    
+
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
     login = () => {
         axios.post(api + "/login", {
             username: this.state.username,
             password: this.state.password
         })
-            .then(function (response) {
-                console.log(response);
-                if (response.status == 200) {
+            .then(json => {
+                console.log(json, 'data');
+                if (this.state.username == 'testing',
+                    this.state.password == 'testing'                              
+                ) {
                     swal({
-                        title: "Edit data",
-                        text: "Data Anda berhasil di Ubah",
+                        title: "Login",
+                        text: "Anda Berhasil Login ",
                         type: "success",
                         icon: "success"
+
                     }).then(function () {
                         window.location.href="/user";
                     });
+                } else {
+                    swal({
+                        title: "Login Gagal", 
+                        text: "Username atau Password tidak sesuai", 
+                        type: "danger",
+                        icon: "error"
+                      }).then(function () {
+                        window.location.reload();
+                    });
                 }
-            })
-            .catch(function (error) {
-                console.log(error);
-                console.log('====================================');
-                console.log("Gagal");
-                console.log('====================================');
-            });
-    }
-    
-    handleChange = (e) => {
-        this.setState({[e.target.name] : e.target.value})
-    }
 
+            })
+           
+    }
 
     render() {
         return (
-            <Container  >
+            <Container >
 
                 <Row >
                     <Col lg={5} md={5} sm={12} className="text-center mt-5 p-4" >
@@ -63,12 +69,12 @@ export default class Login extends Component {
                                 <Form className="masuk">
                                     <Form.Group className="text-left">
                                         <Form.Label>NIM</Form.Label>
-                                        <Form.Control type="text" placeholder="Username" name="username"  value={this.state.username} onChange={this.handleChange} />
+                                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="Masukkan  UserName" />
                                     </Form.Group>
 
                                     <Form.Group className="text-left">
                                         <Form.Label>Password</Form.Label>
-                                        <Form.Control type="password" placeholder="Password"  name="password" value={this.state.password} onChange={this.handleChange} />
+                                        <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
                                     </Form.Group>
                                     <div className="d-flex text-left">
                                         <Row>
@@ -93,8 +99,16 @@ export default class Login extends Component {
                     </Col>
                 </Row>
 
-            </Container>
+            </Container >
 
         );
     }
+
+
 }
+
+
+
+
+
+

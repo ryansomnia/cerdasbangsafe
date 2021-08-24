@@ -56,8 +56,9 @@ export default class Pembayaranspp extends Component {
                 if (json.status == 200) {
                     swal({
                         title: "Pembayaran SPP",
-                        text: "Pembayaran Kamu Berhasil",
-                        type: "success"
+                        text: "Pembayaran Kamu Berhasil di Proses",
+                        type: "success",
+                        icon:"success"
                     }).then(function () {
                         window.location.reload();
                     });
@@ -68,31 +69,18 @@ export default class Pembayaranspp extends Component {
         return (
             <div className="mt-4  main-admin ">
                 <h4>Form Pembayaran</h4>
-                <Form ClassName="form ">
-
-                    <Col>
-                        <Form.Label>Nama Siswa</Form.Label>
-                        <FormGroup >
-                            <Row >
-                                <Col >
-                                    <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
-                    <Col>
-                        <Form.Label>Kelas</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col >
-                                    <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange} placeholder="Masukkan Kelas Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
-                    <Col>
+                <Form>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>Nama Siswa</Form.Label>
+                            <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Kelas</Form.Label>
+                            <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange} placeholder="Masukkan Kelas Siswa" />
+                        </div>
+                    </div>
+                    <div className="form-group">
                         <Form.Label>SPP Bulan</Form.Label>
                         <FormGroup>
                             <select className="custom-select" name="bulan" value={this.state.bulan} onChange={this.handleChange} >
@@ -111,9 +99,8 @@ export default class Pembayaranspp extends Component {
                                 <option value="Desember">Desember</option>
                             </select>
                         </FormGroup>
-                    </Col>
-
-                    <Col>
+                    </div>
+                    <div className="form-group">
                         <Form.Label>Ekstrakurikuler</Form.Label>
                         <FormGroup >
                             <select className="custom-select" name="ekstrakurikuler" value={this.state.ekstrakurikuler} onChange={this.handleChange} >
@@ -124,30 +111,21 @@ export default class Pembayaranspp extends Component {
                                 <option value="Bahasa Asing">Bahasa Asing</option>
                             </select>
                         </FormGroup>
-                    </Col>
+                    </div>
+                    <div className="form-row">
+                        <div class="form-group col-md-6">
+                            <Form.Label>Jumlah Bayar</Form.Label>
+                            <Form.Control type="Number" name="jumlah" value={this.state.jumlah} onChange={this.handleChange} placeholder="Rp." />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Upload Bukti Pembayaran</Form.Label>
+                            <Form.Control type="file" name="image" value={this.state.image} accept="image/*" onChange={this.handleChange} />
+                        </div>
 
-                    <Col>
-                        <Form.Label>Jumlah</Form.Label>
-                        <FormGroup >
-                            <Row>
-                                <Col >
-                                    <Form.Control type="Number" name="jumlah" value={this.state.jumlah} onChange={this.handleChange} placeholder="Masukkan Jumlah Bayar" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
-                    <Col>
-                        <Form.Label>Upload Bukti Pembayaran</Form.Label>
-                        <Form.Group >
-                            <Row><Col>
-                                <Form.Control type="file" name="image" value={this.state.image} accept="image/*" onChange={this.handleChange} />
-                            </Col></Row>
-                        </Form.Group>
-                    </Col>
-                    <Col className="d-flex justify-content-end">
+                    </div>
+                    <div className="justify-content-end">
                         <Button variant="primary" onClick={this.handleError} >Bayar</Button>
-                    </Col>
+                    </div>
                 </Form>
             </div>
         );

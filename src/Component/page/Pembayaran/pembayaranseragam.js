@@ -67,8 +67,9 @@ export default class Pembayaranseragam extends Component {
                 if (json.status == 200) {
                     swal({
                         title: "Pembayaran Seragam",
-                        text: "Pembayaran Kamu Berhasil",
-                        type: "success"
+                        text: "Pembayaran Kamu Berhasil di Proses",
+                        type: "success",
+                        icon:"success"
                     }).then(function () {
                         window.location.reload();
                     });
@@ -79,85 +80,62 @@ export default class Pembayaranseragam extends Component {
     render() {
         return (
             <div className="mt-4  main-admin ">
-                <h4>Form Pembayaran</h4>
-                <Form ClassName="form">
-                    <Col>
-                        <Form.Label>Nama Siswa</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                <h5>Form Pembayaran Seragam</h5>
+                <Form >
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>Nama Siswa</Form.Label>
+                            <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Nomor Induk</Form.Label>
+                            <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan Nomor Induk Siswa" />
+                        </div>
+                    </div>
 
-                        <Form.Label>Nomor Induk</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                    <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan Nomor Induk Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>NISN</Form.Label>
+                            <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa" />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Tanggal Bayar</Form.Label>
+                            <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange} placeholder="Masukkan Tanggal Pembayaran" />
+                        </div>
+                    </div>
 
-                        <Form.Label>NISN</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>Jumlah Bayar</Form.Label>
+                            <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange} placeholder="Rp." />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Seragam</Form.Label>
+                            <FormGroup>
+                                <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
+                                    <option>Pilih Nama Seragam </option>
+                                    <option value="Seragam Olahraga">Seragam Olahraga</option>
+                                    <option value="Seragam Batik">Seragam Batik</option>
+                                    <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
+                                </select>
+                            </FormGroup>
+                        </div>
+                    </div>
 
-                                    <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Tanggal Bayar</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange} placeholder="Masukkan Tanggal Pembayaran" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Debit</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange} placeholder="Masukkan Jumlah Debit" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Seragam</Form.Label>
-                        <FormGroup>
-                            <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
-                                <option>Pilih Seragam yang ingin di Bayar</option>
-                                <option value="Seragam Olahraga">Seragam Olahraga</option>
-                                <option value="Seragam Batik">Seragam Batik</option>
-                                <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
-                            </select>
-                        </FormGroup>
-
+                    <div className="form">
+                    <div className="form-group">
                         <Form.Label>Bukti Pembayaran</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                        <FormGroup>
-                            <Row>
-                                <Col className="d-flex justify-content-end">
-                                    <Button variant="primary" onClick={this.handleError} >Bayar</Button>
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
+                        <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                    </div>
+                    </div>
+
+
+                    <div className="d-flex justify-content-end">
+                        <Button variant="primary" onClick={this.handleError} >Bayar</Button>
+                    </div>
 
                 </Form>
-            </div>
+            </div >
         );
     }
 }

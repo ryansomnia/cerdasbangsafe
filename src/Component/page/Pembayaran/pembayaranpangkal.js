@@ -67,8 +67,9 @@ export default class Pembayaranpangkal extends Component {
                 if (json.status == 200) {
                     swal({
                         title: "Pembayaran Uang Pangkal",
-                        text: "Pembayaran Kamu Berhasil",
-                        type: "success"
+                        text: "Pembayaran Kamu Berhasil di Proses",
+                        type: "success",
+                        icon:"success"
                     }).then(function () {
                         window.location.reload();
                     });
@@ -81,7 +82,7 @@ export default class Pembayaranpangkal extends Component {
             <div className="mt-4  main-admin ">
                 <h4>Form Pembayaran</h4>
                 <Form ClassName="form ">
-                    <Col>
+                
                         <Form.Label>Nama Siswa</Form.Label>
                         <FormGroup>
                             <Row>
@@ -154,7 +155,7 @@ export default class Pembayaranpangkal extends Component {
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
+                    
 
                 </Form>
 

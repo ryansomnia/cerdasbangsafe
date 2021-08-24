@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Navbar, Form, FormControl, Button, Dropdown, Container, Row, Col } from "react-bootstrap";
-import { FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
+import { Navbar, Form, Button, Dropdown, Container, Row, Col } from "react-bootstrap";
+import { FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle } from "react-icons/fa";
 import Pembayaranbuku from "../Pembayaran/pembayaranbuku";
 
 import "./User.css";
@@ -8,6 +8,11 @@ import "./User.css";
 
 
 export default class bayarbuku extends Component {
+    pageLogin(path){
+        console.log('logout',path);
+        this.props.history.push(path)
+      }
+
     render() {
         return (
             <div className="d-flex" id="wrapper">
@@ -28,7 +33,6 @@ export default class bayarbuku extends Component {
                             </Dropdown.Menu>
                         </Dropdown>
                         <a className="list-group-item-action list-group-item-light p-3" href="#!"><FaUserCircle /> Profile</a>
-                        <a className="list-group-item-action list-group-item-light p-3" href="/login"><FaSignOutAlt /> Log Out</a>
                     </div>
                 </div>
                 {/* <!-- Page content wrapper--> */}
@@ -40,18 +44,12 @@ export default class bayarbuku extends Component {
                                 <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
                                     <li className="nav-item active">
                                         <Form className="d-flex">
-                                            <FormControl
-                                                type="search"
-                                                placeholder="Search"
-                                                className="mr-2"
-                                                aria-label="Search"
-                                            />
-                                            <Button variant="outline-success">Search</Button>
                                         </Form>
                                     </li>
                                     <li>
                                         <Navbar.Text>
-                                            Signed in as: <a href="#login">Siswa</a>
+                                            Signed in as: <a href="#login" className="btn-space">Siswa</a>
+                                            <Button size="sm" variant="danger" onClick={() => this.pageLogin('/login')}>LogOut</Button>
                                         </Navbar.Text></li>
                                 </ul>
                             </div>
