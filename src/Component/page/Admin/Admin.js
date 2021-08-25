@@ -1,29 +1,34 @@
 import React from "react";
-import { Button} from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin.css";
 import { PureComponent } from "react";
-import ModalEdit from '../../../Molekul/Modal/ModalEditGuru'
+import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditGuru'
 import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 import swal from 'sweetalert';
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
 const api = "http://localhost:5001";
- class Admin extends PureComponent {
+class Admin extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
       kelas: [],
-      guru:[],
+      guru: [],
       response: '',
       display: 'none',
-      show:'',
-      tampil:''
+      show: '',
+      tampil: ''
     };
   }
 
 
+<<<<<<< HEAD
       editGuru =(item)=>{
      
    
@@ -45,6 +50,35 @@ const api = "http://localhost:5001";
       })
      
     }
+=======
+  editGuru = (item) => {
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
+    const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
+    this.setState({
+      guru: data,
+      show: 'show'
+    })
+
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+  }
+
+  editKelas = (item) => {
+    const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
+    this.setState({
+      kelas: data,
+      tampil: 'show'
+
+    })
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+  }
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
 
   componentDidMount() {
     axios.get(api + "/getkelas").then(res => {
@@ -59,36 +93,46 @@ const api = "http://localhost:5001";
         guru: res.data.values
       });
     });
-  
-}
 
-  deleteGuru =(item)=>{
-    console.log('masuk')
-  
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-   
-    axios.post(api + "/deleteoneguru", {
-      id_guru:item.id_guru
-      
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
   }
 
-  deleteKelas =(item)=>{
+  deleteGuru = (item) => {
     console.log('masuk')
-  
+
     console.log('====================================');
     console.log(item);
     console.log('====================================');
-   
+
+    axios.post(api + "/deleteoneguru", {
+      id_guru: item.id_guru
+    })
+      .then(function (response) {
+        console.log(response);
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  deleteKelas = (item) => {
+    console.log('masuk')
+
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
     axios.post(api + "/deleteOnekelas", {
+<<<<<<< HEAD
       nama_kelas:item.nama_kelas
       
     })
@@ -106,15 +150,37 @@ const api = "http://localhost:5001";
       console.log(response.status);
       console.log('====================================');
      
+=======
+      nama_kelas: item.nama_kelas
+
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
+<<<<<<< HEAD
  
 
   
   
+=======
+
+
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
 
   render() {
     return (
@@ -175,11 +241,6 @@ const api = "http://localhost:5001";
               Dashboard
             </h2>
 
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
-
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
@@ -233,7 +294,13 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Kelas</h3>
+                    <Form className="d-flex">
+                      <h3>Table Kelas</h3>
+                      <Col md={{ span: 3, offset: 7 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+                    <p />
                     <ModalTambahKelas />
                   </div>
                   <div className="card-body">
@@ -242,7 +309,6 @@ const api = "http://localhost:5001";
                         <thead>
                           <tr>
                             <td>Nama Kelas</td>
-                            <td>Kode Kelas</td>
                             <td>Nama Guru</td>
                             <td>Action</td>
                           </tr>
@@ -250,21 +316,20 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.kelas.map(kelas => 
-                         
+                          {this.state.kelas.map(kelas =>
+
                             <tr key={kelas.nama_kelas}>
                               <td>{kelas.nama_kelas}</td>
-                              <td>{kelas.kode_kelas}</td>
                               <td>{kelas.nama_guru}</td>
                               <td>
-                              <div className="d-flex">
-                                          <Button className="btn-space" variant="outline-success" onClick={this.editKelas.bind(this,kelas)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger" onClick={this.deleteKelas.bind(this,kelas)}>
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editKelas.bind(this, kelas)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deleteKelas.bind(this, kelas)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -277,12 +342,17 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalKelas isShow={this.state.tampil} kelas={this.state.kelas}/>
+              <ModalKelas isShow={this.state.tampil} kelas={this.state.kelas} />
 
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Guru</h3>
+                    <Form className="d-flex">
+                      <h3>Table Guru</h3>
+                      <Col md={{ span: 3, offset: 7 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
                     <ModalTambahGuru />
                   </div>
                   <div className="card-body">
@@ -290,37 +360,49 @@ const api = "http://localhost:5001";
                       <table width="100%">
                         <thead>
                           <tr>
-                          <td>ID Guru</td>
+                            {/* <td>ID Guru</td> */}
                             <td>Nama Guru</td>
+<<<<<<< HEAD
                           
+=======
+                            <td>Jenis Kelamin</td>
+                            <td>NO NUPTK</td>
+                            <td>Tempat Lahir</td>
+                            <td>Tgl Lahir</td>
+                            <td>Pendidikan</td>
+                            <td>Lulusan</td>
+                            <td>Jabatan</td>
+                            <td>Agama</td>
+                            <td>Status Karyawan</td>
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.guru.map(guru => 
+                          {this.state.guru.map(guru =>
                             <tr key={guru.id_guru}>
-                                <td>{guru.id_guru}</td>
+
                               <td>{guru.nama_guru}</td>
-                            <td>{guru.jenis_kelamin}</td>
-                            <td>{guru.no_nuptk}</td>
-                            <td>{guru.tempat_lahir}</td>
-                            <td>{guru.tgl_lahir}</td>
-                            <td>{guru.pendidikan}</td>
-                            <td>{guru.lulusan}</td>
-                            <td>{guru.jabatan}</td>
-                            <td>{guru.status_karyawan}</td>
-                            <td>{guru.agama}</td>
+                              <td>{guru.jenis_kelamin}</td>
+                              <td>{guru.no_nuptk}</td>
+                              <td>{guru.tempat_lahir}</td>
+                              <td>{guru.tgl_lahir}</td>
+                              <td>{guru.pendidikan}</td>
+                              <td>{guru.lulusan}</td>
+                              <td>{guru.jabatan}</td>
+                              <td>{guru.status_karyawan}</td>
+                              <td>{guru.agama}</td>
                               <td>
-                                  {/* <button onClick={this.editGuru.bind(this,guru)} >edit</button> | <button>hapus</button> */}
-                               <div className="d-flex">
-                                          <Button className="btn-space" variant="outline-success" onClick={this.editGuru.bind(this,guru)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger"  onClick={this.deleteGuru.bind(this,guru)}>
-                                            Delete
-                                          </Button>
-                                          </div>
-                                 
+
+                                <div className="d-flex">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editGuru.bind(this, guru)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deleteGuru.bind(this, guru)}>
+                                    Delete
+                                  </Button>
+                                </div>
+
                               </td>
                             </tr>
                           )}
@@ -330,8 +412,8 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEdit isShow={this.state.show} guru={this.state.guru}/>
-              
+              <ModalEdit isShow={this.state.show} guru={this.state.guru} />
+
             </div>
           </div>
         </div>

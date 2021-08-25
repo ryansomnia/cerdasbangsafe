@@ -9,7 +9,6 @@ import {
 import contactUs from "./Component/page/ContactUs/contactus";
 import home from "./Component/page/Home/home";
 import login from "./Component/page/Login/login";
-import EditComp from "./Molekul/Form/EditComp";
 import TambahComp from "./Molekul/Form/TambahComp";
 import Admin from "./Component/page/Admin/Admin";
 import galery from "./Component/page/MenuUtama/galery";
@@ -28,6 +27,8 @@ import bayarspp from "./Component/page/User/Bayarspp";
 import bayarseragam from "./Component/page/User/BayarSeragam";
 import bayarpangkal from "./Component/page/User/BayarPangkal";
 import bayarbuku from "./Component/page/User/BayarBuku";
+import forget from "./Component/page/Login/forget";
+import profilUser from "./Component/page/User/profil";
 
 
 
@@ -44,7 +45,6 @@ import bayarbuku from "./Component/page/User/BayarBuku";
 <Route path="/login" component={login}/>
 <Route path="/contactUs" component={contactUs} />
 <Route path="/tambahcomp" component={TambahComp}/>
-<Route path="/editcomp" component={EditComp}/>
               
 
     {/* ---Menu Utama--- */}
@@ -73,6 +73,8 @@ import bayarbuku from "./Component/page/User/BayarBuku";
 <Route path="/bayarbuku" component={bayarbuku}/>
 <Route path="/bayarseragam" component={bayarseragam}/>
 <Route path="/uangpangkal" component={bayarpangkal}/>
+<Route path="/lupapassword" component={forget}/>
+<Route path="/profiluser" component={profilUser}/>
 
               <Redirect from="/" to="/home"/>
             </Switch>

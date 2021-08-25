@@ -87,7 +87,7 @@ export default class EditGuru extends Component {
     //     console.log(this.state.nama_guru)
 
     // }
-    
+
 
 
     render() {
@@ -177,31 +177,35 @@ export default class EditGuru extends Component {
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Status Karyawan</Form.Label>
+
+                        <Form.Label>Status</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange("status_karyawan")} />
-                                </Col>
-                            </Row>
+                            <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange("status")} >
+                                <option>Pilih Status</option>
+                                <option value="Berhasil">Aktif</option>
+                                <option value="Tidak Berhasil">Tidak Aktif</option>
+                            </select>
                         </FormGroup>
 
 
                         <Form.Label>Agama</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange("agama")} />
-                                </Col>
-                            </Row>
+                            <select className="custom-select" name="agama" value={this.state.agama} onChange={this.handleChange("agama")} >
+                                <option>Pilih Agama</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Budha">Buddha</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Khonghucu">Khonghucu</option>
+                            </select>
                         </FormGroup>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Button type="button" onClick={this.editGuru}>Kirim Pendaftaran</Button>
-                                </Col>
-                            </Row>
-                        </FormGroup>
+
+
+                        <div className="d-flex  justify-content-end">
+                            <Button type="button" onClick={this.editGuru}>Kirim Perubahan</Button>
+                        </div>
+
                     </Col>
 
                 </Form>

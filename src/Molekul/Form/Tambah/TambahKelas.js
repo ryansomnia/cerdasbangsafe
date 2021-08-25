@@ -3,9 +3,9 @@ import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
 import swal from 'sweetalert';
 // import "./TambahKelas.css";
+import swal from 'sweetalert';
 
 const api ='http://localhost:5001'
-
 export default class TambahKelas extends Component {
     constructor(props){
         super(props)
@@ -26,11 +26,24 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
+<<<<<<< HEAD
     if (this.state.nama_guru === '' || this.state.kode_kelas === '' || this.state.nama_kelas === ''){
         
         swal({
             icon: "warning",
             text: "data mu ada yang belum ter isi"
+=======
+    if (this.state.nama_guru === ''
+       
+    ){
+        swal({
+            title: "Tambah Data", 
+                text: "Data Anda Gagal di Tambah", 
+            type: "danger",
+            icon: "warning"
+          }).then(function () {
+            window.location.reload();
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
           });
     } else {
        this.addOneData()
@@ -47,6 +60,7 @@ addOneData= () => {
     })
     .then(json => {
         console.log(json,'data');
+<<<<<<< HEAD
         console.log('===============json=====================');
         console.log(json.status);
         console.log('====================================');
@@ -63,6 +77,14 @@ addOneData= () => {
                 title: "Tambah data", 
                 text: "data mu tidak berhasil ditambah", 
                 type: "danger"
+=======
+        if (json.status == 200) {
+            swal({
+                title: "Tambah data", 
+                text: "Data Anda berhasil ditambah", 
+                type: "success",
+                icon: "success"
+>>>>>>> bd3b4743c0fd186d3b875cecfd1d8c49823eafbe
               }).then(function () {
                 window.location.reload();
               });
@@ -105,13 +127,9 @@ addOneData= () => {
                         </Row>
                     </FormGroup>
 
-                    <FormGroup>
-                        <Row>
-                            <Col md={{ span: 5, offset: 10 }}>
+                   <div className="d-flex  justify-content-end">
                             <Button type="button" onClick={this.handleError}>Submit</Button>
-                            </Col>
-                        </Row>
-                    </FormGroup>
+                    </div>  
                     </Col>
 
                 </Form>

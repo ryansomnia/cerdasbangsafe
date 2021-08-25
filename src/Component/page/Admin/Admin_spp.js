@@ -1,16 +1,17 @@
 import React from "react";
-import { Button} from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_spp.css";
+import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
 import ModalEditSpp from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
- 
+
 
 
 
 const api = "http://localhost:5001";
- class Admin_spp extends PureComponent {
+class Admin_spp extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -18,26 +19,26 @@ const api = "http://localhost:5001";
       laporanspp: [],
       response: '',
       display: 'none',
-      show:''
-    }; 
-   }
+      show: ''
+    };
+  }
 
-    editSpp =(item)=>{ 
-      console.log('=================Data Masuk===================');
-      console.log(item);
-      console.log('====================================');
+  editSpp = (item) => {
+    console.log('=================Data Masuk===================');
+    console.log(item);
+    console.log('====================================');
 
-      const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
-      this.setState({
-        laporanspp:data,
-        show:'show'
-        })
-      
-      console.log('=================Data Keluar===================');
-      console.log(item);
-      console.log('====================================');
-    }
-   
+    const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
+    this.setState({
+      laporanspp: data,
+      show: 'show'
+    })
+
+    console.log('=================Data Keluar===================');
+    console.log(item);
+    console.log('====================================');
+  }
+
   componentDidMount() {
     axios.get(api + "/getLaporanSPP").then(res => {
       this.setState({
@@ -46,25 +47,35 @@ const api = "http://localhost:5001";
     });
   }
 
-  deleteSpp =(item)=>{
+  deleteSpp = (item) => {
     console.log('masuk')
-  
+
     console.log('====================================');
     console.log(item);
     console.log('====================================');
-   
+
     axios.post(api + "/deleteonespp", {
-      kode_spp:item.kode_spp
-      
+      kode_spp: item.kode_spp
+
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response); 
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
- 
+
 
 
   render() {
@@ -96,7 +107,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-              <a href="/cicilan">
+                <a href="/cicilan">
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
@@ -125,11 +136,6 @@ const api = "http://localhost:5001";
               </label>
               Dashboard
             </h2>
-
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
@@ -183,50 +189,54 @@ const api = "http://localhost:5001";
               <div className="project ">
                 <div className="card ">
                   <div className="card-header">
-                    <h3>Table Pembayaran SPP</h3>
-                  <ModalTambahSpp />
+                    <Form className="d-flex">
+                      <h3>Table Pembayaran SPP</h3>
+                      <Col md={{ span: 3, offset: 5 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
+                    <ModalTambahSpp />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                          <td>Kode SPP</td>
                             <td>Nama Siswa</td>
                             <td>Kelas</td>
                             <td>Tanggal Bayar</td>
                             <td>Bulan </td>
                             <td>Ekstrakulikuler</td>
                             <td>Jumlah</td>
-                            <td>Status</td>
                             <td>Image</td>
+                            <td>Status</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
 
 
-                          {this.state.laporanspp.map(laporanspp => 
-                         
+                          {this.state.laporanspp.map(laporanspp =>
+
                             <tr key={laporanspp.kode_spp}>
-                              <td>{laporanspp.kode_spp}</td>
-                               <td>{laporanspp.nama_siswa}</td>
+                              <td>{laporanspp.nama_siswa}</td>
                               <td>{laporanspp.kelas}</td>
                               <td>{laporanspp.tgl_bayar}</td>
                               <td>{laporanspp.bulan}</td>
                               <td>{laporanspp.ekstrakurikuler}</td>
-                              <td>{laporanspp.jumlah}</td>
-                              <td>{laporanspp.status}</td>
+                              <td>Rp. {laporanspp.jumlah}</td>
                               <td>{laporanspp.image}</td>
+                              <td>{laporanspp.status}</td>
                               <td>
-                              <div className="d-flex">
-                                          <Button className="btn-space" variant="outline-success" onClick={this.editSpp.bind(this,laporanspp)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger" onClick={this.deleteSpp.bind(this,laporanspp)}>
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editSpp.bind(this, laporanspp)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deleteSpp.bind(this, laporanspp)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -236,7 +246,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEditSpp isShow={this.state.show} laporanspp={this.state.laporanspp}/>
+              <ModalEditSpp isShow={this.state.show} laporanspp={this.state.laporanspp} />
             </div>
           </div>
         </div>

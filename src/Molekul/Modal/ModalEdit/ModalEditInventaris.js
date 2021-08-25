@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import EditInventaris from '../../Form/Edit/EditInventaris';
 
 
@@ -9,25 +9,25 @@ import EditInventaris from '../../Form/Edit/EditInventaris';
 
 
 function MyVerticallyCenteredModal(props) {
-console.log('================propscxcxcx====================');
-console.log(props.laporaninventaris);
-console.log('====================================');
+  console.log('================propscxcxcx====================');
+  console.log(props.laporaninventaris);
+  console.log('====================================');
   return (
     <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered>
-        
+
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-       Edit Data
+          Edit Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <EditInventaris laporaninventaris={props.laporaninventaris}/>
-                
-          
+        <EditInventaris laporaninventaris={props.laporaninventaris} />
+
+
       </Modal.Body>
     </Modal>
   );
@@ -37,16 +37,16 @@ console.log('====================================');
 
 function Inventaris(props) {
   const [modalShow, setModalShow] = React.useState(false);
-console.log('===============props.isShow=====================');
-console.log(props.isShow);
-console.log('====================================');
+  console.log('===============props.isShow=====================');
+  console.log(props.isShow);
+  console.log('====================================');
   return (
     <>
-   
+
       <MyVerticallyCenteredModal
         show={props.isShow}
         onHide={() => setModalShow(modalShow)}
-        laporaninventaris= {props.laporaninventaris}
+        laporaninventaris={props.laporaninventaris}
       />
     </>
   );

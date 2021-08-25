@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 
 class Header extends Component {
   pageLogin(path){
-    console.log('TEst 1',path);
+    console.log('coba 1',path);
     this.props.history.push(path)
   }
   render() {

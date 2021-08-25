@@ -1,24 +1,27 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import { Col, Container, Row, FormGroup, Form, Button } from 'react-bootstrap';
-// import "./TambahBulanan.css";
+// import "./TambahSPP.css";
 import swal from 'sweetalert';
 
-
 const api = 'http://localhost:5001'
-export default class TambahBulanan extends Component {
+export default class TambahSiswa extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            kode_laporan: [],
-            tgl: '',
-            keterangan: '',
-            debit: '',
-            kredit: '',
-            saldo: '',
-            jumlah: '',
-            status: '',
+            nis: [],
+            nisn: '',
+            nama_siswa: '',
+            jenis_kelamin: '',
+            tgl_lahir: '',
+            tempat_lahir: '',
+            alamat: '',
+            nama_orangtua: '',
+            no_hp1: '',
+            no_hp2: '',
+            agama: '',
+            id_user: '',
             response: ""
 
         }
@@ -29,7 +32,7 @@ export default class TambahBulanan extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.keterangan === '') {
+        if (this.state.image === '') {
             swal({
                 title: "Tambah Data", 
                 text: "Data Anda Gagal di Tambah", 
@@ -39,23 +42,27 @@ export default class TambahBulanan extends Component {
                 window.location.reload();
               });
         } else {
-            this.AddOneData()
+            this.addOneData()
 
         }
     }
 
 
-    AddOneData = () => {
+    addOneData = () => {
         console.log("Data Masuk");
-        axios.post(api + '/addOneLaporanBulanan', {
-            kode_laporan: this.state.kode_laporan,
-            tgl: this.state.tgl,
-            keterangan: this.state.keterangan,
-            debit: this.state.debit,
-            kredit: this.state.kredit,
-            saldo: this.state.saldo,
-            jumlah: this.state.jumlah,
-            status: this.state.status
+        axios.post(api + '/addOneSiswa', {
+            nis: this.state.nis,
+            nisn: this.state.nisn,
+            nama_siswa: this.state.nama_siswa,
+            jenis_kelamin: this.state.jenis_kelamin,
+            tgl_lahir: this.state.tgl_lahir,
+            tempat_lahir: this.state.tempat_lahir,
+            alamat: this.state.alamat,
+            nama_orangtua: this.state.nama_orangtua,
+            no_hp1: this.state.no_hp1,
+            no_hp2: this.state.no_hp2,
+            agama: this.state.agama,
+            id_user: this.state.id_user
         })
             .then(json => {
                 console.log(json, 'data');
@@ -65,9 +72,9 @@ export default class TambahBulanan extends Component {
                         text: "Data Anda berhasil ditambah",
                         type: "success",
                         icon: "success"
-                    }).then(function () {
+                      }).then(function () {
                         window.location.reload();
-                    });
+                      });
                 }
             })
     }
@@ -77,83 +84,86 @@ export default class TambahBulanan extends Component {
             <Container>
                 <Form ClassName="form">
                     <Col>
-                        <Form.Label>Kode Laporan</Form.Label>
+                        <Form.Label>Nama Siswa</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                    <Form.Control id="kode_laporan" type="text" name="kode_laporan" value={this.state.kode_laporan} onChange={this.handleChange} placeholder="Masukkan Kode Laporan" />
+                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-
-                        <Form.Label>Tanggal</Form.Label>
-                        <FormGroup>
-                            <Row >
-                                <Col>
-                                    {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                    <Form.Control type="date" name="tgl" value={this.state.tgl} onChange={this.handleChange} placeholder="Masukkan Tanggal Laporan" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Keterangan</Form.Label>
+                        <Form.Label>Nomor Induk</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                    <Form.Control type="text" name="keterangan" value={this.state.keterangan} onChange={this.handleChange} placeholder="Masukkan Keterangan Laporan" />
+                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Debit</Form.Label>
+                        <Form.Label>NISN</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange} placeholder="Masukkan Jumlah Debit" />
+                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Kredit</Form.Label>
+                        <Form.Label>Tanggal Lahir</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="kredit" value={this.state.kredit} onChange={this.handleChange} placeholder="Masukkan Jumlah Kredit" />
+                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Saldo</Form.Label>
+                        <Form.Label>Tempat Lahir</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="saldo" value={this.state.saldo} onChange={this.handleChange} placeholder="Masukkan Jumlah Saldo" />
+                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Jumlah</Form.Label>
+                        <Form.Label>Jenis Kelamin</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="jumlah" value={this.state.jumlah} onChange={this.handleChange} placeholder="Masukkan Jumlah Seluruh Dana" />
+                                    <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Agama</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="status" value={this.state.status} onChange={this.handleChange} placeholder="Masukkan Status Laporan" />
+                                    <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
 
+                        <Form.Label>Nama Orang Tua</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text" name="nama_orangtua" value={this.state.nama_orangtua} onChange={this.handleChange} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+
+                        <Form.Label>Alamat</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
                         <div className="d-flex  justify-content-end">
                             <Button type="button" onClick={this.handleError}>Submit</Button>
                         </div>

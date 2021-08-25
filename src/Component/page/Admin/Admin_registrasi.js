@@ -1,55 +1,78 @@
 import React from "react";
-// import {Table,} from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_registrasi.css";
+import swal from 'sweetalert';
 import { PureComponent } from "react";
-
+import ModalEditSiswa from "../../../Molekul/Modal/ModalEdit/ModalEditSiswa";
+import ModalTambahSiswa from "../../../Molekul/Modal/ModalTambah/ModalTambahSiswa"
 
 const api = "http://localhost:5001";
- class Admin_registrasi extends PureComponent {
+class Admin_registrasi extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      kelas: [],
+      siswa: [],
       response: '',
       display: 'none',
     };
-    
-    
-    
   }
-  // constructor(props) {
-  //   super(props)
 
-  //   this.state = {
-  //     guru: [],
-  //     response: '',
-  //     display: 'none',
-  //   };
-    
-    
-    
-  // }
+  editSiswa = (item) => {
+    console.log('=================Data Masuk===================');
+    console.log(item);
+    console.log('====================================');
+
+    const data = this.state.siswa.filter(i => i.id_user == item.id_user)
+    this.setState({
+      siswa: data,
+      show: 'show'
+    })
+
+    console.log('=================Data Keluar===================');
+    console.log(item);
+    console.log('====================================');
+  }
+
 
   componentDidMount() {
-    axios.get(api + "/getkelas").then(res => {
+    axios.get(api + "/getSiswa").then(res => {
       this.setState({
-        kelas: res.data.values
+        siswa: res.data.values
       });
     });
-
-
-    axios.get(api + "/getguru").then(res => {
-      this.setState({
-        guru: res.data.values
-      });
-    });
-    
   }
 
+  deleteSiswa = (item) => {
+    console.log('masuk')
 
- 
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
+    axios.post(api + "/deleteOnesiswa", {
+      id_user: item.id_user
+
+    })
+      .then(function (response) {
+        console.log(response);
+        if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   render() {
     return (
@@ -80,7 +103,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-              <a href="/cicilan">
+                <a href="/cicilan">
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
@@ -109,11 +132,6 @@ const api = "http://localhost:5001";
               </label>
               Dashboard
             </h2>
-
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
@@ -168,43 +186,69 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Pendaftaran Siswa</h3>
+                    <Form className="d-flex">
+                      <h3>Table Siswa</h3>
+                      <Col md={{ span: 3, offset: 5 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+                    <ModalTambahSiswa />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Nama Ku</td>
+                            <td>Nama Siswa</td>
+                            <td>Nomor Induk</td>
+                            <td>NISN</td>
+                            <td>Jenis Kelamin</td>
+                            <td>Tanggal Lahir</td>
+                            <td>Tempat Lahir</td>
                             <td>Alamat</td>
+                            <td>Agama</td>
                             <td>Nama Orang Tua</td>
+                            <td>Nomor Telephone 1</td>
+                            <td>Nomor Telephone 2</td>
                             <td>Action</td>
                           </tr>
                         </thead>
                         <tbody>
- 
 
-                          {this.state.kelas.map(kelas => 
-                         
-                            <tr key={kelas.nama_kelas}>
-                              <td>{kelas.nama_guru}</td>
-                              <td>{kelas.kode_kelas}</td>
-                              <td>{kelas.nama_guru}</td>
+
+                          {this.state.siswa.map(siswa =>
+                            <tr key={siswa.id_user}>
+
+                              <td>{siswa.nama_siswa}</td>
+                              <td>{siswa.nis}</td>
+                              <td>{siswa.nisn}</td>
+                              <td>{siswa.jenis_kelamin}</td>
+                              <td>{siswa.tgl_lahir}</td>
+                              <td>{siswa.tempat_lahir}</td>
+                              <td>{siswa.alamat}</td>
+                              <td>{siswa.agama}</td>
+                              <td>{siswa.nama_orangtua}</td>
+                              <td>{siswa.no_hp1}</td>
+                              <td>{siswa.no_hp2}</td>
                               <td>
-                                  Edit | Hapus
+                                <div className="d-flex">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editSiswa.bind(this, siswa)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deleteSiswa.bind(this, siswa)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
-
-
-
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-
+              <ModalEditSiswa isShow={this.state.show} siswa={this.state.siswa} />
             </div>
           </div>
         </div>

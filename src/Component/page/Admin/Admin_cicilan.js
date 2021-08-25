@@ -1,14 +1,15 @@
 import React from "react";
-import { Button} from 'react-bootstrap';
+import { Button, Form, Col } from 'react-bootstrap';
 import axios from "axios";
 import "./Admin_cicilan.css";
+import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahCicilan from "../../../Molekul/Modal/ModalTambah/ModalTambahCicilan";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditCicilan'
 
 
 const api = "http://localhost:5001";
- class Admin_cicilan extends PureComponent {
+class Admin_cicilan extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -16,25 +17,25 @@ const api = "http://localhost:5001";
       laporancicilan: [],
       response: '',
       display: 'none',
-      show:''
+      show: ''
     };
-   
+
   }
 
 
-    editcicilan =(item)=>{
-      const data = this.state.laporancicilan.filter(i => i.kode_cicilan == item.kode_cicilan)
-      this.setState({
-        laporancicilan:data,
-        show:'show'
-        
-      })
-      
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
-   
-    }
+  editcicilan = (item) => {
+    const data = this.state.laporancicilan.filter(i => i.kode_cicilan == item.kode_cicilan)
+    this.setState({
+      laporancicilan: data,
+      show: 'show'
+
+    })
+
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
+
+  }
 
   componentDidMount() {
     axios.get(api + "/getlaporancicilan").then(res => {
@@ -42,30 +43,39 @@ const api = "http://localhost:5001";
         laporancicilan: res.data.values
       });
     });
-    
+
   }
 
-  deletecicilan =(item)=>{
+  deletecicilan = (item) => {
     console.log('masuk')
-  
+
     console.log('====================================');
     console.log(item);
     console.log('====================================');
-   
-    axios.post(api + "/deleteonecicilan", {
-      kode_cicilan:item.kode_cicilan
-      
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
- 
 
- 
+    axios.post(api + "/deleteonecicilan", {
+      kode_cicilan: item.kode_cicilan
+
+    })
+      .then(function (response) {
+        console.log(response); if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
+
 
 
   render() {
@@ -97,7 +107,7 @@ const api = "http://localhost:5001";
                 </a>
               </li>
               <li>
-              <a href="/cicilan" className="active">
+                <a href="/cicilan" className="active">
                   <span className="las la-cicilan"></span>
                   <span>Pembayaran Cicilan</span>
                 </a>
@@ -126,11 +136,6 @@ const api = "http://localhost:5001";
               </label>
               Dashboard
             </h2>
-
-            <div className="search-wrapper">
-              <span className="las la-search"></span>
-              <input type="search" placeholder="search here"></input>
-            </div>
 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
@@ -185,15 +190,20 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Pembayaran Cicilan Buku</h3>
-                   <ModalTambahCicilan />
+                    <Form className="d-flex">
+                      <h3>Table Pembayaran Cicilan Buku</h3>
+                      <Col md={{ span: 3, offset: 5 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
+                    <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Kode Cicilan</td>
                             <td>Student Account</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
@@ -209,28 +219,27 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.laporancicilan.map(laporancicilan => 
-                         
+                          {this.state.laporancicilan.map(laporancicilan =>
+
                             <tr key={laporancicilan.kode_cicilan}>
-                              <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
                               <td>{laporancicilan.nama}</td>
                               <td>{laporancicilan.tgl_bayar}</td>
                               <td>{laporancicilan.buku}</td>
-                              <td>{laporancicilan.debit}</td>
-                              <td>{laporancicilan.kredit}</td>
+                              <td>Rp. {laporancicilan.debit}</td>
+                              <td>Rp. {laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex ">
-                                          <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger" onClick={this.deletecicilan.bind(this,laporancicilan)}>
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex ">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger" onClick={this.deletecicilan.bind(this, laporancicilan)}>
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -250,7 +259,13 @@ const api = "http://localhost:5001";
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Pembayaran Cicilan Seragam</h3>
+                    <Form className="d-flex">
+                      <h3>Table Cicilan Seragam</h3>
+                      <Col md={{ span: 3, offset: 6 }} >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
                     <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
@@ -258,7 +273,6 @@ const api = "http://localhost:5001";
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Kode Cicilan</td>
                             <td>Student Account</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
@@ -274,28 +288,27 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.laporancicilan.map(laporancicilan => 
-                         
+                          {this.state.laporancicilan.map(laporancicilan =>
+
                             <tr key={laporancicilan.kode_cicilan}>
-                               <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
                               <td>{laporancicilan.nama}</td>
                               <td>{laporancicilan.tgl_bayar}</td>
                               <td>{laporancicilan.seragam}</td>
-                              <td>{laporancicilan.debit}</td>
-                              <td>{laporancicilan.kredit}</td>
+                              <td>Rp. {laporancicilan.debit}</td>
+                              <td>Rp. {laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex ">
-                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger">
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex ">
+                                  <Button variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger">
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -310,12 +323,18 @@ const api = "http://localhost:5001";
               </div>
             </div>
 
-                            {/* Tabel Cicilan Uang Pangkal */}
+            {/* Tabel Cicilan Uang Pangkal */}
             <div className="recent-grid">
               <div className="project">
                 <div className="card">
                   <div className="card-header">
-                    <h3>Table Pembayaran Cicilan Uang Pangkal</h3>
+                    <Form className="d-flex">
+                      <h3>Table Cicilan Uang Pangkal</h3>
+                      <Col md={{ span: 3, offset: 5 }}  >
+                        <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
+                      </Col>
+                    </Form>
+
                     <ModalTambahCicilan />
                   </div>
                   <div className="card-body">
@@ -323,7 +342,6 @@ const api = "http://localhost:5001";
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Kode Cicilan</td>
                             <td>Student Account</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
@@ -339,28 +357,27 @@ const api = "http://localhost:5001";
                         <tbody>
 
 
-                          {this.state.laporancicilan.map(laporancicilan => 
-                         
+                          {this.state.laporancicilan.map(laporancicilan =>
+
                             <tr key={laporancicilan.kode_cicilan}>
-                               <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.student_account}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
                               <td>{laporancicilan.nama}</td>
                               <td>{laporancicilan.tgl_bayar}</td>
-                              <td>{laporancicilan.uang_pangkal}</td>
-                              <td>{laporancicilan.debit}</td>
-                              <td>{laporancicilan.kredit}</td>
+                              <td>Rp. {laporancicilan.uang_pangkal}</td>
+                              <td>Rp. {laporancicilan.debit}</td>
+                              <td>Rp. {laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                              <div className="d-flex ">
-                                          <Button variant="outline-success" onClick={this.editcicilan.bind(this,laporancicilan)}>
-                                            Edit
-                                          </Button>
-                                          <Button variant="outline-danger">
-                                            Delete
-                                          </Button>
-                                          </div>
+                                <div className="d-flex ">
+                                  <Button variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                    Edit
+                                  </Button>
+                                  <Button variant="outline-danger">
+                                    Delete
+                                  </Button>
+                                </div>
                               </td>
                             </tr>
                           )}
@@ -373,7 +390,7 @@ const api = "http://localhost:5001";
                   </div>
                 </div>
               </div>
-              <ModalEdit isShow={this.state.show} laporancicilan={this.state.laporancicilan}/>
+              <ModalEdit isShow={this.state.show} laporancicilan={this.state.laporancicilan} />
             </div>
           </div>
         </div>

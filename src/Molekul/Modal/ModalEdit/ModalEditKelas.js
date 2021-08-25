@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import EditKelas from '../../Form/Edit/EditKelas';
 
 
@@ -10,23 +10,23 @@ import EditKelas from '../../Form/Edit/EditKelas';
 
 
 function MyVerticallyCenteredModal(props) {
-console.log('================propscxcxcx====================');
-console.log(props.kelas);
-console.log('====================================');
+  console.log('================propscxcxcx====================');
+  console.log(props.kelas);
+  console.log('====================================');
   return (
     <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered>
-        
+
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-       Edit Data
+          Edit Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <EditKelas kelas={props.kelas}/>      
+        <EditKelas kelas={props.kelas} />
       </Modal.Body>
     </Modal>
   );
@@ -36,16 +36,16 @@ console.log('====================================');
 
 function Kelas(props) {
   const [modalShow, setModalShow] = React.useState(false);
-console.log('===============props.isShow=====================');
-console.log(props.isShow);
-console.log('====================================');
+  console.log('===============props.isShow=====================');
+  console.log(props.isShow);
+  console.log('====================================');
   return (
     <>
-   
+
       <MyVerticallyCenteredModal
         show={props.isShow}
         onHide={() => setModalShow(modalShow)}
-        kelas= {props.kelas}
+        kelas={props.kelas}
       />
     </>
   );
