@@ -10,7 +10,6 @@ export default class EditCicilan extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             kode_cicilan: props.laporancicilan[0].kode_cicilan,
             student_account: props.laporancicilan[0].student_account,

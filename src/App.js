@@ -29,6 +29,7 @@ import bayarpangkal from "./Component/page/User/BayarPangkal";
 import bayarbuku from "./Component/page/User/BayarBuku";
 import forget from "./Component/page/Login/forget";
 import profilUser from "./Component/page/User/profil";
+import CetakBulanan from "./Component/Cetak/CetakBulanan";
 
 
 
@@ -64,8 +65,6 @@ import profilUser from "./Component/page/User/profil";
 <Route path="/inventaris" component={Admin_inventaris}/>
 <Route path="/bulanan" component={Laporan_bulanan}/>
 
-
-
           
           {/* ----Menu User--- */}
 <Route path="/user" component={User}/>
@@ -75,6 +74,9 @@ import profilUser from "./Component/page/User/profil";
 <Route path="/uangpangkal" component={bayarpangkal}/>
 <Route path="/lupapassword" component={forget}/>
 <Route path="/profiluser" component={profilUser}/>
+
+            {/* Cetak Data */}    
+<Route path="/cetakbulanan" component={CetakBulanan}/>
 
               <Redirect from="/" to="/home"/>
             </Switch>

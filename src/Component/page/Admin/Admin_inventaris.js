@@ -6,7 +6,8 @@ import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahInventaris from "../../../Molekul/Modal/ModalTambah/ModalTambahInventaris";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditInventaris'
-
+import ReactToPrint from 'react-to-print';
+import CetakInventaris from "../../Cetak/CetakInventaris";
 
 const api = "http://localhost:5001";
 class Admin_inventaris extends PureComponent {
@@ -19,7 +20,6 @@ class Admin_inventaris extends PureComponent {
       display: 'none',
       show: ''
     };
-
   }
 
 
@@ -28,13 +28,7 @@ class Admin_inventaris extends PureComponent {
     this.setState({
       laporaninventaris: data,
       show: 'show'
-
     })
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
   }
 
   componentDidMount() {
@@ -46,12 +40,6 @@ class Admin_inventaris extends PureComponent {
   }
 
   deleteinventaris = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteoneinventaris", {
       kode_inventaris: item.kode_inventaris
 
@@ -72,9 +60,6 @@ class Admin_inventaris extends PureComponent {
         console.log(error);
       });
   }
-
-
-
 
   render() {
     return (
@@ -138,8 +123,8 @@ class Admin_inventaris extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+              <h4>Admin
+                <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
           </header>
@@ -184,7 +169,6 @@ class Admin_inventaris extends PureComponent {
             </div>
 
             <div className="recent-grid">
-
               <div className="project">
                 <div className="card">
                   <div className="card-header">
@@ -194,7 +178,6 @@ class Admin_inventaris extends PureComponent {
                         <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
                       </Col>
                     </Form>
-
                     <ModalTambahInventaris />
                   </div>
                   <div className="card-body">
@@ -213,10 +196,7 @@ class Admin_inventaris extends PureComponent {
                           </tr>
                         </thead>
                         <tbody>
-
-
                           {this.state.laporaninventaris.map(laporaninventaris =>
-
                             <tr key={laporaninventaris.kode_inventaris}>
                               <td>{laporaninventaris.tgl_pembelian}</td>
                               <td>{laporaninventaris.keterangan}</td>
@@ -237,12 +217,16 @@ class Admin_inventaris extends PureComponent {
                               </td>
                             </tr>
                           )}
-
-
-
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                  <div className="d-flex card-footer  justify-content-end">
+                    <ReactToPrint
+                      trigger={() => {
+                        return <Button variant="dark" href="#">Cetak</Button>; }}
+                      content={() => this.componentRef} />
+                    <CetakInventaris ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>

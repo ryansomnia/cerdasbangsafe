@@ -5,18 +5,19 @@ import uiImg from '../../images/login.svg'
 import "./login.css";
 import axios from "axios";
 import swal from 'sweetalert';
+import Admin from "../Admin/Admin";
 
 const api = "http://localhost:5001";
 export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: [],
+            user:[],
+            username: '',
             password: '',
             response: ""
         }
     }
-
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -27,32 +28,46 @@ export default class Login extends Component {
             password: this.state.password
         })
             .then(json => {
-                console.log(json, 'data');
-                if (this.state.username == 'testing',
-                    this.state.password == 'testing'                              
-                ) {
-                    swal({
-                        title: "Login",
-                        text: "Anda Berhasil Login ",
-                        type: "success",
-                        icon: "success"
+                console.log(json.data.values, 'data');
 
-                    }).then(function () {
-                        window.location.href="/user";
-                    });
+                if (json.data.message == "success") {
+                    if (json.data.message == "success" && json.data.values[0].role == "admin") {
+                        swal({
+                            title: "Login",
+                            text: "Anda Berhasil Login ",
+                            type: "success",
+                            icon: "success"
+
+                        }).then(function () {
+                            window.location.href = "/master";
+                        });
+
+                    } else {
+                        swal({
+                            title: "Login",
+                            text: "Anda Berhasil Login ",
+                            type: "success",
+                            icon: "success"
+
+                        }).then(function () {
+                            window.location.href = "/user";
+                        });
+
+                    }
+
                 } else {
                     swal({
-                        title: "Login Gagal", 
-                        text: "Username atau Password tidak sesuai", 
+                        title: "Login Gagal",
+                        text: "Username atau Password tidak sesuai",
                         type: "danger",
                         icon: "error"
-                      }).then(function () {
+                    }).then(function () {
                         window.location.reload();
                     });
                 }
 
             })
-           
+
     }
 
     render() {
@@ -88,7 +103,7 @@ export default class Login extends Component {
                                     </div>
                                     <br />
                                 </Form>
-
+                           
 
                             </Card.Body>
                         </Card>

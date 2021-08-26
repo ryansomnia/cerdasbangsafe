@@ -3,27 +3,24 @@ import { Button, Form, Col, Row } from 'react-bootstrap';
 import axios from "axios";
 import "./Laporan_bulanan.css";
 import swal from 'sweetalert';
-import ReactToPrint from 'react-to-print';
 import { PureComponent } from "react";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditBulanan'
 import ModalTambahLaporan from "../../../Molekul/Modal/ModalTambah/ModalTambahLaporan";
-
+import { CetakBulanan } from '../../Cetak/CetakBulanan';
+import ReactToPrint from 'react-to-print';
 
 
 const api = "http://localhost:5001";
 class laporan_bulanan extends PureComponent {
   constructor(props) {
     super(props)
-
     this.state = {
       laporanbulanan: [],
       response: '',
       display: 'none',
       show: ''
     };
-
   }
-
 
   editbulanan = (item) => {
     const data = this.state.laporanbulanan.filter(i => i.kode_laporan == item.kode_laporan)
@@ -32,11 +29,6 @@ class laporan_bulanan extends PureComponent {
       show: 'show'
 
     })
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
   }
 
   componentDidMount() {
@@ -48,12 +40,6 @@ class laporan_bulanan extends PureComponent {
 
   }
   deletelaporan = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteonebulanan", {
       kode_laporan: item.kode_laporan
 
@@ -138,8 +124,9 @@ class laporan_bulanan extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+                <h4>Admin
+                  <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button>
+                  </h4>
               </div>
             </div>
           </header>
@@ -199,7 +186,6 @@ class laporan_bulanan extends PureComponent {
                         <Col >
                           <ModalTambahLaporan /></Col>
                         <Col>
-
                         </Col>
                       </Row>
                     </div>
@@ -251,15 +237,11 @@ class laporan_bulanan extends PureComponent {
                     </div>
                   </div>
                   <div className="d-flex card-footer  justify-content-end">
-                    <div>
-                      <ReactToPrint
-                        trigger={() => {
-                          return <Button variant="dark" href="#">Cetak</Button>;
-                        }}
-                        content={() => this.componentRef}
-                      />
-                      <laporan_bulanan ref={el => (this.componentRef = el)} />
-                    </div>
+                    <ReactToPrint
+                      trigger={() => {
+                        return <Button variant="dark" href="#">Cetak</Button>; }}
+                      content={() => this.componentRef} />
+                    <CetakBulanan ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>

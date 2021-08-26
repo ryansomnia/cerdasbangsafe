@@ -31,10 +31,6 @@ class Admin_cicilan extends PureComponent {
 
     })
 
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
   }
 
   componentDidMount() {
@@ -47,12 +43,6 @@ class Admin_cicilan extends PureComponent {
   }
 
   deletecicilan = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteonecicilan", {
       kode_cicilan: item.kode_cicilan
 
@@ -140,8 +130,8 @@ class Admin_cicilan extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+              <h4>Admin
+                <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
           </header>
@@ -312,8 +302,6 @@ class Admin_cicilan extends PureComponent {
                               </td>
                             </tr>
                           )}
-
-
 
                         </tbody>
                       </table>

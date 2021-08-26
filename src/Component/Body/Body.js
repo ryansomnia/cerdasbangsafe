@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import CarouselBody from '../../Molekul/Carousel/CarouselBody'
 import BannerRegist from '../../Molekul/Banner/BannerRegist'
 import BannerGretting from '../../Molekul/Banner/BannerGretting'
-import TabelRegistrasi from '../../Molekul/Table/TabelRegistrasi'
 import Promosi from '../../Molekul/Banner/promosi'
 
 
@@ -21,8 +20,6 @@ export default class Body extends Component {
                 <BannerRegist />
                 <Promosi/>
                 <BannerGretting/>
-                <TabelRegistrasi/>
-               
             </div>
 
 

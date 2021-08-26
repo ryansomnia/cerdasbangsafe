@@ -68,7 +68,8 @@ export default class Pembayaranspp extends Component {
     render() {
         return (
             <div className="mt-4  main-admin ">
-                <h4>Form Pembayaran</h4>
+                <h5>Form Pembayaran</h5>
+                <hr />
                 <Form>
                     <div className="form-row">
                         <div className="form-group col-md-6">

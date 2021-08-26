@@ -8,15 +8,19 @@ import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 import swal from 'sweetalert';
+import CetakKelas from "../../Cetak/CetakKelas";
+import ReactToPrint from 'react-to-print';
+import CetakGuru from "../../Cetak/CetakGuru";
+
 
 const api = "http://localhost:5001";
 class Admin extends PureComponent {
   constructor(props) {
     super(props)
-
     this.state = {
       kelas: [],
       guru: [],
+      // username: props.user[0].username,
       response: '',
       display: 'none',
       show: '',
@@ -24,21 +28,20 @@ class Admin extends PureComponent {
     };
   }
 
+  
+
+  pageLogin(path) {
+    console.log('logout', path);
+    this.props.history.push(path)
+  }
+
 
   editGuru = (item) => {
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
     this.setState({
       guru: data,
       show: 'show'
     })
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
   }
 
   editKelas = (item) => {
@@ -48,9 +51,6 @@ class Admin extends PureComponent {
       tampil: 'show'
 
     })
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
   }
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class Admin extends PureComponent {
         kelas: res.data.values
       });
     });
-
+    
 
     axios.get(api + "/getguru").then(res => {
       this.setState({
@@ -69,13 +69,14 @@ class Admin extends PureComponent {
 
   }
 
+  getOneData= () => {
+    console.log("Data Masuk");
+    axios.post(api+ '/getonedata', {
+        nama : this.state.nama
+    })
+  }
+
   deleteGuru = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteoneguru", {
       id_guru: item.id_guru
     })
@@ -98,12 +99,6 @@ class Admin extends PureComponent {
   }
 
   deleteKelas = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteOnekelas", {
       nama_kelas: item.nama_kelas
 
@@ -125,7 +120,6 @@ class Admin extends PureComponent {
         console.log(error);
       });
   }
-
 
 
   render() {
@@ -177,7 +171,6 @@ class Admin extends PureComponent {
             </ul>
           </div>
         </div>
-
         <div className="main-content">
           <header>
             <h2>
@@ -190,8 +183,8 @@ class Admin extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+                <h5>sign in :{this.state.username}
+                  <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h5>
               </div>
             </div>
           </header>
@@ -260,10 +253,7 @@ class Admin extends PureComponent {
                           </tr>
                         </thead>
                         <tbody>
-
-
                           {this.state.kelas.map(kelas =>
-
                             <tr key={kelas.nama_kelas}>
                               <td>{kelas.nama_kelas}</td>
                               <td>{kelas.nama_guru}</td>
@@ -279,12 +269,16 @@ class Admin extends PureComponent {
                               </td>
                             </tr>
                           )}
-
-
-
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                  <div className="d-flex card-footer  justify-content-end">
+                    <ReactToPrint
+                      trigger={() => {
+                        return <Button variant="dark" href="#">Cetak</Button>; }}
+                      content={() => this.componentRef} />
+                    <CetakKelas ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>
@@ -306,7 +300,6 @@ class Admin extends PureComponent {
                       <table width="100%">
                         <thead>
                           <tr>
-                            {/* <td>ID Guru</td> */}
                             <td>Nama Guru</td>
                             <td>Jenis Kelamin</td>
                             <td>NO NUPTK</td>
@@ -323,7 +316,6 @@ class Admin extends PureComponent {
                         <tbody>
                           {this.state.guru.map(guru =>
                             <tr key={guru.id_guru}>
-
                               <td>{guru.nama_guru}</td>
                               <td>{guru.jenis_kelamin}</td>
                               <td>{guru.no_nuptk}</td>
@@ -351,6 +343,13 @@ class Admin extends PureComponent {
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                  <div className="d-flex card-footer  justify-content-end">
+                    <ReactToPrint
+                      trigger={() => {
+                        return <Button variant="dark" href="#">Cetak</Button>; }}
+                      content={() => this.componentRef} />
+                    <CetakGuru ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>

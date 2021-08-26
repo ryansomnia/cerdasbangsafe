@@ -1,22 +1,19 @@
 import React, { Component } from "react";
-import { Navbar, Form, Button, Dropdown, Card, Col, Row } from "react-bootstrap";
-import { FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle,  FaBook, FaLandmark, FaTshirt } from "react-icons/fa";
-import Iconseragam from '../../images/seragam.svg'
-import IconBuku from '../../images/buku.svg'
-import uangpangkal from '../../images/pangkal.svg'
+import { Navbar, Form, Button, Dropdown } from "react-bootstrap";
+import { FaDesktop, FaIdCard, FaMoneyCheckAlt, FaUserCircle, FaBook, FaLandmark, FaTshirt } from "react-icons/fa";
 
 import "./User.css";
 
 
 
-export default class user  extends Component {
-    pageLogin(path){
-        console.log('logout',path);
+export default class user extends Component {
+    pageLogin(path) {
+        console.log('logout', path);
         this.props.history.push(path)
-      }
+    }
 
 
-      render() {
+    render() {
         return (
             <div className="d-flex" id="wrapper">
                 {/* <!-- Sidebar--> */}
@@ -51,9 +48,9 @@ export default class user  extends Component {
                                     </li>
                                     <li>
                                         <Navbar.Text>
-                                            Signed in as: <a href="#login" className="btn-space">Siswa</a> 
-                                            
-                                            <Button size="sm" size="sm" variant="danger"  onClick={() => this.pageLogin('/login')}>LogOut</Button>
+                                            Signed in as: <a href="#login" className="btn-space">Siswa</a>
+
+                                            <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/login')}>LogOut</Button>
                                         </Navbar.Text></li>
                                 </ul>
                             </div>
@@ -61,51 +58,51 @@ export default class user  extends Component {
                     </Navbar>
                     {/* <!-- Page content--> */}
                     <div className="container-fluid">
-                        <Row className="justify-content-md-center">
-                            <Col xs lg="3">
-                                <Card style={{ width: '18rem' }}>
-                                    <img className="icon-img" variant="top" src={Iconseragam} alt="seragam" />
-                                    <Card.Body>
-                                        <Card.Title>Bayar Seragam</Card.Title>
-                                        <Card.Text>
-                                            Anda dapat melakukan pembayaran dengan menekan tombol bayar ini.
-                                        </Card.Text>
-                                        <Button href="/bayarseragam" variant="primary">Bayar</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col xs lg="3">
-                                <Card style={{ width: '18rem' }}>
-                                    <img className="icon-img" src={IconBuku} alt="buku" />
-                                    <Card.Body>
-                                        <Card.Title>Bayar Buku</Card.Title>
-                                        <Card.Text>
-                                            Anda dapat melakukan pembayaran dengan menekan tombol bayar ini.
-                                        </Card.Text>
-                                        <Button href="/bayarbuku" variant="primary">Bayar</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
+                        <div className="tampilan" style={{ padding: '0 1rem' }}>
+                        <div class="card" style={{ width: '18rem', marginRight: "15px" }} >
+                            <div class="card-body "
+                            style={{ 
+                                margin: "1em",
+                                padding: "0 1.5rem",
+                                }}>
+                                <h5 class="card-title">Bayar Uang Pangkal </h5>
+                                <p class="card-text">Anda dapat melakukan pembayaran dengan menekan tombol bayar ini</p>
+                                <a href="/uangpangkal" class="card-link">klik Tombil !</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style={{ width: '18rem',  marginRight: "15px" }}>
+                            <div class="card-body"
+                             style={{ 
+                                margin: "1em",
+                                padding: "0 1.5rem",
+                                }}>
+                                <h5 class="card-title">Bayar Buku ?</h5>
+                                <p class="card-text">Anda dapat melakukan pembayaran dengan menekan tombol bayar ini.</p>
+                                <a href="/bayarbuku" class="card-link">klik Tombil !</a>
+                            </div>
+                        </div>
+                       
 
-                            <Col xs lg="3">
-                                <Card style={{ width: '18rem' }}>
-                                    <img className="icon-img" variant="top" src={uangpangkal} alt="uangpangkal" />
-                                    <Card.Body>
-                                        <Card.Title>Bayar Uang Pangkal</Card.Title>
-                                        <Card.Text>
-                                            Anda dapat melakukan pembayaran dengan menekan tombol bayar ini.
-                                        </Card.Text>
-                                        <Button href="/uangpangkal" variant="primary">Bayar</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
+                        <div class="card" style={{ width: '18rem' }}>
+                            <div class="card-body"
+                             style={{ 
+                                margin: "1em",
+                                padding: "0 1.5rem",
+                                }}>
+                                <h5 class="card-title">Bayar Seragam ?</h5>
+                                <p class="card-text">Anda dapat melakukan pembayaran dengan menekan tombol bayar ini.</p>
+                                <a href="/bayarseragam" class="card-link">klik Tombil !</a>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                     </div>
                 </div>
             </div>
         );
-    
-}
+
+    }
 }

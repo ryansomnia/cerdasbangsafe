@@ -69,7 +69,7 @@ export default class Pembayaranpangkal extends Component {
                         title: "Pembayaran Uang Pangkal",
                         text: "Pembayaran Kamu Berhasil di Proses",
                         type: "success",
-                        icon:"success"
+                        icon: "success"
                     }).then(function () {
                         window.location.reload();
                     });
@@ -80,82 +80,58 @@ export default class Pembayaranpangkal extends Component {
     render() {
         return (
             <div className="mt-4  main-admin ">
-                <h4>Form Pembayaran</h4>
-                <Form ClassName="form ">
-                
-                        <Form.Label>Nama Siswa</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                <h5>Form Pembayaran</h5>
+                <hr />
+                <Form >
 
-                        <Form.Label>Nomor Induk</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                    <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan Nomor Induk Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>Nama Siswa</Form.Label>
+                            <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
+                        </div>
 
-                        <Form.Label>NISN</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Nomor Induk</Form.Label>
+                            <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan Nomor Induk Siswa" />
+                        </div>
+                    </div>
 
-                                    <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>NISN</Form.Label>
+                            <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa" />
+                        </div>
 
-                        <Form.Label>Tanggal Bayar</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange} placeholder="Masukkan Tanggal Pembayaran" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                        <div className="form-group col-md-6">
+                            <Form.Label>Tanggal Bayar</Form.Label>
+                            <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange} placeholder="Masukkan Tanggal Pembayaran" />
+                        </div>
+                    </div>
 
-                        <Form.Label>Debit</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange} placeholder="Masukkan Jumlah Debit" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <Form.Label>Debit</Form.Label>
+                            <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange} placeholder="Masukkan Jumlah Debit" />
+                        </div>
+
+                        <div className="form-group col-md-6">
+                            <Form.Label>Jumlah Bayar</Form.Label>
+                            <Form.Control type="number" name="uang_pangkal" value={this.state.uang_pangkal} onChange={this.handleChange} placeholder="Rp." />
+                        </div>
+                    </div>
+
+                    <div className="form">
+                        <div className="form-group ">
+                            <Form.Label>Bukti Pembayaran</Form.Label>
+                            <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                        </div>
+                    </div>
+
+                    <div className="d-flex justify-content-end">
+                        <Button variant="primary" onClick={this.handleError} >Bayar</Button>
+                    </div>
 
 
-                        <Form.Label>Uang Pangkal</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="number" name="uang_pangkal" value={this.state.uang_pangkal} onChange={this.handleChange} placeholder="Masukkan Jumlah Uang Pangkal" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Bukti Pembayaran</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                        <FormGroup>
-                            <Row>
-                                <Col className="d-flex justify-content-end">
-                                    <Button variant="primary" onClick={this.handleError} >Bayar</Button>
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    
 
                 </Form>
 

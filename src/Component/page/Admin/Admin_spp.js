@@ -6,6 +6,8 @@ import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahSpp from '../../../Molekul/Modal/ModalTambah/ModalTambahSpp';
 import ModalEditSpp from '../../../Molekul/Modal/ModalEdit/ModalEditSpp'
+import { CetakSpp } from "../../Cetak/CetakSpp";
+import ReactToPrint from 'react-to-print';
 
 
 
@@ -24,19 +26,11 @@ class Admin_spp extends PureComponent {
   }
 
   editSpp = (item) => {
-    console.log('=================Data Masuk===================');
-    console.log(item);
-    console.log('====================================');
-
     const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
     this.setState({
       laporanspp: data,
       show: 'show'
     })
-
-    console.log('=================Data Keluar===================');
-    console.log(item);
-    console.log('====================================');
   }
 
   componentDidMount() {
@@ -48,18 +42,11 @@ class Admin_spp extends PureComponent {
   }
 
   deleteSpp = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteonespp", {
       kode_spp: item.kode_spp
-
     })
       .then(function (response) {
-        console.log(response); 
+        console.log(response);
         if (response.status == 200) {
           swal({
             title: "Hapus data",
@@ -140,8 +127,8 @@ class Admin_spp extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+                <h4>Admin
+                  <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
           </header>
@@ -243,6 +230,14 @@ class Admin_spp extends PureComponent {
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                  <div className="d-flex card-footer  justify-content-end">
+                    <ReactToPrint
+                      trigger={() => {
+                        return <Button variant="dark" href="#">Cetak</Button>;
+                      }}
+                      content={() => this.componentRef}/>
+                    <CetakSpp ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>

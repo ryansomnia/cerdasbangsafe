@@ -1,0 +1,6 @@
+@media screen {
+	.yourClassName {
+		visibility: hidden;
+        display: none
+	}
+}

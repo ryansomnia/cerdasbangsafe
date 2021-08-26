@@ -132,12 +132,12 @@ class Admin_registrasi extends PureComponent {
               </label>
               Dashboard
             </h2>
-
+ 
             <div className="user-wrapper">
               <img src="Image/logo3.png" width="40px" height="40px" alt="" />
               <div>
-                <h4>John Cena</h4>
-                <small>Super Admin</small>
+              <h4>Admin
+                <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
           </header>

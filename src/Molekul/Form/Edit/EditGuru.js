@@ -39,9 +39,6 @@ export default class EditGuru extends Component {
     }
 
     editGuru = () => {
-        // const {id_guru,nama_guru,jenis_kelamin,no_nuptk,tempat_lahir,tgl_lahir,pendidikan,lulusan,jabatan, status_karyawan, agama, id_user} = this.state
-        // console.log('hereee',id_guru,nama_guru, jenis_kelamin, no_nuptk, tempat_lahir, tgl_lahir, pendidikan,lulusan,jabatan, status_karyawan, agama, id_user );
-        console.log(this.state.jenis_kelamin);
         console.log(this.state.nama_guru);
         axios.post(api + "/editoneguru", {
             id_guru: this.state.id_guru,
@@ -68,27 +65,6 @@ export default class EditGuru extends Component {
         this.setState({ [name]: event.target.value });
         console.log(event);
     };
-
-    // handleChange(event) {
-    //     console.log(event);
-    //     this.setState({
-    //         nama_guru: event.target.nama_guru,
-    //         jenis_kelamin: event.target.jenis_kelamin,
-    //         no_nuptk: event.target.no_nuptk,
-    //         tempat_lahir: event.target.tempat_lahir,
-    //         tgl_lahir: event.target.tgl_lahir,
-    //         pendidikan: event.target.pendidikan,
-    //         lulusan: event.target.lulusan,
-    //         jabatan: event.target.jabatan,
-    //         status_karyawan: event.target.status_karyawan,
-    //         agama: event.target.agama,
-    //         id_user: event.target.id_user
-    //     });
-    //     console.log(this.state.nama_guru)
-
-    // }
-
-
 
     render() {
         return (

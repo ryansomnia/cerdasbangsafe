@@ -81,6 +81,7 @@ export default class Pembayaranseragam extends Component {
         return (
             <div className="mt-4  main-admin ">
                 <h5>Form Pembayaran Seragam</h5>
+                <hr />
                 <Form >
                     <div className="form-row">
                         <div className="form-group col-md-6">

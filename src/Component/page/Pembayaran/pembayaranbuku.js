@@ -80,7 +80,8 @@ export default class Pembayaranbuku extends Component {
     render() {
         return (
             <div className="mt-4  main-admin ">
-                <h4>Form Pembayaran</h4>
+                <h5>Form Pembayaran Buku</h5>
+                <hr />
                 <Form >
                     <div className="form-row">
                         <div className="form-group col-md-6">
@@ -128,9 +129,6 @@ export default class Pembayaranbuku extends Component {
                     <div className="d-flex justify-content-end">
                         <Button variant="primary" onClick={this.handleError} >Bayar</Button>
                     </div>
-
-
-
 
                 </Form>
             </div>
