@@ -1,8 +1,6 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import EditSpp from '../../Form/Edit/EditSpp';
-
-
 
 
 function MyVerticallyCenteredModal(props) {

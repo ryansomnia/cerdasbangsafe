@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { Component } from "react";
-// import axios from 'axios'
-import { Col, Row, FormGroup, Form, Button, Container } from 'react-bootstrap';
+import {Col, Row, FormGroup, Form, Button, Container} from 'react-bootstrap';
 import swal from 'sweetalert';
+
 
 const api = "http://localhost:5001";
 export default class EditKelas extends Component {
-
     constructor(props) {
         super(props)
-
         this.state = {
             nama_kelas: props.kelas[0].nama_kelas,
             kode_kelas: props.kelas[0].kode_kelas,
@@ -23,37 +21,35 @@ export default class EditKelas extends Component {
         console.log(this.state.kelas);
         console.log(this.state.nama_siswa);
         axios.post(api + "/editOnedata", {
-            nama_kelas: this.state.nama_kelas,
-            kode_kelas: this.state.kode_kelas,
-            nama_guru: this.state.nama_guru
-        })
-            .then(function (response) {
-                console.log(response);
-                if (response.status == 200) {
-                    swal({
-                        title: "Edit data", 
-                        text: "Data Anda berhasil di Ubah", 
-                        type: "success",    
-                        icon: "success"
-                      }).then(function () {
-                        window.location.reload();
-                      });
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-                if (error) {
-                    swal({
-                        title: "Edit data", 
-                        text: "Data Anda Gagal di Ubah", 
-                        type: "danger",
-                        icon: "Warning"
-                      }).then(function () {
-                        window.location.reload();
-                      });
-                }
-            });
-    }
+            nama_kelas : this.state.nama_kelas,
+            kode_kelas : this.state.kode_kelas,
+            nama_guru : this.state.nama_guru
+          })
+          .then(function (response) {
+            if (response.status == 200) {
+                swal({
+                    title: "Tambah data", 
+                    text: "data mu berhasil ditambah", 
+                    type: "success"
+                  }).then(function () {
+                    window.location.reload();
+                  });
+            } 
+
+            console.log(response);
+          })
+          .catch(function (error) {
+            swal({
+                title: "Tambah data", 
+                text: `data mu tidak berhasil ditambah Error : ${error}`, 
+                type: "danger"
+              }).then(function () {
+                window.location.reload();
+              });
+         
+          });
+      } 
+               
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.value });

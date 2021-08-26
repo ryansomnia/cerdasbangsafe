@@ -3,10 +3,6 @@ import { Button, Modal } from 'react-bootstrap';
 import TambahKelas from '../../Form/Tambah/TambahKelas';
 
 
-
-
-
-
 function MyVerticallyCenteredModal(props) {
 
   return (
@@ -27,7 +23,6 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
-
 
 
 function ModalTambahKelas() {

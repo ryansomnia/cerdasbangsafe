@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import {Col, Container, Row, FormGroup, Form, Button} from 'react-bootstrap';
-// import "./TambahKelas.css";
 import swal from 'sweetalert';
+// import "./TambahKelas.css";
 
 const api ='http://localhost:5001'
 export default class TambahKelas extends Component {
@@ -14,7 +14,6 @@ export default class TambahKelas extends Component {
             kode_kelas:'',
             nama_guru:'',
             response : ""
- 
         }
     }
 
@@ -25,9 +24,7 @@ handleChange = (e) => {
 
 handleError = () =>{
     console.log('YE');
-    if (this.state.nama_guru === ''
-       
-    ){
+    if (this.state.nama_guru === ''|| this.state.kode_kelas === '' || this.state.nama_kelas === ''){
         swal({
             title: "Tambah Data", 
                 text: "Data Anda Gagal di Tambah", 
@@ -51,18 +48,21 @@ addOneData= () => {
     })
     .then(json => {
         console.log(json,'data');
+        console.log('===============json=====================');
+        console.log(json.status);
+        console.log('====================================');
         if (json.status == 200) {
             swal({
                 title: "Tambah data", 
-                text: "Data Anda berhasil ditambah", 
-                type: "success",
-                icon: "success"
+                text: "data mu berhasil ditambah", 
+                type: "success"
               }).then(function () {
                 window.location.reload();
-              });
+            });
         }
     })
 }
+
 
     render(){
         return(

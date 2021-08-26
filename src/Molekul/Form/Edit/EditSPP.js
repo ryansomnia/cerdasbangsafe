@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-// import axios from 'axios'
 import { Col, Row, FormGroup, Form, Button, Container } from 'react-bootstrap';
 import moment from 'moment';
 import swal from 'sweetalert';

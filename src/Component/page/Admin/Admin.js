@@ -12,7 +12,6 @@ import CetakKelas from "../../Cetak/CetakKelas";
 import ReactToPrint from 'react-to-print';
 import CetakGuru from "../../Cetak/CetakGuru";
 
-
 const api = "http://localhost:5001";
 class Admin extends PureComponent {
   constructor(props) {
@@ -28,13 +27,31 @@ class Admin extends PureComponent {
     };
   }
 
-  
-
   pageLogin(path) {
     console.log('logout', path);
     this.props.history.push(path)
   }
+      editGuru =(item)=>{
+     
+   
+      const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
+      this.setState({
+        guru:data,
+        show:'show' 
+      })
+      
+     
+    }
 
+    editKelas =(item)=>{
+      const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
+      this.setState({
+        kelas:data,
+        tampil:'show'
+        
+      })
+     
+    }
 
   editGuru = (item) => {
     const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
@@ -66,7 +83,7 @@ class Admin extends PureComponent {
         guru: res.data.values
       });
     });
-
+  
   }
 
   getOneData= () => {
@@ -100,8 +117,22 @@ class Admin extends PureComponent {
 
   deleteKelas = (item) => {
     axios.post(api + "/deleteOnekelas", {
-      nama_kelas: item.nama_kelas
-
+      nama_kelas:item.nama_kelas
+      
+    })
+    .then(function (response) {
+      console.log('================response====================');
+     if (response.status == 200) {
+      swal({
+        title: "Delete data", 
+        text: "data mu berhasil dihapus", 
+        type: "success"
+      }).then(function () {
+        window.location.reload();
+      })
+     } 
+      console.log(response.status);
+      console.log('====================================');
     })
       .then(function (response) {
         console.log(response);
@@ -310,6 +341,7 @@ class Admin extends PureComponent {
                             <td>Jabatan</td>
                             <td>Agama</td>
                             <td>Status Karyawan</td>
+
                             <td>Action</td>
                           </tr>
                         </thead>
