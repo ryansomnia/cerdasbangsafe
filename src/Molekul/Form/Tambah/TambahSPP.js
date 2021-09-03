@@ -29,7 +29,12 @@ export default class TambahSPP extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
+        if (this.state.image === '' ||
+        this.state.tgl_bayar  === '' ||
+        this.state.bulan  === '' ||
+        this.state.jumlah  === '' ||
+        this.state.nama_siswa  === '' ||
+        this.state.kelas  === '' ) {
             swal({
                 title: "Tambah Data", 
                 text: "Data Anda Gagal di Tambah", 

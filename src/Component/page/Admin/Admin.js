@@ -8,9 +8,6 @@ import ModalKelas from '../../../Molekul/Modal/ModalEdit/ModalEditKelas'
 import ModalTambahKelas from "../../../Molekul/Modal/ModalTambah/ModalTambahKelas";
 import ModalTambahGuru from "../../../Molekul/Modal/ModalTambah/ModalTambahGuru";
 import swal from 'sweetalert';
-import CetakKelas from "../../Cetak/CetakKelas";
-import ReactToPrint from 'react-to-print';
-import CetakGuru from "../../Cetak/CetakGuru";
 
 const api = "http://localhost:5001";
 class Admin extends PureComponent {
@@ -19,7 +16,7 @@ class Admin extends PureComponent {
     this.state = {
       kelas: [],
       guru: [],
-      // username: props.user[0].username,
+      username:'',
       response: '',
       display: 'none',
       show: '',
@@ -27,20 +24,18 @@ class Admin extends PureComponent {
     };
   }
 
+
   pageLogin(path) {
     console.log('logout', path);
     this.props.history.push(path)
   }
+
       editGuru =(item)=>{
-     
-   
       const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
       this.setState({
         guru:data,
         show:'show' 
       })
-      
-     
     }
 
     editKelas =(item)=>{
@@ -53,29 +48,16 @@ class Admin extends PureComponent {
      
     }
 
-  editGuru = (item) => {
-    const data = this.state.guru.filter(i => i.id_guru == item.id_guru)
-    this.setState({
-      guru: data,
-      show: 'show'
-    })
-  }
-
-  editKelas = (item) => {
-    const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
-    this.setState({
-      kelas: data,
-      tampil: 'show'
-
-    })
-  }
-
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getkelas").then(res => {
       this.setState({
         kelas: res.data.values
       });
     });
+
     
 
     axios.get(api + "/getguru").then(res => {
@@ -86,12 +68,6 @@ class Admin extends PureComponent {
   
   }
 
-  getOneData= () => {
-    console.log("Data Masuk");
-    axios.post(api+ '/getonedata', {
-        nama : this.state.nama
-    })
-  }
 
   deleteGuru = (item) => {
     axios.post(api + "/deleteoneguru", {
@@ -101,8 +77,8 @@ class Admin extends PureComponent {
         console.log(response);
         if (response.status == 200) {
           swal({
-            title: "Hapus data",
-            text: "Data Anda berhasil Hapus",
+            title: "Hapud data", 
+            text: "Data Anda berhasil di Hapus", 
             type: "success",
             icon: "success"
           }).then(function () {
@@ -121,32 +97,18 @@ class Admin extends PureComponent {
       
     })
     .then(function (response) {
-      console.log('================response====================');
      if (response.status == 200) {
       swal({
-        title: "Delete data", 
-        text: "data mu berhasil dihapus", 
-        type: "success"
+        title: "Hapud data", 
+        text: "Data Anda berhasil di Hapus", 
+        type: "success",
+        icon: "success"
       }).then(function () {
         window.location.reload();
       })
      } 
       console.log(response.status);
-      console.log('====================================');
     })
-      .then(function (response) {
-        console.log(response);
-        if (response.status == 200) {
-          swal({
-            title: "Hapus data",
-            text: "Data Anda berhasil Hapus",
-            type: "success",
-            icon: "success"
-          }).then(function () {
-            window.location.reload();
-          });
-        }
-      })
       .catch(function (error) {
         console.log(error);
       });
@@ -212,10 +174,11 @@ class Admin extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" width="40px" height="40px" alt="" />
+              <img src="Image/logo3.png" alt=""  style={{width:"40px",height:"40px"}}/>
               <div>
-                <h5>sign in :{this.state.username}
-                  <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h5>
+                <h5>sign in : {this.state.username} 
+
+                  <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/login')}>LogOut</Button></h5>
               </div>
             </div>
           </header>
@@ -278,6 +241,7 @@ class Admin extends PureComponent {
                       <table width="100%">
                         <thead>
                           <tr>
+                            <td>Kode Kelas</td>
                             <td>Nama Kelas</td>
                             <td>Nama Guru</td>
                             <td>Action</td>
@@ -285,7 +249,8 @@ class Admin extends PureComponent {
                         </thead>
                         <tbody>
                           {this.state.kelas.map(kelas =>
-                            <tr key={kelas.nama_kelas}>
+                            <tr key={kelas.kode_kelas}>
+                              <td>{kelas.kode_kelas}</td>
                               <td>{kelas.nama_kelas}</td>
                               <td>{kelas.nama_guru}</td>
                               <td>
@@ -303,13 +268,6 @@ class Admin extends PureComponent {
                         </tbody>
                       </table>
                     </div>
-                  </div>
-                  <div className="d-flex card-footer  justify-content-end">
-                    <ReactToPrint
-                      trigger={() => {
-                        return <Button variant="dark" href="#">Cetak</Button>; }}
-                      content={() => this.componentRef} />
-                    <CetakKelas ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>
@@ -356,8 +314,8 @@ class Admin extends PureComponent {
                               <td>{guru.pendidikan}</td>
                               <td>{guru.lulusan}</td>
                               <td>{guru.jabatan}</td>
-                              <td>{guru.status_karyawan}</td>
                               <td>{guru.agama}</td>
+                              <td>{guru.status_karyawan}</td>
                               <td>
 
                                 <div className="d-flex">
@@ -375,13 +333,6 @@ class Admin extends PureComponent {
                         </tbody>
                       </table>
                     </div>
-                  </div>
-                  <div className="d-flex card-footer  justify-content-end">
-                    <ReactToPrint
-                      trigger={() => {
-                        return <Button variant="dark" href="#">Cetak</Button>; }}
-                      content={() => this.componentRef} />
-                    <CetakGuru ref={el => (this.componentRef = el)} />
                   </div>
                 </div>
               </div>

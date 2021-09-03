@@ -29,7 +29,8 @@ export default class TambahBulanan extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.keterangan === '') {
+        if (this.state.kode_laporan === ''|| this.state.tgl === '' || this.state.jumlah === '' || this.state.saldo === '' || 
+            this.state.debit === '' || this.state.kredit === ''||  this.state.keterangan === ''  ) {
             swal({
                 title: "Tambah Data", 
                 text: "Data Anda Gagal di Tambah", 
@@ -62,7 +63,7 @@ export default class TambahBulanan extends Component {
                 if (json.status == 200) {
                     swal({
                         title: "Tambah data",
-                        text: "Data Anda berhasil ditambah",
+                        text: "Data Anda berhasil di Tambah",
                         type: "success",
                         icon: "success"
                     }).then(function () {

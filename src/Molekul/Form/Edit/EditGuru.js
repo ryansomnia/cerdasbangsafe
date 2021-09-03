@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 // import axios from 'axios'
 import moment from 'moment';
+import swal from 'sweetalert';
 import { Col, Row, FormGroup, Form, Button } from 'react-bootstrap';
 
 
@@ -10,7 +11,6 @@ export default class EditGuru extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             id_guru: props.guru[0].id_guru,
             nama_guru: props.guru[0].nama_guru,
@@ -21,9 +21,8 @@ export default class EditGuru extends Component {
             pendidikan: props.guru[0].pendidikan,
             lulusan: props.guru[0].lulusan,
             jabatan: props.guru[0].jabatan,
-            status_karyawan: props.guru[0].status_karyawan,
             agama: props.guru[0].agama,
-            id_user: props.guru[0].id_user
+            status_karyawan: props.guru[0].status_karyawan
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -40,6 +39,7 @@ export default class EditGuru extends Component {
 
     editGuru = () => {
         console.log(this.state.nama_guru);
+        console.log(this.state.jenis_kelamin);
         axios.post(api + "/editoneguru", {
             id_guru: this.state.id_guru,
             nama_guru: this.state.nama_guru,
@@ -51,15 +51,33 @@ export default class EditGuru extends Component {
             lulusan: this.state.lulusan,
             jabatan: this.state.jabatan,
             status_karyawan: this.state.status_karyawan,
-            agama: this.state.agama,
-            id_user: this.state.id_user
+            agama: this.state.agama
         })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .then(function (response) {
+            if (response.status == 200) {
+                swal({
+                    title: "Edit Data", 
+                    text: "Data Anda berhasil di Ubah", 
+                    type: "success",
+                    icon: "success"
+                  }).then(function () {
+                    window.location.reload();
+                  });
+            } 
+
+            console.log(response);
+          })
+          .catch(function (error) {
+            swal({
+                title: "Tambah data", 
+                text: `data mu tidak berhasil ditambah Error : ${error}`, 
+                type: "danger"
+              }).then(function () {
+                window.location.reload();
+              });
+         
+          });
+      
     }
     handleChange = name => event => {
         this.setState({ [name]: event.target.value });
@@ -79,7 +97,6 @@ export default class EditGuru extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
                                     <Form.Control id="nama_guru" type="text" name="nama_guru" value={this.state.nama_guru} onChange={this.handleChange("nama_guru")} />
                                 </Col>
                             </Row>
@@ -88,20 +105,18 @@ export default class EditGuru extends Component {
 
                         <Form.Label>Jenis Kelamin</Form.Label>
                         <FormGroup>
-                            <Row >
-                                <Col>
-                                    {/* <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange}   placeholder="Tulis jenis kelamin calon siswa"/> */}
-                                    <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange("jenis_kelamin")} />
-                                </Col>
-                            </Row>
+                            <select className="custom-select"  name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange("jenis_kelamin")} >
+                                <option>Jenis Kelamin</option>
+                                <option value="PR">Perempuan</option>
+                                <option value="LK">Laki - Laki</option>
+                            </select>
                         </FormGroup>
 
                         <Form.Label>No NUPTK</Form.Label>
                         <FormGroup>
                             <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                    <Form.Control type="text" name="no_nuptk" value={this.state.no_nuptk} onChange={this.handleChange("no_nuptk")} />
+                                <Col>  
+                                 <Form.Control type="text" name="no_nuptk" value={this.state.no_nuptk} onChange={this.handleChange("no_nuptk")} />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -154,25 +169,25 @@ export default class EditGuru extends Component {
                         </FormGroup>
 
 
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Status Karyawan</Form.Label>
                         <FormGroup>
-                            <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange("status")} >
+                            <select className="custom-select" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange("status_karyawan")} >
                                 <option>Pilih Status</option>
-                                <option value="Berhasil">Aktif</option>
-                                <option value="Tidak Berhasil">Tidak Aktif</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
                         </FormGroup>
 
 
                         <Form.Label>Agama</Form.Label>
                         <FormGroup>
-                            <select className="custom-select" name="agama" value={this.state.agama} onChange={this.handleChange("agama")} >
+                            <select className="custom-select" name="agama" value={this.state.agama} onChange={this.handleChange("agama")}  >
                                 <option>Pilih Agama</option>
-                                <option value="Kristen">Kristen</option>
+                                <option value="Kristen Protestan">Kristen Protestan</option>
+                                <option value="Katolik">Katolik</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Hindu">Hindu</option>
-                                <option value="Budha">Buddha</option>
-                                <option value="Katolik">Katolik</option>
+                                <option value="Buddha">Buddha</option>
                                 <option value="Khonghucu">Khonghucu</option>
                             </select>
                         </FormGroup>

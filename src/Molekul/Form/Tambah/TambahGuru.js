@@ -33,7 +33,18 @@ export default class TambahGuru extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.nama_guru === '') {
+        if (this.state.nama_guru === '' ||
+        this.state.id_guru ==='' ||
+        this.state.jenis_kelamin === '' ||
+        this.state.no_nuptk === '' ||
+        this.state.tempat_lahir === '' ||
+        this.state.tgl_lahir === '' ||
+        this.state.pendidikan === '' ||
+        this.state.lulusan === '' ||
+        this.state.jabatan === '' ||
+        this.state.status_karyawan === '' ||
+        this.state.agama === '' 
+        ) {
             swal({
                 title: "Tambah Data", 
                 text: "Data Anda Gagal di Tambah", 
@@ -62,15 +73,14 @@ export default class TambahGuru extends Component {
             lulusan: this.state.lulusan,
             jabatan: this.state.jabatan,
             status_karyawan: this.state.status_karyawan,
-            agama: this.state.agama,
-            id_user: this.state.id_user
+            agama: this.state.agama
         })
             .then(json => {
                 console.log(json, 'data');
                 if (json.status == 200) {
                     swal({
                         title: "Tambah data",
-                        text: "Data Anda berhasil ditambah",
+                        text: "Data Anda berhasil di Tambah",
                         type: "success",
                         icon: "success"
                     }).then(function () {
@@ -85,7 +95,7 @@ export default class TambahGuru extends Component {
             <Container>
                 <Form ClassName="form">
                     <Col>
-                        <Form.Label>Id_ Guru</Form.Label>
+                        <Form.Label>Id Guru</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
@@ -108,12 +118,11 @@ export default class TambahGuru extends Component {
 
                         <Form.Label>Jenis Kelamin</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange}    placeholder="Tulis agama calon siswa"/> */}
-                                    <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} placeholder="Masukkan Jenis Kelamin" />
-                                </Col>
-                            </Row>
+                            <select className="custom-select"  name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} >
+                                <option>Jenis Kelamin</option>
+                                <option value="PR">Perempuan</option>
+                                <option value="LK">Laki - Laki</option>
+                            </select>
                         </FormGroup>
 
                         <Form.Label>No NUPTK</Form.Label>
@@ -148,7 +157,7 @@ export default class TambahGuru extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="pendidikan" value={this.state.pendidikan} onChange={this.handleChange} placeholder="Masukkan Pendidikan " />
+                                    <Form.Control type="text" name="pendidikan" value={this.state.pendidikan} onChange={this.handleChange} placeholder="Masukkan Pendidikan Terakhir" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -157,7 +166,7 @@ export default class TambahGuru extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="lulusan" value={this.state.lulusan} onChange={this.handleChange} placeholder="Masukkan Lulusan Sekolah" />
+                                    <Form.Control type="text" name="lulusan" value={this.state.lulusan} onChange={this.handleChange} placeholder="Masukkan Lulusan Tahun" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -173,29 +182,24 @@ export default class TambahGuru extends Component {
 
                         <Form.Label>Status Karyawan</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange} placeholder="Masukkan Status Karyawan" />
-                                </Col>
-                            </Row>
+                            <select className="custom-select" name="status_karyawan" value={this.state.status_karyawan} onChange={this.handleChange} >
+                                <option>Pilih Status</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
+                            </select>
                         </FormGroup>
 
                         <Form.Label>Agama</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange} placeholder="Masukkan Agama" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Id User</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="id_user" value={this.state.id_user} onChange={this.handleChange} placeholder="Masukkan ID User" />
-                                </Col>
-                            </Row>
+                            <select className="custom-select" name="agama" value={this.state.agama} onChange={this.handleChange}  >
+                                <option>Pilih Agama</option>
+                                <option value="Kristen Protestan">Kristen Protestan</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                                <option value="Khonghucu">Khonghucu</option>
+                            </select>
                         </FormGroup>
 
                         <div className="d-flex  justify-content-end">

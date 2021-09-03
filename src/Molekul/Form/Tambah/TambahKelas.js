@@ -27,7 +27,7 @@ handleError = () =>{
     if (this.state.nama_guru === ''|| this.state.kode_kelas === '' || this.state.nama_kelas === ''){
         swal({
             title: "Tambah Data", 
-                text: "Data Anda Gagal di Tambah", 
+            text: "Data Anda Gagal di Tambah", 
             type: "danger",
             icon: "warning"
           }).then(function () {
@@ -48,14 +48,13 @@ addOneData= () => {
     })
     .then(json => {
         console.log(json,'data');
-        console.log('===============json=====================');
         console.log(json.status);
-        console.log('====================================');
         if (json.status == 200) {
             swal({
                 title: "Tambah data", 
-                text: "data mu berhasil ditambah", 
-                type: "success"
+                text: "Data Anda berhasil di Tambah", 
+                type: "success",
+                icon: "success"
               }).then(function () {
                 window.location.reload();
             });
@@ -74,7 +73,7 @@ addOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control id="kode_kelas" type="text" name="kode_kelas"  value={this.state.kode_kelas} onChange={this.handleChange}/>
+                                <Form.Control id="kode_kelas" type="text" name="kode_kelas"  value={this.state.kode_kelas} onChange={this.handleChange}  placeholder="Masukkan Kode Kelas"/>
                             </Col>
                         </Row>
                     </FormGroup>
@@ -83,7 +82,7 @@ addOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas} onChange={this.handleChange}  />
+                                <Form.Control type="text" name="nama_kelas"  value={this.state.nama_kelas} onChange={this.handleChange}  placeholder="Masukkan Nama Kelas" />
                             </Col>
                         </Row>
                     </FormGroup>
@@ -94,7 +93,7 @@ addOneData= () => {
                     <FormGroup>
                         <Row>
                             <Col>
-                                <Form.Control type="text" name="nama_guru"  value={this.state.nama_guru} onChange={this.handleChange}  />
+                                <Form.Control type="text" name="nama_guru"  value={this.state.nama_guru} onChange={this.handleChange}  placeholder="Masukkan Nama Wali Kelas"  />
                             </Col>
                         </Row>
                     </FormGroup>

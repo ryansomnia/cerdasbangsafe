@@ -5,7 +5,9 @@ import "./Admin_cicilan.css";
 import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahCicilan from "../../../Molekul/Modal/ModalTambah/ModalTambahCicilan";
+import ModalTambahCicilanBuku from "../../../Molekul/Modal/ModalTambah/ModalTambahBuku";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditCicilan'
+import ModalEditBuku from '../../../Molekul/Modal/ModalEdit/ModalBuku'
 
 
 const api = "http://localhost:5001";
@@ -15,9 +17,11 @@ class Admin_cicilan extends PureComponent {
 
     this.state = {
       laporancicilan: [],
+      buku:[],
       response: '',
       display: 'none',
-      show: ''
+      show: '',
+      muncul:'',
     };
 
   }
@@ -28,7 +32,14 @@ class Admin_cicilan extends PureComponent {
     this.setState({
       laporancicilan: data,
       show: 'show'
+    })
+  }
 
+  editbuku = (item) => {
+    const data = this.state.buku.filter(i => i.kode_bayar == item.kode_bayar)
+    this.setState({
+      buku: data,
+      muncul: 'show'
     })
 
   }
@@ -37,6 +48,12 @@ class Admin_cicilan extends PureComponent {
     axios.get(api + "/getlaporancicilan").then(res => {
       this.setState({
         laporancicilan: res.data.values
+      });
+    });
+
+    axios.get(api + "/getbuku").then(res => {
+      this.setState({
+        buku: res.data.values
       });
     });
 
@@ -64,7 +81,27 @@ class Admin_cicilan extends PureComponent {
       });
   }
 
+  deletebuku = (item) => {
+    axios.post(api + "/deleteonebuku", {
+      kode_bayar: item.kode_bayar
 
+    })
+      .then(function (response) {
+        console.log(response); if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
 
 
@@ -128,7 +165,7 @@ class Admin_cicilan extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" width="40px" height="40px" alt="" />
+              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
               <h4>Admin
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
@@ -187,14 +224,14 @@ class Admin_cicilan extends PureComponent {
                       </Col>
                     </Form>
 
-                    <ModalTambahCicilan />
+                    <ModalTambahCicilanBuku />
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Student Account</td>
+                            <td>Kode Bayar</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
                             <td>Nama Siswa</td>
@@ -209,32 +246,31 @@ class Admin_cicilan extends PureComponent {
                         <tbody>
 
 
-                          {this.state.laporancicilan.map(laporancicilan =>
+                          {this.state.buku.map(buku=>
 
-                            <tr key={laporancicilan.kode_cicilan}>
-                              <td>{laporancicilan.student_account}</td>
-                              <td>{laporancicilan.nis}</td>
-                              <td>{laporancicilan.nisn}</td>
-                              <td>{laporancicilan.nama}</td>
-                              <td>{laporancicilan.tgl_bayar}</td>
-                              <td>{laporancicilan.buku}</td>
-                              <td>Rp. {laporancicilan.debit}</td>
-                              <td>Rp. {laporancicilan.kredit}</td>
-                              <td>{laporancicilan.image}</td>
+                            <tr key={buku.kode_bayar}>
+                              <td>{buku.kode_bayar}</td>
+                              <td>{buku.nis}</td>
+                              <td>{buku.nisn}</td>
+                              <td>{buku.nama}</td>
+                              <td>{buku.tgl_bayar}</td>
+                              <td>{buku.buku}</td>
+                              <td>Rp. {buku.debit}</td>
+                              <td>Rp. {buku.kredit}</td>
+                              <td>{buku.image}</td>
                               <td>
                                 <div className="d-flex ">
-                                  <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editbuku.bind(this, buku)}>
                                     Edit
                                   </Button>
-                                  <Button variant="outline-danger" onClick={this.deletecicilan.bind(this, laporancicilan)}>
+                                  <Button variant="outline-danger" onClick={this.deletebuku.bind(this, buku)}>
                                     Delete
                                   </Button>
                                 </div>
                               </td>
                             </tr>
                           )}
-
-
+                          <ModalEditBuku isShow={this.state.muncul} buku={this.state.buku} />
 
                         </tbody>
                       </table>
@@ -292,10 +328,10 @@ class Admin_cicilan extends PureComponent {
                               <td>{laporancicilan.image}</td>
                               <td>
                                 <div className="d-flex ">
-                                  <Button variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
                                     Edit
                                   </Button>
-                                  <Button variant="outline-danger">
+                                  <Button variant="outline-danger" onClick={this.deletecicilan.bind(this, laporancicilan)}>
                                     Delete
                                   </Button>
                                 </div>
@@ -358,11 +394,11 @@ class Admin_cicilan extends PureComponent {
                               <td>Rp. {laporancicilan.kredit}</td>
                               <td>{laporancicilan.image}</td>
                               <td>
-                                <div className="d-flex ">
-                                  <Button variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                <div className="d-flex">
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
                                     Edit
                                   </Button>
-                                  <Button variant="outline-danger">
+                                  <Button variant="outline-danger" onClick={this.deletecicilan.bind(this, laporancicilan)}>
                                     Delete
                                   </Button>
                                 </div>

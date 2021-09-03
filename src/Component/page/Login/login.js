@@ -5,15 +5,13 @@ import uiImg from '../../images/login.svg'
 import "./login.css";
 import axios from "axios";
 import swal from 'sweetalert';
-import Admin from "../Admin/Admin";
 
 const api = "http://localhost:5001";
 export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user:[],
-            username: '',
+            username: [],
             password: '',
             response: ""
         }
@@ -21,7 +19,6 @@ export default class Login extends Component {
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     login = () => {
         axios.post(api + "/login", {
             username: this.state.username,
@@ -29,20 +26,21 @@ export default class Login extends Component {
         })
             .then(json => {
                 console.log(json.data.values, 'data');
-
                 if (json.data.message == "success") {
                     if (json.data.message == "success" && json.data.values[0].role == "admin") {
+                        localStorage.setItem("username", json.data.values[0].username)
                         swal({
                             title: "Login",
                             text: "Anda Berhasil Login ",
                             type: "success",
                             icon: "success"
-
                         }).then(function () {
                             window.location.href = "/master";
                         });
 
                     } else {
+                        const data = JSON.stringify (json.data.values[0])
+                        localStorage.setItem("siswa", data)
                         swal({
                             title: "Login",
                             text: "Anda Berhasil Login ",

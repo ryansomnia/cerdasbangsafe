@@ -19,7 +19,7 @@ export class BannerGretting extends Component {
                             <h1 > Sambutan Kepala Sekolah Cerdas Bangsa<br></br>
                                 Salam sejahtera dan tetap semangat.<br></br>
                                 Selamat datang di website SDS CERDAS BANGSA
-                                <p>Sebagai media informasi dan komunikasi webSDS CERDAS BANGSA dan dikembangkan dalam rangka meningkatkan layanan sekolah kepada peserta didik dan orang tua.</p>
+                                <br/>Sebagai media informasi dan komunikasi webSDS CERDAS BANGSA dan dikembangkan dalam rangka meningkatkan layanan sekolah kepada peserta didik dan orang tua.<br/>
                                 Kualitas layanan menjadi salah satu misi sekolah dan kaitannya dengan transparansi dan akuntabilitas sekolah.
                                 Melaksanakan amanah sebagai pimpinan di SDS CERDAS BANGSA,
                                 harapan untuk menjadikan sekolah besar dengan bertabur prestasi baik akademik maupun non akademik terus meningkat. Sekolah yang akan melahirkan generasi yang kreatif, inovatif, religius yang

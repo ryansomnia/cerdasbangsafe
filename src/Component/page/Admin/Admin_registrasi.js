@@ -14,29 +14,25 @@ class Admin_registrasi extends PureComponent {
 
     this.state = {
       siswa: [],
+      username:'',
       response: '',
-      display: 'none',
+      show: '',
     };
   }
 
   editSiswa = (item) => {
-    console.log('=================Data Masuk===================');
-    console.log(item);
-    console.log('====================================');
-
-    const data = this.state.siswa.filter(i => i.id_user == item.id_user)
+    const data = this.state.siswa.filter(i => i.id_regist == item.id_regist)
     this.setState({
       siswa: data,
       show: 'show'
     })
-
-    console.log('=================Data Keluar===================');
-    console.log(item);
-    console.log('====================================');
   }
 
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getSiswa").then(res => {
       this.setState({
         siswa: res.data.values
@@ -45,14 +41,8 @@ class Admin_registrasi extends PureComponent {
   }
 
   deleteSiswa = (item) => {
-    console.log('masuk')
-
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
-
     axios.post(api + "/deleteOnesiswa", {
-      id_user: item.id_user
+      id_regist: item.id_regist
 
     })
       .then(function (response) {
@@ -60,7 +50,7 @@ class Admin_registrasi extends PureComponent {
         if (response.status == 200) {
           swal({
             title: "Hapus data",
-            text: "Data Anda berhasil Hapus",
+            text: "Data Anda berhasil di Hapus",
             type: "success",
             icon: "success"
           }).then(function () {
@@ -134,9 +124,9 @@ class Admin_registrasi extends PureComponent {
             </h2>
  
             <div className="user-wrapper">
-              <img src="Image/logo3.png" width="40px" height="40px" alt="" />
+              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
-              <h4>Admin
+              <h4>Sing In : {this.state.username} 
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -207,9 +197,9 @@ class Admin_registrasi extends PureComponent {
                             <td>Tempat Lahir</td>
                             <td>Alamat</td>
                             <td>Agama</td>
-                            <td>Nama Orang Tua</td>
-                            <td>Nomor Telephone 1</td>
-                            <td>Nomor Telephone 2</td>
+                            <td>Nama Ayah</td>
+                            <td>Nama Ibu</td>
+                            <td>Nomor Telephone </td>
                             <td>Action</td>
                           </tr>
                         </thead>
@@ -218,7 +208,6 @@ class Admin_registrasi extends PureComponent {
 
                           {this.state.siswa.map(siswa =>
                             <tr key={siswa.id_user}>
-
                               <td>{siswa.nama_siswa}</td>
                               <td>{siswa.nis}</td>
                               <td>{siswa.nisn}</td>
@@ -227,9 +216,9 @@ class Admin_registrasi extends PureComponent {
                               <td>{siswa.tempat_lahir}</td>
                               <td>{siswa.alamat}</td>
                               <td>{siswa.agama}</td>
-                              <td>{siswa.nama_orangtua}</td>
-                              <td>{siswa.no_hp1}</td>
-                              <td>{siswa.no_hp2}</td>
+                              <td>{siswa.nama_ayah}</td>
+                              <td>{siswa.nama_ibu}</td>
+                              <td>{siswa.no_hp}</td>
                               <td>
                                 <div className="d-flex">
                                   <Button className="btn-space" variant="outline-success" onClick={this.editSiswa.bind(this, siswa)}>

@@ -11,6 +11,7 @@ export default class Pembayaranspp extends Component {
 
         this.state = {
             kode_spp: [],
+            username:'',
             tgl_bayar: '',
             bulan: '',
             jumlah: '',
@@ -30,11 +31,23 @@ export default class Pembayaranspp extends Component {
     handleError = () => {
         console.log('YE');
         if (this.state.image === '') {
-            alert('Masih ada data yang belum di isi !')
+            swal({
+                title: "Pembayaran SPP",
+                text: "Pembayaran Gagal",
+                type: "warning",
+                icon:"warning"
+            })
         } else {
             this.AddOneData()
 
         }
+    }
+
+    componentDidMount() {
+        this.setState({
+          username: JSON.parse (localStorage.getItem("siswa"))
+        })
+        console.log( "data", this.state.username);
     }
 
 
@@ -48,8 +61,8 @@ export default class Pembayaranspp extends Component {
             ekstrakurikuler: this.state.ekstrakurikuler,
             status: this.state.status,
             image: this.state.image,
-            nama_siswa: this.state.nama_siswa,
-            kelas: this.state.kelas
+            nama_siswa: this.state.username.nama_siswa,
+            kelas: this.state.username.kelas
         })
             .then(json => {
                 console.log(json, 'data');
@@ -74,11 +87,11 @@ export default class Pembayaranspp extends Component {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <Form.Label>Nama Siswa</Form.Label>
-                            <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
+                            <Form.Control type="text" name="nama_siswa"  value={this.state.username.nama_siswa} onChange={this.handleChange} placeholder={this.state.username.nama_siswa} readonly=""  />
                         </div>
                         <div className="form-group col-md-6">
                             <Form.Label>Kelas</Form.Label>
-                            <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange} placeholder="Masukkan Kelas Siswa" />
+                            <Form.Control type="text" name="kelas" value={this.state.username.kelas} onChange={this.handleChange}  placeholder={this.state.username.kelas} readonly=""   />
                         </div>
                     </div>
                     <div className="form-group">

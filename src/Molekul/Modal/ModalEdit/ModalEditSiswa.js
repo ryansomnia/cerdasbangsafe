@@ -6,9 +6,7 @@ import EditSiswa from '../../Form/Edit/EditSiswa';
 
 
 function MyVerticallyCenteredModal(props) {
-    console.log('================propscxcxcx====================');
     console.log(props.siswa);
-    console.log('====================================');
     return (
         <Modal
             {...props}
@@ -33,18 +31,14 @@ function MyVerticallyCenteredModal(props) {
 
 function Siswa(props) {
     const [modalShow, setModalShow] = React.useState(false);
-
-
-    console.log('===============props.isShow=====================');
     console.log(props.isShow);
-    console.log('====================================');
     return (
         <>
 
             <MyVerticallyCenteredModal
                 show={props.isShow}
                 onHide={() => setModalShow(modalShow)}
-                laporanspp={props.siswa}
+                siswa={props.siswa}
             />
         </>
     );

@@ -10,9 +10,7 @@ import EditKelas from '../../Form/Edit/EditKelas';
 
 
 function MyVerticallyCenteredModal(props) {
-  console.log('================propscxcxcx====================');
   console.log(props.kelas);
-  console.log('====================================');
   return (
     <Modal
       {...props}
@@ -36,9 +34,7 @@ function MyVerticallyCenteredModal(props) {
 
 function Kelas(props) {
   const [modalShow, setModalShow] = React.useState(false);
-  console.log('===============props.isShow=====================');
   console.log(props.isShow);
-  console.log('====================================');
   return (
     <>
 

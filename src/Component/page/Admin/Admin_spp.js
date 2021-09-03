@@ -20,6 +20,7 @@ class Admin_spp extends PureComponent {
     this.state = {
       laporanspp: [],
       response: '',
+      username:'',
       display: 'none',
       show: ''
     };
@@ -34,6 +35,9 @@ class Admin_spp extends PureComponent {
   }
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getLaporanSPP").then(res => {
       this.setState({
         laporanspp: res.data.values
@@ -50,7 +54,7 @@ class Admin_spp extends PureComponent {
         if (response.status == 200) {
           swal({
             title: "Hapus data",
-            text: "Data Anda berhasil Hapus",
+            text: "Data Anda berhasil di Hapus",
             type: "success",
             icon: "success"
           }).then(function () {
@@ -125,9 +129,9 @@ class Admin_spp extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" width="40px" height="40px" alt="" />
+              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}}alt="" />
               <div>
-                <h4>Admin
+                <h4>Sing In : {this.state.username}
                   <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>

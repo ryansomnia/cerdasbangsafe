@@ -4,9 +4,7 @@ import EditSpp from '../../Form/Edit/EditSpp';
 
 
 function MyVerticallyCenteredModal(props) {
-  console.log('================propscxcxcx====================');
   console.log(props.laporanspp);
-  console.log('====================================');
   return (
     <Modal
       {...props}
@@ -31,11 +29,7 @@ function MyVerticallyCenteredModal(props) {
 
 function SPP(props) {
   const [modalShow, setModalShow] = React.useState(false);
-
-
-  console.log('===============props.isShow=====================');
   console.log(props.isShow);
-  console.log('====================================');
   return (
     <>
 

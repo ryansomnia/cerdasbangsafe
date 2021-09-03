@@ -17,11 +17,10 @@ export default class TambahSiswa extends Component {
             tgl_lahir: '',
             tempat_lahir: '',
             alamat: '',
-            nama_orangtua: '',
-            no_hp1: '',
-            no_hp2: '',
+            nama_ayah: '',
+            nama_ibu:'',
+            no_hp: '',
             agama: '',
-            id_user: '',
             response: ""
 
         }
@@ -58,11 +57,10 @@ export default class TambahSiswa extends Component {
             tgl_lahir: this.state.tgl_lahir,
             tempat_lahir: this.state.tempat_lahir,
             alamat: this.state.alamat,
-            nama_orangtua: this.state.nama_orangtua,
-            no_hp1: this.state.no_hp1,
-            no_hp2: this.state.no_hp2,
-            agama: this.state.agama,
-            id_user: this.state.id_user
+            nama_ayah: this.state.nama_ayah,
+            nama_ibu: this.state.nama_ibu,
+            no_hp: this.state.no_hp,
+            agama: this.state.agama
         })
             .then(json => {
                 console.log(json, 'data');
@@ -88,7 +86,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} />
+                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}  placeholder="Masukkan Nama Siswa " />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -97,7 +95,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan NIS Siswa "  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -106,7 +104,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa "  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -115,7 +113,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} />
+                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} placeholder="Masukkan Tanggal Lahir Siswa "  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -124,34 +122,48 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange} placeholder="Masukkan Tempat Lahir Siswa" />
                                 </Col>
                             </Row>
                         </FormGroup>
 
                         <Form.Label>Jenis Kelamin</Form.Label>
                         <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} />
-                                </Col>
-                            </Row>
+                            <select className="custom-select"  name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} >
+                                <option>Jenis Kelamin Siswa</option>
+                                <option value="PR">Perempuan</option>
+                                <option value="LK">Laki - Laki</option>
+                            </select>
                         </FormGroup>
+
 
                         <Form.Label>Agama</Form.Label>
                         <FormGroup>
+                            <select className="custom-select" name="agama" value={this.state.agama} onChange={this.handleChange}  >
+                                <option>Pilih Agama</option>
+                                <option value="Kristen Protestan">Kristen Protestan</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                                <option value="Khonghucu">Khonghucu</option>
+                            </select>
+                        </FormGroup>
+
+                        <Form.Label>Nama Ayah</Form.Label>
+                        <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="agama" value={this.state.agama} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="nama_ayah" value={this.state.nama_ayah} onChange={this.handleChange} placeholder="Masukkan Nama Ayah Siswa"  />
                                 </Col>
                             </Row>
                         </FormGroup>
 
-                        <Form.Label>Nama Orang Tua</Form.Label>
+                        <Form.Label>Nama Ibu</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nama_orangtua" value={this.state.nama_orangtua} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="nama_ibu" value={this.state.nama_ibu} onChange={this.handleChange} placeholder="Masukkan Nama Ibu Siswa"  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -160,7 +172,16 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange} />
+                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange} placeholder="Masukkan Alamat Siswa"   />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+
+                        <Form.Label>Nomor Telephone</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="number" name="no_hp" value={this.state.no_hp} onChange={this.handleChange}  placeholder="Masukkan Nomor Telephone Orang Tua"  />
                                 </Col>
                             </Row>
                         </FormGroup>

@@ -122,7 +122,7 @@ class laporan_bulanan extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" width="40px" height="40px" alt="" />
+              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
                 <h4>Admin
                   <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button>

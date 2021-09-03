@@ -28,7 +28,6 @@ import bayarseragam from "./Component/page/User/BayarSeragam";
 import bayarpangkal from "./Component/page/User/BayarPangkal";
 import bayarbuku from "./Component/page/User/BayarBuku";
 import forget from "./Component/page/Login/forget";
-import profilUser from "./Component/page/User/profil";
 import CetakBulanan from "./Component/Cetak/CetakBulanan";
 
 
@@ -42,8 +41,8 @@ import CetakBulanan from "./Component/Cetak/CetakBulanan";
       <Switch>
 
 {/* -----Menu Header---- */}
-<Route path="/home" component={home}/>
 <Route path="/login" component={login}/>
+<Route path="/home" component={home}/>
 <Route path="/contactUs" component={contactUs} />
 <Route path="/tambahcomp" component={TambahComp}/>
               
@@ -73,19 +72,16 @@ import CetakBulanan from "./Component/Cetak/CetakBulanan";
 <Route path="/bayarseragam" component={bayarseragam}/>
 <Route path="/uangpangkal" component={bayarpangkal}/>
 <Route path="/lupapassword" component={forget}/>
-<Route path="/profiluser" component={profilUser}/>
 
             {/* Cetak Data */}    
 <Route path="/cetakbulanan" component={CetakBulanan}/>
 
-              <Redirect from="/" to="/home"/>
+              <Redirect from="/" to="/login"/>
             </Switch>
             </Router>
           );
     }
 }
 
-// const divStyle = {
-//       // backgroundImage: `url(${bgimage})`
-//     };
+
 export default App

@@ -28,9 +28,10 @@ export default class EditKelas extends Component {
           .then(function (response) {
             if (response.status == 200) {
                 swal({
-                    title: "Tambah data", 
-                    text: "data mu berhasil ditambah", 
-                    type: "success"
+                    title: "Edit Data", 
+                    text: "Data Anda berhasil di Ubah", 
+                    type: "success",
+                    icon: "success"
                   }).then(function () {
                     window.location.reload();
                   });

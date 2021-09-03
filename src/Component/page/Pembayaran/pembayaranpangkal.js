@@ -12,6 +12,7 @@ export default class Pembayaranpangkal extends Component {
 
         this.state = {
             kode_cicilan: [],
+            username:'',
             student_account: '',
             nis: '',
             nisn: '',
@@ -43,15 +44,23 @@ export default class Pembayaranpangkal extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({
+          username: JSON.parse (localStorage.getItem("siswa"))
+        })
+        console.log( "data", this.state.username);
+
+    }
+
 
     AddOneData = () => {
         console.log("Data Masuk");
         axios.post(api + '/addOneLaporanCicilan', {
             kode_cicilan: this.state.kode_cicilan,
             student_account: this.state.student_account,
-            nis: this.state.nis,
-            nisn: this.state.nisn,
-            nama: this.state.nama,
+            nis: this.state.username.nis,
+            nisn: this.state.username.nisn,
+            nama: this.state.username.nama_siswa,
             tgl_bayar: this.state.tgl_bayar,
             buku: this.state.buku,
             voucher_no: this.state.voucher_no,
@@ -87,19 +96,19 @@ export default class Pembayaranpangkal extends Component {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <Form.Label>Nama Siswa</Form.Label>
-                            <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange} placeholder="Masukkan Nama Siswa" />
+                            <Form.Control type="text" name="nama" value={this.state.username.nama_siswa} onChange={this.handleChange}  placeholder={this.state.username.nama_siswa}  readonly=""/>
                         </div>
 
                         <div className="form-group col-md-6">
                             <Form.Label>Nomor Induk</Form.Label>
-                            <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan Nomor Induk Siswa" />
+                            <Form.Control type="number" name="nis" value={this.state.username.nis} onChange={this.handleChange}  placeholder={this.state.username.nis} readonly="" />
                         </div>
                     </div>
 
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <Form.Label>NISN</Form.Label>
-                            <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa" />
+                            <Form.Control type="number" name="nisn" value={this.state.username.nisn} onChange={this.handleChange} placeholder={this.state.username.nisn} readonly="" />
                         </div>
 
                         <div className="form-group col-md-6">

@@ -23,11 +23,11 @@ class Header extends Component {
         <Nav.Link href="/home">Home</Nav.Link>
         <NavDropdown title="Menu Utama" id="basic-nav-dropdown">
         <NavDropdown.Item href="/profil">Profil Sekolah</NavDropdown.Item>
-          <NavDropdown.Item href="/visi">Visi & Misi</NavDropdown.Item>
+          <NavDropdown.Item href="/visi">Visi &amp; Misi</NavDropdown.Item>
           <NavDropdown.Item href="/strukturorganisasi">Sturktur Organisasi</NavDropdown.Item>
           <NavDropdown.Item href="/galery">Galeri</NavDropdown.Item>
           <NavDropdown.Item href="/menuUtama">Kalender Akademik</NavDropdown.Item>
-          <NavDropdown.Item href="/">Fasilitas</NavDropdown.Item>
+          <NavDropdown.Item href="/master">Fasilitas</NavDropdown.Item>
           <NavDropdown.Item href="/">Berita Sekolah</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="/contactUs">Contact Us</Nav.Link>
