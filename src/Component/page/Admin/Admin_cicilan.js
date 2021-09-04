@@ -6,8 +6,10 @@ import swal from 'sweetalert';
 import { PureComponent } from "react";
 import ModalTambahCicilan from "../../../Molekul/Modal/ModalTambah/ModalTambahCicilan";
 import ModalTambahCicilanBuku from "../../../Molekul/Modal/ModalTambah/ModalTambahBuku";
+import ModalTambahSeragam from "../../../Molekul/Modal/ModalTambah/ModalTambahSeragam";
 import ModalEdit from '../../../Molekul/Modal/ModalEdit/ModalEditCicilan'
 import ModalEditBuku from '../../../Molekul/Modal/ModalEdit/ModalBuku'
+import ModalEditSeragam from '../../../Molekul/Modal/ModalEdit/ModalSeragam'
 
 
 const api = "http://localhost:5001";
@@ -18,10 +20,13 @@ class Admin_cicilan extends PureComponent {
     this.state = {
       laporancicilan: [],
       buku:[],
+      username:'',
+      seragam:[],
       response: '',
       display: 'none',
       show: '',
       muncul:'',
+      tampil:'',
     };
 
   }
@@ -41,10 +46,20 @@ class Admin_cicilan extends PureComponent {
       buku: data,
       muncul: 'show'
     })
+  }
+  editseragam = (item) => {
+    const data = this.state.seragam.filter(i => i.kode_bayar == item.kode_bayar)
+    this.setState({
+      seragam: data,
+      tampil: 'show'
+    })
 
   }
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getlaporancicilan").then(res => {
       this.setState({
         laporancicilan: res.data.values
@@ -54,6 +69,12 @@ class Admin_cicilan extends PureComponent {
     axios.get(api + "/getbuku").then(res => {
       this.setState({
         buku: res.data.values
+      });
+    });
+
+    axios.get(api + "/getseragam").then(res => {
+      this.setState({
+        seragam: res.data.values
       });
     });
 
@@ -103,6 +124,27 @@ class Admin_cicilan extends PureComponent {
       });
   }
 
+  deleteseragam = (item) => {
+    axios.post(api + "/deleteoneseragam", {
+      kode_bayar: item.kode_bayar
+
+    })
+      .then(function (response) {
+        console.log(response); if (response.status == 200) {
+          swal({
+            title: "Hapus data",
+            text: "Data Anda berhasil Hapus",
+            type: "success",
+            icon: "success"
+          }).then(function () {
+            window.location.reload();
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
 
   render() {
@@ -167,7 +209,7 @@ class Admin_cicilan extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
-              <h4>Admin
+              <h4>Sing In : {this.state.username} 
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -223,7 +265,6 @@ class Admin_cicilan extends PureComponent {
                         <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
                       </Col>
                     </Form>
-
                     <ModalTambahCicilanBuku />
                   </div>
                   <div className="card-body">
@@ -244,10 +285,7 @@ class Admin_cicilan extends PureComponent {
                           </tr>
                         </thead>
                         <tbody>
-
-
                           {this.state.buku.map(buku=>
-
                             <tr key={buku.kode_bayar}>
                               <td>{buku.kode_bayar}</td>
                               <td>{buku.nis}</td>
@@ -271,7 +309,6 @@ class Admin_cicilan extends PureComponent {
                             </tr>
                           )}
                           <ModalEditBuku isShow={this.state.muncul} buku={this.state.buku} />
-
                         </tbody>
                       </table>
                     </div>
@@ -291,15 +328,14 @@ class Admin_cicilan extends PureComponent {
                         <input className="form-control me-1" type="search" placeholder="Search" aria-label="Search" />
                       </Col>
                     </Form>
-
-                    <ModalTambahCicilan />
+                    <ModalTambahSeragam/>
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
                       <table width="100%">
                         <thead>
-                          <tr>
-                            <td>Student Account</td>
+                        <tr>
+                            <td>Kode Bayar</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
                             <td>Nama Siswa</td>
@@ -312,33 +348,30 @@ class Admin_cicilan extends PureComponent {
                           </tr>
                         </thead>
                         <tbody>
-
-
-                          {this.state.laporancicilan.map(laporancicilan =>
-
-                            <tr key={laporancicilan.kode_cicilan}>
-                              <td>{laporancicilan.student_account}</td>
-                              <td>{laporancicilan.nis}</td>
-                              <td>{laporancicilan.nisn}</td>
-                              <td>{laporancicilan.nama}</td>
-                              <td>{laporancicilan.tgl_bayar}</td>
-                              <td>{laporancicilan.seragam}</td>
-                              <td>Rp. {laporancicilan.debit}</td>
-                              <td>Rp. {laporancicilan.kredit}</td>
-                              <td>{laporancicilan.image}</td>
+                          {this.state.seragam.map(seragam=>
+                            <tr key={seragam.kode_bayar}>
+                              <td>{seragam.kode_bayar}</td>
+                              <td>{seragam.nis}</td>
+                              <td>{seragam.nisn}</td>
+                              <td>{seragam.nama}</td>
+                              <td>{seragam.tgl_bayar}</td>
+                              <td>{seragam.seragam}</td>
+                              <td>Rp. {seragam.debit}</td>
+                              <td>Rp. {seragam.kredit}</td>
+                              <td>{seragam.image}</td>
                               <td>
                                 <div className="d-flex ">
-                                  <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>
+                                  <Button className="btn-space" variant="outline-success" onClick={this.editseragam.bind(this, seragam)}>
                                     Edit
                                   </Button>
-                                  <Button variant="outline-danger" onClick={this.deletecicilan.bind(this, laporancicilan)}>
+                                  <Button variant="outline-danger" onClick={this.deleteseragam.bind(this, seragam)}>
                                     Delete
                                   </Button>
                                 </div>
                               </td>
                             </tr>
                           )}
-
+                            <ModalEditSeragam isShow={this.state.tampil} seragam={this.state.seragam} />
                         </tbody>
                       </table>
                     </div>
@@ -366,7 +399,7 @@ class Admin_cicilan extends PureComponent {
                       <table width="100%">
                         <thead>
                           <tr>
-                            <td>Student Account</td>
+                            <td>Kode Bayar</td>
                             <td>No Induk</td>
                             <td>No NISN</td>
                             <td>Nama Siswa</td>
@@ -380,11 +413,9 @@ class Admin_cicilan extends PureComponent {
                         </thead>
                         <tbody>
 
-
                           {this.state.laporancicilan.map(laporancicilan =>
-
                             <tr key={laporancicilan.kode_cicilan}>
-                              <td>{laporancicilan.student_account}</td>
+                              <td>{laporancicilan.kode_cicilan}</td>
                               <td>{laporancicilan.nis}</td>
                               <td>{laporancicilan.nisn}</td>
                               <td>{laporancicilan.nama}</td>
@@ -405,9 +436,6 @@ class Admin_cicilan extends PureComponent {
                               </td>
                             </tr>
                           )}
-
-
-
                         </tbody>
                       </table>
                     </div>

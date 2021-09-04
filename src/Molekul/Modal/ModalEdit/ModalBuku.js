@@ -8,9 +8,7 @@ import EditBuku from '../../Form/Edit/EditBuku';
 
 
 function MyVerticallyCenteredModal(props) {
-  console.log('================propscxcxcx====================');
   console.log(props.buku);
-  console.log('====================================');
   return (
     <Modal
       {...props}
@@ -34,9 +32,7 @@ function MyVerticallyCenteredModal(props) {
 
 function Buku(props) {
   const [modalShow, setModalShow] = React.useState(false);
-  console.log('===============props.isShow=====================');
   console.log(props.isShow);
-  console.log('====================================');
   return (
     <>
 

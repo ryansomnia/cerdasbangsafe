@@ -12,17 +12,13 @@ export default class EditCicilan extends Component {
         super(props)
         this.state = {
             kode_cicilan: props.laporancicilan[0].kode_cicilan,
-            student_account: props.laporancicilan[0].student_account,
             nis: props.laporancicilan[0].nis,
             nisn: props.laporancicilan[0].nisn,
             nama: props.laporancicilan[0].nama,
             tgl_bayar: props.laporancicilan[0].tgl_bayar,
-            buku: props.laporancicilan[0].buku,
-            voucher_no: props.laporancicilan[0].voucher_no,
             debit: props.laporancicilan[0].debit,
             kredit: props.laporancicilan[0].kredit,
             uang_pangkal: props.laporancicilan[0].uang_pangkal,
-            seragam: props.laporancicilan[0].seragam,
             saldo: props.laporancicilan[0].saldo,
             image: props.laporancicilan[0].image
         };
@@ -45,17 +41,13 @@ export default class EditCicilan extends Component {
         console.log(this.state.nama);
         axios.post(api + "/editonecicilan", {
             kode_cicilan: this.state.kode_cicilan,
-            student_account: this.state.student_account,
             nis: this.state.nis,
             nisn: this.state.nisn,
             nama: this.state.nama,
             tgl_bayar: this.getformatdate(this.state.tgl_bayar),
-            buku: this.state.buku,
-            voucher_no: this.state.voucher_no,
             debit: this.state.debit,
             kredit: this.state.kredit,
             uang_pangkal: this.state.uang_pangkal,
-            seragam: this.state.seragam,
             saldo: this.state.saldo,
             image: this.state.image
         })
@@ -95,17 +87,6 @@ export default class EditCicilan extends Component {
         return (
             <Container>
                 <Form ClassName="form">
-                    <Col>
-                        <Form.Label>Student Account</Form.Label>
-                        <FormGroup>
-                            <Row >
-                                <Col>
-                                    <Form.Control id="student_account" type="text" name="student_account" value={this.state.student_account} onChange={this.handleChange("student_account")} />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
                     <Col>
                         <Form.Label>Nomor Induk</Form.Label>
                         <FormGroup>
@@ -152,22 +133,34 @@ export default class EditCicilan extends Component {
                     </Col>
 
                     <Col>
-                        <Form.Label>Buku</Form.Label>
+                        <Form.Label>Uang Pangkal</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="buku" value={this.state.buku} onChange={this.handleChange("buku")} />
+                                    <Form.Control type="number" name="uang_pangkal" value={this.state.uang_pangkal} onChange={this.handleChange("uang_pangkal")} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+                    </Col>
+
+
+                    <Col>
+                        <Form.Label>Debit</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange("debit")} />
                                 </Col>
                             </Row>
                         </FormGroup>
                     </Col>
 
                     <Col>
-                        <Form.Label>Voucher No</Form.Label>
+                        <Form.Label>Kredit</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="voucher_no" value={this.state.voucher_no} onChange={this.handleChange("vouvher_no")} />
+                                    <Form.Control type="number" name="kredit" value={this.state.kredit} onChange={this.handleChange("kredit")} />
                                 </Col>
                             </Row>
                         </FormGroup>

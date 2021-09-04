@@ -16,6 +16,7 @@ class laporan_bulanan extends PureComponent {
     super(props)
     this.state = {
       laporanbulanan: [],
+      username:'',
       response: '',
       display: 'none',
       show: ''
@@ -32,6 +33,9 @@ class laporan_bulanan extends PureComponent {
   }
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getlaporanbulanan").then(res => {
       this.setState({
         laporanbulanan: res.data.values
@@ -124,7 +128,7 @@ class laporan_bulanan extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
-                <h4>Admin
+                <h4>sign in : {this.state.username}
                   <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button>
                   </h4>
               </div>
@@ -207,10 +211,7 @@ class laporan_bulanan extends PureComponent {
                           </tr>
                         </thead>
                         <tbody>
-
-
                           {this.state.laporanbulanan.map(laporanbulanan =>
-
                             <tr key={laporanbulanan.kode_laporan}>
                               <td>{laporanbulanan.kode_laporan}</td>
                               <td>{laporanbulanan.tgl}</td>

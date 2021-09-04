@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Button, Card, Col } from "react-bootstrap";
 import "./styleUser.css";
-import Profile from "../User/profil"
+import MOdalEditProfile from "../User/profil"
 
 
 
@@ -9,18 +9,30 @@ export default class user extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          username:[]
+            siswa:[],
+            username: [],
+            response: '',
+            show: '',
         };
-      }
+    }
     pageLogin(path) {
         console.log('logout', path);
         this.props.history.push(path)
     }
+
+    editSiswa = (item) => {
+        const data = this.state.siswa.filter(i => i.nis == item.nis)
+        this.setState({
+            siswa: data,
+            show: 'show'
+        })
+    }
+
     componentDidMount() {
         this.setState({
-          username: JSON.parse (localStorage.getItem("siswa"))
+            username: JSON.parse(localStorage.getItem("siswa"))
         })
-        console.log( "data", this.state.username);
+        console.log("data", this.state.username);
 
     }
 
@@ -38,9 +50,9 @@ export default class user extends Component {
                                     <a> Signed in as: {this.state.username.nama_siswa} </a>
                                 </div>
                                 <div className="login">
-                                <button  onClick={() => this.pageLogin('/login')}>LogOut</button></div>
+                                    <button onClick={() => this.pageLogin('/login')}>LogOut</button></div>
                             </div>
-                             
+
                             {/* <!-- Banner --> */}
                             <div className="main-banner">
                                 <div className="container-fluid">
@@ -101,64 +113,68 @@ export default class user extends Component {
                             </div>
 
                             <Card>
-                                <Card.Body>
-                                    <div class="content mb-0">
-                                        <Row>
-                                           
-                                        <Col md="10">
-                                        <h3 class="pt-3 pb-3 ">Data Pribadi </h3>
-                                        </Col> 
-                                        <Col md="auto" >
-                                        <h4 class="pt-3 pb-3"><Profile/></h4>
-                                        </Col>
+                            <Card.Body>
+                            <div class ="content mb-0">
+                            <Row>
+
+                            <Col md="10">
+                            <h3 class ="pt-3 pb-3 ">Data Pribadi </h3>
+                            </Col>
+                            <Col md="auto" >
+                            <h4 class ="pt-3 pb-3">
+                            <Button variant="outline-success" onClick={this.editSiswa.bind(this.state.username.nis)}>
+                            Edit
+                            </Button></h4>
+                            <MOdalEditProfile isShow={this.state.show} siswa={this.state.siswa} />
+                            </Col>
                                         </Row>
-                                        
-                                        <div class="list-group list-custom-large mb-4">
-                                         
-                                            <div className="form-group">
-                                                    <label for="nis">NIS</label>
-                                                    <input type="text" class="form-control" id="nis" placeholder={this.state.username.nis} name="nim"  readonly="" />
-                                                </div>
 
-                                                <div className="form-group">
-                                                    <label for="nama">Nama Siswa</label>
-                                                    <input type="text" className="form-control" id="nama" placeholder={this.state.username.nama_siswa}  readonly="" />
-                                                </div>
+                            <div class ="list-group list-custom-large mb-4">
 
-                                                <div className="form-group">
-                                                    <label for="nomorhp">Kelas</label>
-                                                    <input type="text" className="form-control" id="kelas" placeholder={this.state.username.kelas}  readonly="" />
-                                                </div>
+                            <div className="form-group">
+                            <label for="nis">NIS</label>
+                            <input type ="text" class ="form-control" id="nis" placeholder={this.state.username.nis} name="nim"  readonly ="" />
+                            </div>
 
-                                                <div className="form-group">
-                                                    <label for="tgllahir">Tanggal Lahir</label>
-                                                    <input type="text" className="form-control" id="tgllahir" placeholder={this.state.username.tgl_lahir}  readonly=""  />
-                                                </div>
+                            <div className="form-group">
+                            <label for="nama">Nama Siswa</label>
+                            <input type ="text" className="form-control" id="nama" placeholder={this.state.username.nama_siswa}  readonly ="" />
+                            </div>
 
-                                                <div className="form-group">
-                                                    <label for="tempatlahir">Tempat Lahir</label>
-                                                    <input type="text" className="form-control" id="tempatlahir" placeholder={this.state.username.tempat_lahir} readonly="" />
-                                                </div>
+                            <div className="form-group">
+                            <label for="nomorhp">Kelas</label>
+                            <input type ="text" className="form-control" id="kelas" placeholder={this.state.username.kelas}  readonly ="" />
+                            </div>
 
-                                                <div className="form-group">
-                                                    <label for="alamat">Alamat</label>
-                                                    <input type="text" className="form-control" id="alamat" placeholder={this.state.username.alamat}  readonly="" />
-                                                </div>
+                            <div className="form-group">
+                            <label for="tgllahir">Tanggal Lahir</label>
+                            <input type ="text" className="form-control" id="tgllahir" placeholder={this.state.username.tgl_lahir}  readonly =""  />
+                            </div>
 
-                                                <div className="form-group">
-                                                    <label for="nomorhp">Nomor Hp</label>
-                                                    <input type="text" className="form-control" id="nomorhp" placeholder={this.state.username.no_hp}  readonly="" />
-                                                </div>
+                            <div className="form-group">
+                            <label for="tempatlahir">Tempat Lahir</label>
+                            <input type ="text" className="form-control" id="tempatlahir" placeholder={this.state.username.tempat_lahir} readonly ="" />
+                            </div>
+
+                            <div className="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type ="text" className="form-control" id="alamat" placeholder={this.state.username.alamat}  readonly ="" />
+                            </div>
+
+                            <div className="form-group">
+                            <label for="nomorhp">Nomor Hp</label>
+                            <input type ="text" className="form-control" id="nomorhp" placeholder={this.state.username.no_hp}  readonly ="" />
+                            </div>
 
 
-                                            </div>
-                                            </div>
-                                </Card.Body>
+                            </div>
+                            </div>
+                            </Card.Body>
                             </Card>
 
 
-                        </div>
-                    </div>
+                            </div>
+                            </div>
 
                         </div>
                     </div>

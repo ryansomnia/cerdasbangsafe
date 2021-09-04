@@ -29,15 +29,24 @@ export default class TambahCicilanBuku extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
+        if (this.state.image === '' ||
+            this.state.kode_bayar === '' ||
+            this.state.nis === '' ||
+            this.state.nisn === '' ||
+            this.state.nama === '' ||
+            this.state.tgl_bayar === '' ||
+            this.state.buku === '' ||
+            this.state.debit === '' ||
+            this.state.kredit === '' ||
+            this.state.saldo === '' ) {
             swal({
-                title: "Tambah Data", 
-                text: "Data Anda Gagal di Tambah", 
+                title: "Tambah Data",
+                text: "Masih Ada Data Yang Kosong",
                 type: "danger",
                 icon: "warning"
-              }).then(function () {
+            }).then(function () {
                 window.location.reload();
-              });
+            });
         } else {
             this.AddOneData()
 

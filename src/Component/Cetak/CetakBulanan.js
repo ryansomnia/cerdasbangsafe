@@ -43,6 +43,7 @@ export class CetakBulanan extends PureComponent {
               <td>Status</td>
             </tr>
           </thead>
+
           <tbody>
             {this.state.laporanbulanan.map(laporanbulanan =>
               <tr key={laporanbulanan.kode_laporan}>
@@ -54,7 +55,6 @@ export class CetakBulanan extends PureComponent {
                 <td>Rp. {laporanbulanan.saldo}</td>
                 <td>Rp. {laporanbulanan.jumlah}</td>
                 <td>{laporanbulanan.status}</td>
-
               </tr>
             )}
           </tbody>

@@ -1,26 +1,26 @@
 import axios from "axios";
 import React, { Component } from "react";
-// import axios from 'axios'
 import { Col, Row, FormGroup, Form, Button, Container } from 'react-bootstrap';
 import moment from 'moment';
 import swal from 'sweetalert';
 
 const api = "http://localhost:5001";
-export default class EditBuku extends Component {
-
+export default class EditProfile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            kode_bayar: props.buku[0].kode_bayar,
-            nis: props.buku[0].nis,
-            nisn: props.buku[0].nisn,
-            nama: props.buku[0].nama,
-            tgl_bayar: props.buku[0].tgl_bayar,
-            buku: props.buku[0].buku,
-            debit: props.buku[0].debit,
-            kredit: props.buku[0].kredit,
-            saldo: props.buku[0].saldo,
-            image: props.buku[0].image
+            id_regist: props.siswa[0].id_regist,
+            nis: props.siswa[0].nis,
+            nisn: props.siswa[0].nisn,
+            nama_siswa: props.siswa[0].nama_siswa,
+            jenis_kelamin: props.siswa[0].jenis_kelamin,
+            tgl_lahir: props.siswa[0].tgl_lahir,
+            tempat_lahir: props.siswa[0].tempat_lahir,
+            alamat: props.siswa[0].alamat,
+            nama_ayah: props.siswa[0].nama_ayah,
+            nama_ibu: props.siswa[0].nama_ibu,
+            no_hp: props.siswa[0].no_hp,
+            agama: props.siswa[0].agama
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -35,21 +35,22 @@ export default class EditBuku extends Component {
         return tanggalreturn;
     }
 
-
-    EditBuku = () => {
+    editSiswa = () => {
         console.log(this.state.nis);
-        console.log(this.state.nama);
-        axios.post(api + "/editonebuku", {
-            kode_bayar: this.state.kode_bayar,
+        console.log(this.state.nama_siswa);
+        axios.post(api + "/editOneSiswa", {
+            id_regist: this.state.id_regist,
             nis: this.state.nis,
             nisn: this.state.nisn,
-            nama: this.state.nama,
-            tgl_bayar: this.getformatdate(this.state.tgl_bayar),
-            buku: this.state.buku,
-            debit: this.state.debit,
-            kredit: this.state.kredit,
-            saldo: this.state.saldo,
-            image: this.state.image
+            nama_siswa: this.state.nama_siswa,
+            jenis_kelamin: this.state.jenis_kelamin,
+            tgl_lahir: this.getformatdate(this.state.tgl_lahir),
+            tempat_lahir: this.state.tempat_lahir,
+            alamat: this.state.alamat,
+            nama_ayah: this.state.nama_ayah,
+            nama_ibu: this.state.nama_ibu,
+            no_hp: this.state.no_hp,
+            agama: this.state.agama
         })
             .then(function (response) {
                 console.log(response);
@@ -69,8 +70,8 @@ export default class EditBuku extends Component {
                     swal({
                         title: "Edit data", 
                         text: "Data Anda Gagal di Ubah", 
-                        type: "danger",
-                        icon: "Warning"
+                        type: "warning",
+                        icon: "danger"
                       }).then(function () {
                         window.location.reload();
                       });
@@ -87,93 +88,76 @@ export default class EditBuku extends Component {
         return (
             <Container>
                 <Form ClassName="form">
-                    
-                    <Col>
-                        <Form.Label>Nomor Induk</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="number" name="nis" value={this.state.nis} onChange={this.handleChange("nis")} />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
-                    <Col>
-                        <Form.Label>NISN</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-
-                                    <Form.Control type="number" name="nisn" value={this.state.nisn} onChange={this.handleChange("nisn")} />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-
                     <Col>
                         <Form.Label>Nama Siswa</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nama" value={this.state.nama} onChange={this.handleChange("nama")} />
+                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange("nama_siswa")} />
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
 
-                    <Col>
-                        <Form.Label>Tanggal Bayar</Form.Label>
+                        <Form.Label>Nomor Induk</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="date" name="tgl_bayar" value={this.state.tgl_bayar} onChange={this.handleChange("tgl_bayar")} />
+                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} />
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
 
-                    <Col>
-                        <Form.Label>Buku</Form.Label>
+                        <Form.Label>NISN</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="buku" value={this.state.buku} onChange={this.handleChange("buku")} />
+                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange("nisn")} />
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
 
-                    <Col>
-                        <Form.Label>Debit</Form.Label>
+                        <Form.Label>Tanggal Lahir</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="debit" value={this.state.debit} onChange={this.handleChange("debit")} />
+                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange("tgl_lahir")} />
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
 
-                    <Col>
-                        <Form.Label>Kredit</Form.Label>
+                        <Form.Label>Tempat Lahir</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="kredit" value={this.state.kredit} onChange={this.handleChange("kredit")} />
+                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange("tempat_lahir")} />
                                 </Col>
                             </Row>
                         </FormGroup>
-                    </Col>
 
-                    <Col>
+                        <Form.Label>Alamat</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange("alamat")} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+
+                        <Form.Label>Nomor Telephone</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text" name="no_hp" value={this.state.no_hp} onChange={this.handleChange("no_hp")} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
                         <div className="d-flex  justify-content-end">
-                            <Button type="button" onClick={this.EditBuku}>Kirim Perubahan</Button>
+                            <Button type="button" onClick={this.editSiswa}>Kirim Perubahan</Button>
                         </div>
+
                     </Col>
                 </Form>
             </Container>
-
 
         );
     }

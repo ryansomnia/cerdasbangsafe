@@ -1,99 +1,46 @@
-import React from "react";
-import { Button, Modal, Form, Row, Col, FormGroup } from "react-bootstrap";
+import React from 'react';
+import { Modal } from 'react-bootstrap';
+import EditProfile from '../../page/User/EditProfile';
+
+
+
 
 function MyVerticallyCenteredModal(props) {
+    console.log(props.siswa);
     return (
         <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            centered >
+            centered>
+
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Ubah Data Profile
+                    Edit Data Siswa
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>
-                <Form ClassName="form">
-                    <Col>
-                        <Form.Label>Nama Siswa</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa"  />
-                                </Col>
-                            </Row>
-                        </FormGroup>
+                <EditProfile siswa={props.siswa} />
 
-                        <Form.Label>Nomor Induk</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="nis" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                        <Form.Label>Kelas</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="kelas" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Tanggal Lahir</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="date" name="tgl_lahir"  />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Tempat Lahir</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="tempat_lahir"  />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Alamat</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="alamat" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-                    </Col>
-                </Form>
-                </p>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Ubah</Button>
-            </Modal.Footer>
         </Modal>
     );
 }
 
-function Profile() {
-    const [modalShow, setModalShow] = React.useState(false);
 
+
+function Siswa(props) {
+    const [modalShow, setModalShow] = React.useState(false);
+    console.log(props.isShow);
     return (
         <>
-            <Button variant="primary" onClick={() => setModalShow(true)}>
-                Ubah Data Pribadi
-            </Button>
-
             <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                show={props.isShow}
+                onHide={() => setModalShow(modalShow)}
+                siswa={props.siswa}
             />
         </>
     );
 }
-export default Profile;
+
+export default Siswa;

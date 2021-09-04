@@ -34,25 +34,25 @@ export class CetakInventaris extends PureComponent {
                 <table className="table table-bordered" width="100%">
                     <thead>
                         <tr>
+                             <td>Kode Inventaris</td>
                             <td>Tanggal Pembelian</td>
                             <td>Keterangan</td>
                             <td>Jumlah</td>
                             <td>Catatan</td>
                             <td>Tahun Ajaran</td>
                             <td>Wali Kelas</td>
-                            <td>Bukti pembelian</td>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.laporaninventaris.map(laporaninventaris =>
                             <tr key={laporaninventaris.kode_inventaris}>
+                                <td>{laporaninventaris.kode_inventaris}</td>
                                 <td>{laporaninventaris.tgl_pembelian}</td>
                                 <td>{laporaninventaris.keterangan}</td>
                                 <td>{laporaninventaris.jumlah}</td>
                                 <td>{laporaninventaris.catatan}</td>
                                 <td>{laporaninventaris.tahun_ajaran}</td>
                                 <td>{laporaninventaris.wali_kelas}</td>
-                                <td>{laporaninventaris.image}</td>
                             </tr>
                         )}
                     </tbody>

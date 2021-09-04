@@ -16,6 +16,7 @@ class Admin_inventaris extends PureComponent {
 
     this.state = {
       laporaninventaris: [],
+      username:'',
       response: '',
       display: 'none',
       show: ''
@@ -32,6 +33,9 @@ class Admin_inventaris extends PureComponent {
   }
 
   componentDidMount() {
+    this.setState({
+      username: localStorage.getItem("username")
+    })
     axios.get(api + "/getlaporaninventaris").then(res => {
       this.setState({
         laporaninventaris: res.data.values
@@ -123,7 +127,7 @@ class Admin_inventaris extends PureComponent {
             <div className="user-wrapper">
               <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
               <div>
-              <h4>Admin
+              <h4>sign in : {this.state.username} 
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -185,8 +189,9 @@ class Admin_inventaris extends PureComponent {
                       <table width="100%">
                         <thead>
                           <tr>
+                          <td>Kode Pembelian</td>
                             <td>Tanggal Pembelian</td>
-                            <td>Keterangan</td>
+                            <td>Nama Inventaris</td>
                             <td>Jumlah</td>
                             <td>Catatan</td>
                             <td>Tahun Ajaran</td>
@@ -198,6 +203,7 @@ class Admin_inventaris extends PureComponent {
                         <tbody>
                           {this.state.laporaninventaris.map(laporaninventaris =>
                             <tr key={laporaninventaris.kode_inventaris}>
+                               <td>{laporaninventaris.kode_inventaris}</td>
                               <td>{laporaninventaris.tgl_pembelian}</td>
                               <td>{laporaninventaris.keterangan}</td>
                               <td>{laporaninventaris.jumlah}</td>

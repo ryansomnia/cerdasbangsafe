@@ -29,7 +29,6 @@ export default class EditBulanan extends Component {
         if (!isNaN(d.getDate())) {
             tanggalreturn = moment(d).format("YYYY-MM-DD")
         }
-
         return tanggalreturn;
     }
 
@@ -151,13 +150,13 @@ export default class EditBulanan extends Component {
                     </Col>
 
                     <Col>
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Status </Form.Label>
                         <FormGroup>
-                            <select className="custom-select" name="status" value={this.state.status} onChange={this.handleChange("status")} >
-                                <option>Pilih Status</option>
-                                <option value="Berhasil">Berhasil</option>
-                                <option value="Tidak Berhasil">Tidak Berhasil</option>
-                            </select>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text"name="status" value={this.state.status} onChange={this.handleChange("status")} />
+                                </Col>
+                            </Row>
                         </FormGroup>
                     </Col>
 

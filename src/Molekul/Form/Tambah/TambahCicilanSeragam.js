@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import axios from 'axios'
 import { Col, Container, Row, FormGroup, Form, Button } from 'react-bootstrap';
-// import "./TambahCicilan.css";
+
 import swal from 'sweetalert';
 
 const api = 'http://localhost:5001'
-export default class TambahCicilan extends Component {
+export default class TambahCicilanSeragam extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            kode_cicilan: [],
+            kode_bayar: [],
             nis: '',
             nisn: '',
             nama: '',
             tgl_bayar: '',
+            seragam: '',
             debit: '',
             kredit: '',
-            uang_pangkal: "",
             saldo: '',
             image: '',
             response: ""
@@ -30,17 +29,16 @@ export default class TambahCicilan extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.nama === '' ||
-            this.state.image === '' ||
+        if (this.state.image === '' ||
             this.state.kode_bayar === '' ||
             this.state.nis === '' ||
             this.state.nisn === '' ||
+            this.state.nama === '' ||
             this.state.tgl_bayar === '' ||
-            this.state.uang_pangkal === '' ||
+            this.state.seragam === '' ||
             this.state.debit === '' ||
             this.state.kredit === '' ||
             this.state.saldo === '' 
-        
         ) {
             swal({
                 title: "Tambah Data", 
@@ -59,15 +57,15 @@ export default class TambahCicilan extends Component {
 
     AddOneData = () => {
         console.log("Data Masuk");
-        axios.post(api + '/addOneLaporanCicilan', {
-            kode_cicilan: this.state.kode_cicilan,
+        axios.post(api + '/addOneseragam', {
+            kode_bayar: this.state.kode_bayar,
             nis: this.state.nis,
             nisn: this.state.nisn,
             nama: this.state.nama,
             tgl_bayar: this.state.tgl_bayar,
+            seragam: this.state.seragam,
             debit: this.state.debit,
             kredit: this.state.kredit,
-            uang_pangkal: this.state.uang_pangkal,
             saldo: this.state.saldo,
             image: this.state.image
         })
@@ -91,12 +89,12 @@ export default class TambahCicilan extends Component {
             <Container>
                 <Form ClassName="form">
                     <Col>
-                        <Form.Label>Kode Cicilan</Form.Label>
+                        <Form.Label>Kode Bayar</Form.Label>
                         <FormGroup>
                             <Row>
                                 <Col>
                                     {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                    <Form.Control id="kode_cicilan" type="text" name="kode_cicilan" value={this.state.kode_cicilan} onChange={this.handleChange} placeholder="Masukkan Kode Cicilan" />
+                                    <Form.Control id="kode_bayar" type="text" name="kode_bayar" value={this.state.kode_bayar} onChange={this.handleChange} placeholder="Masukkan Kode Cicilan" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -139,6 +137,16 @@ export default class TambahCicilan extends Component {
                             </Row>
                         </FormGroup>
 
+                        <Form.Label>Seragam</Form.Label>
+                        <FormGroup>
+                            <select className="custom-select" name="seragam" value={this.state.seragam} onChange={this.handleChange} >
+                                <option>Pilih Seragam </option>
+                                <option value="Seragam Olahraga">Seragam Olahraga</option>
+                                <option value="Seragam Batik">Seragam Batik</option>
+                                <option value="Seragam Cerdas Bangsa">Seragam Cerdas Bangsa</option>
+                            </select>
+                        </FormGroup>
+
                         <Form.Label>Debit</Form.Label>
                         <FormGroup>
                             <Row>
@@ -153,15 +161,6 @@ export default class TambahCicilan extends Component {
                             <Row>
                                 <Col>
                                     <Form.Control type="text" name="kredit" value={this.state.kredit} onChange={this.handleChange} placeholder="Masukkan Jumlah Kredit" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Uang Pangkal</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="number" name="uang_pangkal" value={this.state.uang_pangkal} onChange={this.handleChange} placeholder="Masukkan Jumlah Uang Pangkal" />
                                 </Col>
                             </Row>
                         </FormGroup>

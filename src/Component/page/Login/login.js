@@ -28,7 +28,8 @@ export default class Login extends Component {
                 console.log(json.data.values, 'data');
                 if (json.data.message == "success") {
                     if (json.data.message == "success" && json.data.values[0].role == "admin") {
-                        localStorage.setItem("username", json.data.values[0].username)
+                        const data = JSON.stringify (json.data.values[0])
+                        localStorage.setItem("username", json.data.values[0].data)
                         swal({
                             title: "Login",
                             text: "Anda Berhasil Login ",

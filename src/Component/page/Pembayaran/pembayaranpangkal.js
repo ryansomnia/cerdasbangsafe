@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import { Col, Row, FormGroup, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 // import "./pembayaranpangkal.css";
 import swal from 'sweetalert';
 
@@ -12,18 +12,14 @@ export default class Pembayaranpangkal extends Component {
 
         this.state = {
             kode_cicilan: [],
-            username:'',
-            student_account: '',
+            username: '',
             nis: '',
             nisn: '',
             nama: '',
             tgl_bayar: '',
-            buku: '',
-            voucher_no: '',
             debit: '',
             kredit: '',
             uang_pangkal: "",
-            seragam: '',
             saldo: '',
             image: '',
             response: ""
@@ -36,19 +32,33 @@ export default class Pembayaranpangkal extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
-            alert('Masih ada data yang belum di isi !')
+        if (this.state.image === '' ||
+            this.state.username.nis === '' ||
+            this.state.username.nisn === '' ||
+            this.state.username.nama_siswa === '' ||
+            this.state.tgl_bayar === '' ||
+            this.state.debit === '' ||
+            this.state.uang_pangkal === '' ||
+            this.state.image === ''
+        ) {
+            swal({
+                title: "Pembayaran Gagal", 
+                text: "Ada Data Yang Belum di Isi", 
+                type: "danger",
+                icon: "warning"
+              }).then(function () {
+                window.location.reload();
+              });
         } else {
             this.AddOneData()
-
         }
     }
 
     componentDidMount() {
         this.setState({
-          username: JSON.parse (localStorage.getItem("siswa"))
+            username: JSON.parse(localStorage.getItem("siswa"))
         })
-        console.log( "data", this.state.username);
+        console.log("data", this.state.username);
 
     }
 
@@ -57,17 +67,13 @@ export default class Pembayaranpangkal extends Component {
         console.log("Data Masuk");
         axios.post(api + '/addOneLaporanCicilan', {
             kode_cicilan: this.state.kode_cicilan,
-            student_account: this.state.student_account,
             nis: this.state.username.nis,
             nisn: this.state.username.nisn,
             nama: this.state.username.nama_siswa,
             tgl_bayar: this.state.tgl_bayar,
-            buku: this.state.buku,
-            voucher_no: this.state.voucher_no,
             debit: this.state.debit,
             kredit: this.state.kredit,
             uang_pangkal: this.state.uang_pangkal,
-            seragam: this.state.seragam,
             saldo: this.state.saldo,
             image: this.state.image
         })
@@ -96,12 +102,12 @@ export default class Pembayaranpangkal extends Component {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <Form.Label>Nama Siswa</Form.Label>
-                            <Form.Control type="text" name="nama" value={this.state.username.nama_siswa} onChange={this.handleChange}  placeholder={this.state.username.nama_siswa}  readonly=""/>
+                            <Form.Control type="text" name="nama" value={this.state.username.nama_siswa} onChange={this.handleChange} placeholder={this.state.username.nama_siswa} readonly="" />
                         </div>
 
                         <div className="form-group col-md-6">
                             <Form.Label>Nomor Induk</Form.Label>
-                            <Form.Control type="number" name="nis" value={this.state.username.nis} onChange={this.handleChange}  placeholder={this.state.username.nis} readonly="" />
+                            <Form.Control type="number" name="nis" value={this.state.username.nis} onChange={this.handleChange} placeholder={this.state.username.nis} readonly="" />
                         </div>
                     </div>
 
@@ -132,7 +138,7 @@ export default class Pembayaranpangkal extends Component {
                     <div className="form">
                         <div className="form-group ">
                             <Form.Label>Bukti Pembayaran</Form.Label>
-                            <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                            <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
                         </div>
                     </div>
 

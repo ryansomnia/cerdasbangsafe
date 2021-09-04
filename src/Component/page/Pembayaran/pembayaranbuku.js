@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios'
-import { Col, Row, FormGroup, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 // import "./Pembayaranbuku.css";
 import swal from 'sweetalert';
 
@@ -11,19 +11,15 @@ export default class Pembayaranbuku extends Component {
         super(props)
 
         this.state = {
-            kode_cicilan: [],
-            username:'',
-            student_account: '',
+            kode_bayar: [],
+            username: '',
             nis: '',
             nisn: '',
             nama: '',
             tgl_bayar: '',
             buku: '',
-            voucher_no: '',
             debit: '',
             kredit: '',
-            uang_pangkal: "",
-            seragam: '',
             saldo: '',
             image: '',
             response: ""
@@ -36,26 +32,40 @@ export default class Pembayaranbuku extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
-            alert('Masih ada data yang belum di isi !')
+        if (this.state.image === '' ||
+            this.state.username.nis === '' ||
+            this.state.username.nisn === '' ||
+            this.state.username.nama_siswa === '' ||
+            this.state.tgl_bayar === '' ||
+            this.state.buku === '' ||
+            this.state.debit === '' ||
+            this.state.image === ''
+        ) {
+            swal({
+                title: "Pembayaran Gagal", 
+                text: "Ada Data Yang Belum di Isi", 
+                type: "danger",
+                icon: "warning"
+              }).then(function () {
+                window.location.reload();
+              });
         } else {
             this.AddOneData()
-
         }
     }
 
     componentDidMount() {
         this.setState({
-          username: JSON.parse (localStorage.getItem("siswa"))
+            username: JSON.parse(localStorage.getItem("siswa"))
         })
-        console.log( "data", this.state.username);
+        console.log("data", this.state.username);
 
     }
 
     AddOneData = () => {
         console.log("Data Masuk");
         axios.post(api + '/addOnebuku', {
-            kode_cicilan: this.state.kode_cicilan,
+            kode_bayar: this.state.kode_bayar,
             nis: this.state.username.nis,
             nisn: this.state.username.nisn,
             nama: this.state.username.nama_siswa,
@@ -90,7 +100,7 @@ export default class Pembayaranbuku extends Component {
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <Form.Label>Nama Siswa</Form.Label>
-                            <Form.Control type="text" name="nama" value={this.state.username.nama_siswa} onChange={this.handleChange}  placeholder={this.state.username.nama_siswa} readonly="" />
+                            <Form.Control type="text" name="nama" value={this.state.username.nama_siswa} onChange={this.handleChange} placeholder={this.state.username.nama_siswa} readonly="" />
                         </div>
 
                         <div className="form-group col-md-6">
@@ -126,7 +136,7 @@ export default class Pembayaranbuku extends Component {
                     <div className="form">
                         <div className="form-group ">
                             <Form.Label>Bukti Pembayaran</Form.Label>
-                            <Form.Control type="file" name="image" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                            <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
                         </div>
                     </div>
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
-import EditBulanan from '../../Form/Edit/EditBulanan';
+import { Button, Modal } from 'react-bootstrap';
+import TambahCicilanSeragam from '../../Form/Tambah/TambahCicilanSeragam';
 
 
 
 
 
 function MyVerticallyCenteredModal(props) {
-  console.log(props.laporanbulanan);
+
   return (
     <Modal
       {...props}
@@ -17,13 +17,11 @@ function MyVerticallyCenteredModal(props) {
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Edit Data Laporan
+          Form Tambah Data
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <EditBulanan laporanbulanan={props.laporanbulanan} />
-
-
+        <TambahCicilanSeragam />
       </Modal.Body>
     </Modal>
   );
@@ -31,19 +29,22 @@ function MyVerticallyCenteredModal(props) {
 
 
 
-function Bulanan(props) {
+function ModalTambahCicilanSeragam() {
   const [modalShow, setModalShow] = React.useState(false);
-  console.log(props.isShow);
+
   return (
     <>
-
+      <div className="d-flex justify-content-left">
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Tambah Data
+        </Button>
+      </div>
       <MyVerticallyCenteredModal
-        show={props.isShow}
-        onHide={() => setModalShow(modalShow)}
-        laporanbulanan={props.laporanbulanan}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
       />
     </>
   );
 }
 
-export default Bulanan;
+export default ModalTambahCicilanSeragam;

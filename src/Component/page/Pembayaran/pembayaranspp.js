@@ -30,10 +30,16 @@ export default class Pembayaranspp extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
+        if (this.state.image === '' ||
+             this.state.bulan === '' ||
+            this.state.jumlah === '' ||
+            this.state.image === '' ||
+            this.state.username.nama_siswa === '' ||
+            this.state.username.kelas === '' 
+        ) {
             swal({
                 title: "Pembayaran SPP",
-                text: "Pembayaran Gagal",
+                text: "Ada Data Yang Belum di Isi",
                 type: "warning",
                 icon:"warning"
             })
