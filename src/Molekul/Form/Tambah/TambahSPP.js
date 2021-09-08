@@ -10,26 +10,30 @@ export default class TambahSPP extends Component {
         super(props)
 
         this.state = {
-            kode_spp: [],
-            tgl_bayar: '',
+            tgl_bayar: [],
             bulan: '',
             jumlah: '',
             ekstrakurikuler: '',
             status: '',
-            image: '',
+            filename: null,
             nama_siswa: '',
             kelas: '',
             response: ""
 
         }
     }
+    handleChangeimage = (e) => {
+        this.setState({ filename: e.target.files[0] });
+       console.log("Test", e.target.files[0]);
+       }
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '' ||
+        if (this.state.filename === '' ||
         this.state.tgl_bayar  === '' ||
         this.state.bulan  === '' ||
         this.state.jumlah  === '' ||
@@ -52,17 +56,20 @@ export default class TambahSPP extends Component {
 
     addOneData = () => {
         console.log("Data Masuk");
-        axios.post(api + '/addOneLaporanSPP', {
-            kode_spp: this.state.kode_spp,
-            tgl_bayar: this.state.tgl_bayar,
-            bulan: this.state.bulan,
-            jumlah: this.state.jumlah,
-            ekstrakurikuler: this.state.ekstrakurikuler,
-            status: this.state.status,
-            nama_siswa: this.state.nama_siswa,
-            kelas: this.state.kelas,
-            image: this.state.image
-        })
+        const formData = new FormData();
+        console.log("Mulai Masuk", this.state.filename);
+        formData.append("filename",this.state.filename);
+        formData.append("jumlah",this.state.jumlah);
+        formData.append("kode_spp",this.state.kode_spp);
+        formData.append("bulan",this.state. bulan);
+        formData.append("tgl_bayar",this.state.tgl_bayar);
+        formData.append("ekstrakurikuler",this.state.ekstrakurikuler);
+        formData.append("status",this.state.status);
+        formData.append("nama_siswa",this.state.nama_siswa);
+        formData.append("kelas",this.state.kelas);
+      console.log("hajarrr", formData);
+      console.log(this.state.filename);
+      axios.post(api + '/addOneLaporanSPP', formData) 
             .then(json => {
                 console.log(json, 'data');
                 if (json.status == 200) {
@@ -83,20 +90,6 @@ export default class TambahSPP extends Component {
             <Container>
                 <Form ClassName="form">
                     <Col>
-                        <Form.Label>
-
-                            Kode SPP
-                        </Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                    <Form.Control id="kode_spp" type="text" name="kode_spp" value={this.state.kode_spp} onChange={this.handleChange} placeholder="Masukkan Kode SPP" />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-
                         <Form.Label>Nama Siswa</Form.Label>
                         <FormGroup>
                             <Row >
@@ -178,7 +171,7 @@ export default class TambahSPP extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                                <input type="file" name="filename"  accept="image/*" onChange={this.handleChangeimage} />
                                 </Col>
                             </Row>
                         </FormGroup>

@@ -17,26 +17,41 @@ export default class TambahInventaris extends Component {
             catatan: '',
             tahun_ajaran: '',
             wali_kelas: '',
-            image: '',
+            filename: null,
             response: ""
 
         }
     }
+
+    handleChangeimage = (e) => {
+        this.setState({ filename: e.target.files[0] });
+       console.log("satuuu", e.target.files[0]);
+       }
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
+        if (this.state.image === '' ||
+            this.state.kode_inventaris === '' ||
+            this.state.tgl_pembelian === '' ||
+            this.state.keterangan === '' ||
+            this.state.jumlah === '' ||
+            this.state.tahun_ajaran === '' ||
+            this.state.wali_kelas === ''
+
+
+        ) {
             swal({
-                title: "Tambah data", 
-                text: "Data Anda Gagal di Tambah", 
+                title: "Tambah data",
+                text: "Data Anda Gagal di Tambah",
                 type: "danger",
                 icon: "warning"
-              }).then(function () {
+            }).then(function () {
                 window.location.reload();
-              });
+            });
         } else {
             this.addOneData()
 
@@ -45,18 +60,21 @@ export default class TambahInventaris extends Component {
 
 
     addOneData = () => {
-        console.log("Data Masuk");
-        axios.post(api + '/addOneLaporanInventaris', {
-            kode_inventaris: this.state.kode_inventaris,
-            tgl_pembelian: this.state.tgl_pembelian,
-            keterangan: this.state.keterangan,
-            jumlah: this.state.jumlah,
-            catatan: this.state.catatan,
-            tahun_ajaran: this.state.tahun_ajaran,
-            wali_kelas: this.state.wali_kelas,
-            image: this.state.image
-        })
-            .then(json => {
+        console.log(" Data Mau Masuk");
+        const formData = new FormData();
+        console.log("Mulai Masuk", this.state.filename);
+        formData.append("filename",this.state.filename);
+        formData.append("kode_inventaris",this.state.kode_inventaris);
+        formData.append("tgl_pembelian",this.state.tgl_pembelian);
+        formData.append("keterangan",this.state.keterangan);
+        formData.append("jumlah",this.state.jumlah);
+        formData.append("catatan",this.state.catatan);
+        formData.append("tahun_ajaran",this.state.tahun_ajaran);
+        formData.append("wali_kelas",this.state.wali_kelas);
+      console.log("hajarrr", formData);
+      console.log(this.state.filename);
+      axios.post(api + '/addOneLaporanInventaris', formData)
+        .then(json => {
                 console.log(json, 'data');
                 if (json.status == 200) {
                     swal({
@@ -64,9 +82,9 @@ export default class TambahInventaris extends Component {
                         text: "Data Anda berhasil ditambah",
                         type: "success",
                         icon: "success"
-                      }).then(function () {
+                    }).then(function () {
                         window.location.reload();
-                      });
+                    });
                 }
             })
     }
@@ -76,17 +94,6 @@ export default class TambahInventaris extends Component {
             <Container>
                 <Form ClassName="form">
                     <Col>
-                        <Form.Label>Kode Inventaris</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    {/* <Form.Control type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}   placeholder="Tulis nama lengkap calon siswa" /> */}
-                                    <Form.Control id="kode_inventaris" type="text" name="kode_inventaris" value={this.state.kode_inventaris} onChange={this.handleChange} placeholder="Masukkan Kode Inventaris " />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-
                         <Form.Label>Tanggal Pembelian</Form.Label>
                         <FormGroup>
                             <Row >
@@ -148,7 +155,7 @@ export default class TambahInventaris extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                                <input type="file" name="filename" accept="image/*" onChange={this.handleChangeimage} />
                                 </Col>
                             </Row>
                         </FormGroup>

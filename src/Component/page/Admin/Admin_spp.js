@@ -21,10 +21,13 @@ class Admin_spp extends PureComponent {
       laporanspp: [],
       response: '',
       username:'',
+      filename:'',
       display: 'none',
       show: ''
     };
   }
+ 
+
 
   editSpp = (item) => {
     const data = this.state.laporanspp.filter(i => i.kode_spp == item.kode_spp)
@@ -36,8 +39,9 @@ class Admin_spp extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      username: localStorage.getItem("username")
-    })
+      username: JSON.parse(localStorage.getItem("user"))
+  })
+  console.log("data", this.state.username);
     axios.get(api + "/getLaporanSPP").then(res => {
       this.setState({
         laporanspp: res.data.values
@@ -129,9 +133,9 @@ class Admin_spp extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}}alt="" />
+              {/* <img src="Image/logo3.png" style={{width:"40px",height:"40px"}}alt="" /> */}
               <div>
-                <h4>Sing In : {this.state.username}
+                <h4>Sing In : {this.state.username.username}
                   <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -217,7 +221,7 @@ class Admin_spp extends PureComponent {
                               <td>{laporanspp.bulan}</td>
                               <td>{laporanspp.ekstrakurikuler}</td>
                               <td>Rp. {laporanspp.jumlah}</td>
-                              <td>{laporanspp.image}</td>
+                              <td><a href={laporanspp.image}><img src={laporanspp.image} style={{width:"100px"}} /></a></td>
                               <td>{laporanspp.status}</td>
                               <td>
                                 <div className="d-flex">

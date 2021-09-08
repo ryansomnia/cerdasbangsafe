@@ -3,9 +3,6 @@
 }
 .box{
     padding: 100px 0px 0px 0px;
-   
-  
-
 }
 
 .icon-img{
@@ -15,4 +12,15 @@
 }
 .reset{ 
     color: black;
+}
+
+.data{
+    align-items: center;
+    font-style: normal;
+    padding-top: 100px;
+    padding-left: 60px;
+}
+.data a{
+  font-size: 26px;
+  color: green;
 }

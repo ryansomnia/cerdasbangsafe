@@ -8,21 +8,9 @@ const api = "http://localhost:5001";
 export default class EditProfile extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            id_regist: props.siswa[0].id_regist,
-            nis: props.siswa[0].nis,
-            nisn: props.siswa[0].nisn,
-            nama_siswa: props.siswa[0].nama_siswa,
-            jenis_kelamin: props.siswa[0].jenis_kelamin,
-            tgl_lahir: props.siswa[0].tgl_lahir,
-            tempat_lahir: props.siswa[0].tempat_lahir,
-            alamat: props.siswa[0].alamat,
-            nama_ayah: props.siswa[0].nama_ayah,
-            nama_ibu: props.siswa[0].nama_ibu,
-            no_hp: props.siswa[0].no_hp,
-            agama: props.siswa[0].agama
-        };
-        this.handleChange = this.handleChange.bind(this);
+        this.state  = {
+            username:[]
+        }
     }
 
     getformatdate(date) {
@@ -33,6 +21,13 @@ export default class EditProfile extends Component {
         }
 
         return tanggalreturn;
+    }
+
+    componentDidMount() {
+        this.setState({
+            username: JSON.parse(localStorage.getItem("siswa"))
+        })
+        console.log("data", this.state.username);
     }
 
     editSiswa = () => {
@@ -93,25 +88,7 @@ export default class EditProfile extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange("nama_siswa")} />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>Nomor Induk</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} />
-                                </Col>
-                            </Row>
-                        </FormGroup>
-
-                        <Form.Label>NISN</Form.Label>
-                        <FormGroup>
-                            <Row>
-                                <Col>
-                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange("nisn")} />
+                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange()} placeholder={this.state.username.nama_siswa} />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -120,7 +97,7 @@ export default class EditProfile extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange("tgl_lahir")} />
+                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange()} placeholder={this.state.username.tgl_lahir}  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -129,7 +106,7 @@ export default class EditProfile extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange("tempat_lahir")} />
+                                    <Form.Control type="text" name="tempat_lahir" value={this.state.tempat_lahir} onChange={this.handleChange()} placeholder={this.state.username.tempat_lahir}  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -138,7 +115,7 @@ export default class EditProfile extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange("alamat")} />
+                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange()} placeholder={this.state.username.alamat}  />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -147,7 +124,7 @@ export default class EditProfile extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="no_hp" value={this.state.no_hp} onChange={this.handleChange("no_hp")} />
+                                    <Form.Control type="text" name="no_hp" value={this.state.no_hp} onChange={this.handleChange()} placeholder={this.state.username.no_hp}  />
                                 </Col>
                             </Row>
                         </FormGroup>

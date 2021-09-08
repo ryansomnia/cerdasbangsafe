@@ -12,6 +12,7 @@ export default class EditSiswa extends Component {
             id_regist: props.siswa[0].id_regist,
             nis: props.siswa[0].nis,
             nisn: props.siswa[0].nisn,
+            kelas: props.siswa[0].kelas,
             nama_siswa: props.siswa[0].nama_siswa,
             jenis_kelamin: props.siswa[0].jenis_kelamin,
             tgl_lahir: props.siswa[0].tgl_lahir,
@@ -42,6 +43,7 @@ export default class EditSiswa extends Component {
             id_regist: this.state.id_regist,
             nis: this.state.nis,
             nisn: this.state.nisn,
+            kelas: this.state.kelas,
             nama_siswa: this.state.nama_siswa,
             jenis_kelamin: this.state.jenis_kelamin,
             tgl_lahir: this.getformatdate(this.state.tgl_lahir),
@@ -115,6 +117,16 @@ export default class EditSiswa extends Component {
                                 </Col>
                             </Row>
                         </FormGroup>
+
+                        <Form.Label>Kelas</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange("kelas")} />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+                        
 
                         <Form.Label>Tanggal Lahir</Form.Label>
                         <FormGroup>

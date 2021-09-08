@@ -1,9 +1,9 @@
 import React from "react";
-import { Form, Col, Row, Container, Card, Button } from 'react-bootstrap';
-import loginIcon from '../../images/user.svg'
+import {  Col, Row, Container, Card, Button } from 'react-bootstrap';
 import uiImg from '../../images/login.svg'
 import { PureComponent } from "react";
-// import  "./login.css";
+import {FaWhatsapp } from "react-icons/fa";
+import  "./login.css";
 
 export default class forget extends PureComponent {
 
@@ -12,26 +12,20 @@ export default class forget extends PureComponent {
         return (
             <Container  >
                 <Row >
-                    <Col lg={4} md={5} sm={12} className="text-center mt-5 p-3">
-                        <img className="icon-img" src={loginIcon} alt="icon" />
+                    <Col lg={5} md={6} className="data text-center mt-5 " >
                         <Card style={{ width: '20rem' }}>
                             <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text className="text-left">
-                                    lupa kata sandi Anda? Tidak masalah. Beri tahu kami alamat email Anda
-                                    dan kami akan mengirimkan email berisi tautan pengaturan ulang kata sandi
-                                    yang memungkinkan Anda memilih yang baru.
+                                <Card.Title style={{fontSize:"20px"}}>Lupa Password ??</Card.Title>
+                                <Card.Text className="text-center">
+                                    lupa kata sandi Anda? Tidak masalah. Anda dapat menghubungi pihak administrasi 
+                                    SDS Cerdas Bangsa Untuk Masalah lupa sandi atau password untuk login,Klik untuk hubungi.
                                 </Card.Text>
-                                <Form.Group controlId="formBasicEmail" className="text-left">
-                                    <Form.Control type="email" placeholder="Email" />
-                                </Form.Group>
-                                <Button className="reset" href="/login">Email Pemulihan</Button>
+                                <a href={'https://wa.me/6289605804229'}><FaWhatsapp />+6289605804229</a>
                             </Card.Body>
                         </Card>
                     </Col>
 
-                    <Col lg={8} md={6} sm={12} className="box">
+                    <Col lg={7} md={6}className="box">
                         <img className="w-100" src={uiImg} alt="" />
                     </Col>
                 </Row>

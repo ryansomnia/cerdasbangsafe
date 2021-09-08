@@ -31,8 +31,9 @@ class Admin_registrasi extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      username: localStorage.getItem("username")
-    })
+      username: JSON.parse(localStorage.getItem("user"))
+  })
+  console.log("data", this.state.username);
     axios.get(api + "/getSiswa").then(res => {
       this.setState({
         siswa: res.data.values
@@ -124,9 +125,9 @@ class Admin_registrasi extends PureComponent {
             </h2>
  
             <div className="user-wrapper">
-              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
+              {/* <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" /> */}
               <div>
-              <h4>Sing In : {this.state.username} 
+              <h4>Sing In : {this.state.username.username} 
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -192,6 +193,7 @@ class Admin_registrasi extends PureComponent {
                             <td>Nama Siswa</td>
                             <td>Nomor Induk</td>
                             <td>NISN</td>
+                            <td>Kelas</td>
                             <td>Jenis Kelamin</td>
                             <td>Tanggal Lahir</td>
                             <td>Tempat Lahir</td>
@@ -211,6 +213,7 @@ class Admin_registrasi extends PureComponent {
                               <td>{siswa.nama_siswa}</td>
                               <td>{siswa.nis}</td>
                               <td>{siswa.nisn}</td>
+                              <td>{siswa.kelas}</td>
                               <td>{siswa.jenis_kelamin}</td>
                               <td>{siswa.tgl_lahir}</td>
                               <td>{siswa.tempat_lahir}</td>

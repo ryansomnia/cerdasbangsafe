@@ -33,7 +33,6 @@ export default class user extends Component {
             username: JSON.parse(localStorage.getItem("siswa"))
         })
         console.log("data", this.state.username);
-
     }
 
 
@@ -62,7 +61,7 @@ export default class user extends Component {
                                                 <Row>
                                                     <div className="col-md-12">
                                                         <div className="banner-caption">
-                                                            <h4>Hello, {this.state.username.nama_siswa} Selamat Datang di <em> Website</em> SDSC.</h4>
+                                                            <h4>Hello, <em>{this.state.username.nama_siswa}</em> Selamat Datang di <em> Website SDSC.</em> </h4>
                                                             <span>Lebih Mudah Melakukan Pembayaran</span>
                                                             <p>Sebagai media informasi dan komunikasi <strong>WEB SDS CERDAS BANGSA</strong> dikembangkan dalam rangka meningkatkan layanan sekolah kepada peserta didik dan orang tua.</p>
                                                         </div>
@@ -122,7 +121,7 @@ export default class user extends Component {
                             </Col>
                             <Col md="auto" >
                             <h4 class ="pt-3 pb-3">
-                            <Button variant="outline-success" onClick={this.editSiswa.bind(this.state.username.nis)}>
+                            <Button variant="outline-success" onClick={this.editSiswa.bind(this.state.siswa.nis)}>
                             Edit
                             </Button></h4>
                             <MOdalEditProfile isShow={this.state.show} siswa={this.state.siswa} />

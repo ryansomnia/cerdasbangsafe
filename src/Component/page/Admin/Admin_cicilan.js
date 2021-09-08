@@ -58,8 +58,9 @@ class Admin_cicilan extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      username: localStorage.getItem("username")
-    })
+      username: JSON.parse(localStorage.getItem("user"))
+  })
+  console.log("data", this.state.username);
     axios.get(api + "/getlaporancicilan").then(res => {
       this.setState({
         laporancicilan: res.data.values
@@ -207,9 +208,9 @@ class Admin_cicilan extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" />
+              {/* <img src="Image/logo3.png" style={{width:"40px",height:"40px"}} alt="" /> */}
               <div>
-              <h4>Sing In : {this.state.username} 
+              <h4>Sing In : {this.state.username.username}
                 <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/home')}>LogOut</Button></h4>
               </div>
             </div>
@@ -295,7 +296,7 @@ class Admin_cicilan extends PureComponent {
                               <td>{buku.buku}</td>
                               <td>Rp. {buku.debit}</td>
                               <td>Rp. {buku.kredit}</td>
-                              <td>{buku.image}</td>
+                              <td><a href={buku.image}><img src={buku.image} style={{width:"100px"}} /></a></td>
                               <td>
                                 <div className="d-flex ">
                                   <Button className="btn-space" variant="outline-success" onClick={this.editbuku.bind(this, buku)}>
@@ -358,7 +359,7 @@ class Admin_cicilan extends PureComponent {
                               <td>{seragam.seragam}</td>
                               <td>Rp. {seragam.debit}</td>
                               <td>Rp. {seragam.kredit}</td>
-                              <td>{seragam.image}</td>
+                              <td><a href={seragam.image}><img src={seragam.image} style={{width:"100px"}} /></a></td>
                               <td>
                                 <div className="d-flex ">
                                   <Button className="btn-space" variant="outline-success" onClick={this.editseragam.bind(this, seragam)}>
@@ -423,7 +424,7 @@ class Admin_cicilan extends PureComponent {
                               <td>Rp. {laporancicilan.uang_pangkal}</td>
                               <td>Rp. {laporancicilan.debit}</td>
                               <td>Rp. {laporancicilan.kredit}</td>
-                              <td>{laporancicilan.image}</td>
+                              <td><a href={laporancicilan.image}><img src={laporancicilan.image} style={{width:"100px"}} /></a></td>  
                               <td>
                                 <div className="d-flex">
                                   <Button className="btn-space" variant="outline-success" onClick={this.editcicilan.bind(this, laporancicilan)}>

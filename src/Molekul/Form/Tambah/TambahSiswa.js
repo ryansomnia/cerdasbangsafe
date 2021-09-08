@@ -13,12 +13,13 @@ export default class TambahSiswa extends Component {
             nis: [],
             nisn: '',
             nama_siswa: '',
+            kelas: '',
             jenis_kelamin: '',
             tgl_lahir: '',
             tempat_lahir: '',
             alamat: '',
             nama_ayah: '',
-            nama_ibu:'',
+            nama_ibu: '',
             no_hp: '',
             agama: '',
             response: ""
@@ -31,15 +32,27 @@ export default class TambahSiswa extends Component {
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '') {
+        if (this.state.nis === '' ||
+            this.state.nisn === '' ||
+            this.state.nama_siswa === '' ||
+            this.state.kelas === '' ||
+            this.state.jenis_kelamin === '' ||
+            this.state.tgl_lahir === '' ||
+            this.state.tempat_lahir === '' ||
+            this.state.alamat === '' ||
+            this.state.nama_ayah === '' ||
+            this.state.nama_ibu === '' ||
+            this.state.no_hp === '' ||
+            this.state.agama === ''
+        ) {
             swal({
-                title: "Tambah Data", 
-                text: "Data Anda Gagal di Tambah", 
+                title: "Tambah Data",
+                text: "Data Anda Gagal di Tambah",
                 type: "danger",
                 icon: "warning"
-              }).then(function () {
+            }).then(function () {
                 window.location.reload();
-              });
+            });
         } else {
             this.addOneData()
 
@@ -53,6 +66,7 @@ export default class TambahSiswa extends Component {
             nis: this.state.nis,
             nisn: this.state.nisn,
             nama_siswa: this.state.nama_siswa,
+            kelas: this.state.kelas,
             jenis_kelamin: this.state.jenis_kelamin,
             tgl_lahir: this.state.tgl_lahir,
             tempat_lahir: this.state.tempat_lahir,
@@ -70,9 +84,9 @@ export default class TambahSiswa extends Component {
                         text: "Data Anda berhasil ditambah",
                         type: "success",
                         icon: "success"
-                      }).then(function () {
+                    }).then(function () {
                         window.location.reload();
-                      });
+                    });
                 }
             })
     }
@@ -86,7 +100,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange}  placeholder="Masukkan Nama Siswa " />
+                                    <Form.Control id="nama_siswa" type="text" name="nama_siswa" value={this.state.nama_siswa} onChange={this.handleChange} placeholder="Masukkan Nama Siswa " />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -95,7 +109,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan NIS Siswa "  />
+                                    <Form.Control type="text" name="nis" value={this.state.nis} onChange={this.handleChange} placeholder="Masukkan NIS Siswa " />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -104,7 +118,16 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa "  />
+                                    <Form.Control type="text" name="nisn" value={this.state.nisn} onChange={this.handleChange} placeholder="Masukkan NISN Siswa " />
+                                </Col>
+                            </Row>
+                        </FormGroup>
+
+                        <Form.Label>Kelas</Form.Label>
+                        <FormGroup>
+                            <Row>
+                                <Col>
+                                    <Form.Control type="text" name="kelas" value={this.state.kelas} onChange={this.handleChange} placeholder="Masukkan Kelas Siswa " />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -113,7 +136,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} placeholder="Masukkan Tanggal Lahir Siswa "  />
+                                    <Form.Control type="date" name="tgl_lahir" value={this.state.tgl_lahir} onChange={this.handleChange} placeholder="Masukkan Tanggal Lahir Siswa " />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -129,7 +152,7 @@ export default class TambahSiswa extends Component {
 
                         <Form.Label>Jenis Kelamin</Form.Label>
                         <FormGroup>
-                            <select className="custom-select"  name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} >
+                            <select className="custom-select" name="jenis_kelamin" value={this.state.jenis_kelamin} onChange={this.handleChange} >
                                 <option>Jenis Kelamin Siswa</option>
                                 <option value="PR">Perempuan</option>
                                 <option value="LK">Laki - Laki</option>
@@ -154,7 +177,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nama_ayah" value={this.state.nama_ayah} onChange={this.handleChange} placeholder="Masukkan Nama Ayah Siswa"  />
+                                    <Form.Control type="text" name="nama_ayah" value={this.state.nama_ayah} onChange={this.handleChange} placeholder="Masukkan Nama Ayah Siswa" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -163,7 +186,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="nama_ibu" value={this.state.nama_ibu} onChange={this.handleChange} placeholder="Masukkan Nama Ibu Siswa"  />
+                                    <Form.Control type="text" name="nama_ibu" value={this.state.nama_ibu} onChange={this.handleChange} placeholder="Masukkan Nama Ibu Siswa" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -172,7 +195,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange} placeholder="Masukkan Alamat Siswa"   />
+                                    <Form.Control type="text" name="alamat" value={this.state.alamat} onChange={this.handleChange} placeholder="Masukkan Alamat Siswa" />
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -181,7 +204,7 @@ export default class TambahSiswa extends Component {
                         <FormGroup>
                             <Row>
                                 <Col>
-                                    <Form.Control type="number" name="no_hp" value={this.state.no_hp} onChange={this.handleChange}  placeholder="Masukkan Nomor Telephone Orang Tua"  />
+                                    <Form.Control type="number" name="no_hp" value={this.state.no_hp} onChange={this.handleChange} placeholder="Masukkan Nomor Telephone Orang Tua" />
                                 </Col>
                             </Row>
                         </FormGroup>

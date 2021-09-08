@@ -37,7 +37,6 @@ class Admin extends PureComponent {
         show:'show' 
       })
     }
-
     editKelas =(item)=>{
       const data = this.state.kelas.filter(i => i.kode_kelas == item.kode_kelas)
       this.setState({
@@ -50,8 +49,10 @@ class Admin extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      username: localStorage.getItem("username")
-    })
+      username: JSON.parse(localStorage.getItem("user"))
+  })
+  console.log("data", this.state.username);
+
     axios.get(api + "/getkelas").then(res => {
       this.setState({
         kelas: res.data.values
@@ -174,9 +175,9 @@ class Admin extends PureComponent {
             </h2>
 
             <div className="user-wrapper">
-              <img src="Image/logo3.png" alt=""  style={{width:"40px",height:"40px"}}/>
+              {/* <img src="Image/logo3.png" alt=""  style={{width:"40px",height:"40px"}}/> */}
               <div>
-                <h5>sign in : {this.state.username} 
+                <h5>sign in : {this.state.username.username}
 
                   <Button size="sm" size="sm" variant="danger" onClick={() => this.pageLogin('/login')}>LogOut</Button></h5>
               </div>

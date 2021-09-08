@@ -21,25 +21,30 @@ export default class Pembayaranpangkal extends Component {
             kredit: '',
             uang_pangkal: "",
             saldo: '',
-            image: '',
+            filename: null,
             response: ""
 
         }
     }
+    handleChangeimage = (e) => {
+        this.setState({ filename: e.target.files[0] });
+       console.log("satuuu", e.target.files[0]);
+       }
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     handleError = () => {
         console.log('YE');
-        if (this.state.image === '' ||
+        if (
             this.state.username.nis === '' ||
             this.state.username.nisn === '' ||
             this.state.username.nama_siswa === '' ||
             this.state.tgl_bayar === '' ||
             this.state.debit === '' ||
             this.state.uang_pangkal === '' ||
-            this.state.image === ''
+            this.state.filename === ''
         ) {
             swal({
                 title: "Pembayaran Gagal", 
@@ -65,18 +70,21 @@ export default class Pembayaranpangkal extends Component {
 
     AddOneData = () => {
         console.log("Data Masuk");
-        axios.post(api + '/addOneLaporanCicilan', {
-            kode_cicilan: this.state.kode_cicilan,
-            nis: this.state.username.nis,
-            nisn: this.state.username.nisn,
-            nama: this.state.username.nama_siswa,
-            tgl_bayar: this.state.tgl_bayar,
-            debit: this.state.debit,
-            kredit: this.state.kredit,
-            uang_pangkal: this.state.uang_pangkal,
-            saldo: this.state.saldo,
-            image: this.state.image
-        })
+        const formData = new FormData();
+        console.log("Mulai Masuk", this.state.filename);
+        formData.append("filename",this.state.filename);
+        formData.append("kode_bayar",this.state.kode_bayar);
+        formData.append("nis",this.state.username.nis);
+        formData.append("nisn",this.state.username.nisn);
+        formData.append("nama",this.state.username.nama_siswa);
+        formData.append("tgl_bayar",this.state.tgl_bayar);
+        formData.append("uang_pangkal",this.state.uang_pangkal);
+        formData.append("kredit",this.state.kredit);
+        formData.append("debit",this.state.debit);
+        formData.append("saldo",this.state.saldo);
+      console.log("hajarrr", formData);
+      console.log(this.state.filename);
+      axios.post(api + '/addOneLaporanCicilan', formData)
             .then(json => {
                 console.log(json, 'data');
                 if (json.status == 200) {
@@ -138,7 +146,7 @@ export default class Pembayaranpangkal extends Component {
                     <div className="form">
                         <div className="form-group ">
                             <Form.Label>Bukti Pembayaran</Form.Label>
-                            <Form.Control type="file" name="image" accept="image/*" value={this.state.image} onChange={this.handleChange} placeholder="Masukkan Bukti Pembayaran" />
+                            <p><input type="file" name="filename" accept="image/*" onChange={this.handleChangeimage} /></p>
                         </div>
                     </div>
 
